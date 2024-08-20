@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" th:fragment="html"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/fragment :: head"></head>
+<body>
+    <div class="containerPrincipal">
+        <div th:insert="fragments/fragment :: header"></div>
+        <div class="containerDroit">
+            <div class="enTete">
+                <div></div>
+                <ul style="float: inline-end;">
+                    <a href="/users" class="lien-menu">
+                        <li ><img src="/fontawesome/svgs/solid/backward.svg" alt="">Retour</li>
+                    </a>
+                </ul>
+            </div>
+            <form action="">
+                <h2 style="margin: 10px;">Ajouter un utilisateur</h2>
+                <div class="form-group">
+                    <input type="text" name="pseudo" id="pseudo" placeholder="PSEUDO:">
+                </div>
+                <div class="form-group">
+                    <input type="password" name="motDePasse" id="motDePasse" placeholder="MOT DE PASSE:">
+                </div>
+                <div class="form-group">
+                    <input type="password" name="confirmMotDePasse" id="confirmMotDePasse" placeholder="COMFIRMER MOT DE PASSE:">
+                </div>
+                <div class="form-group group-button" style="margin: -5px;margin-top: 10px;">
+                    <a href="/users" class="lien-menu">
+                        <button id="annuler">Annuler</button>
+                    </a>
+                    <button id="enregistrer">Enregistrer</button>
+                </div>
+            </form>
+          
+        </div>
+    </div>
+</body>
+</html>

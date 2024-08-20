@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" th:fragment="html"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head th:insert="fragments/fragment :: head"></head>
+<body>
+    <div class="containerPrincipal">
+        <div th:insert="fragments/fragment :: header"></div>
+        <div class="containerDroit">
+            <div class="enTete">
+                <div></div>
+                <ul style="float: inline-end;">
+                    <a href="/" class="lien-menu">
+                        <li ><img src="/fontawesome/svgs/solid/backward.svg" alt="">Retour</li>
+                    </a>
+                </ul>
+            </div>
+            <form action="">
+                <h2 style="margin: 10px;">Rapport</h2>
+                <div class="form-group">
+                    <select name="classe" id="classe">
+                        <option value="">Sélectionner une option</option>
+                        <option value="classe1">Liste des eleves</option>
+                        <option value="classe2">Listes des professeurs</option>
+                        <option value="classe3">Liste des utilisateurs</option>
+                    </select>
+                </div>
+                <div class="form-group group-button" style="margin: -5px;margin-top: 10px;">
+                    <button id="annuler">Generer format PDF</button>
+                    <button id="enregistrer">Generer format Excel</button>
+                </div>
+            </form>
+          
+        </div>
+    </div>
+</body>
+</html>

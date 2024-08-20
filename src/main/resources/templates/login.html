@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" th:fragment="html"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/fragment :: head"></head>
+<body>
+<div class="container">
+    <h1><img src="/icons/school-solid.svg" alt="" id="monEtabLogo" />Mon Etab</h1>
+    <form action="">
+        <input
+                type="text"
+                name="identifiant"
+                id="identifiant"
+                placeholder="Identifiant"
+        />
+        <input
+                type="password"
+                name="motDePasse"
+                id="motDePasse"
+                placeholder="Mot de passe"
+        />
+
+        <a href="/" class="lien-login">
+            connexion
+        </a>
+
+    </form>
+</div>
+</body>
+</html>

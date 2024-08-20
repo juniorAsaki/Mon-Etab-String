@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" th:fragment="html"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<head th:insert="fragments/fragment :: head"></head>
+<body>
+<div class="containerPrincipal">
+    <div th:insert="fragments/fragment :: header"></div>
+    <div class="containerDroit" id="containerDroit">
+        <h2 id="dashbord">Tableau de bord</h2>
+        <div class="grid-container">
+            <div class="grip-template">
+                <div class="grip">
+                    <h3>Nombre d'éleve</h3>
+                    <div class="resultat">
+                        <span>128 000</span>
+                    </div>
+                </div>
+                <div class="grip">
+                    <h3>Nombre professeur</h3>
+                    <div class="resultat">
+                        <span>128 000</span>
+                    </div>
+                </div>
+                <div class="grip">
+                    <h3>Nombre utilisateur</h3>
+                    <div class="resultat">
+                        <span>128 000</span>
+                    </div>
+                </div>
+                <div class="grip">
+                    <h3>éleve par genre</h3>
+                    <!--                <div class="container-circle">-->
+                    <!--                    <canvas th:width="50px" th:height="50px" id="pieCanvas" aria-label="chart" role="img"></canvas>-->
+                    <!--                    <h1>Ok</h1>-->
+                    <!--                </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

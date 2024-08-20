@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" th:fragment="html"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/fragment :: head"></head>
+<body>
+    <div class="containerPrincipal">
+        <div th:insert="fragments/fragment :: header"></div>
+        <div class="containerDroit">
+            <div class="enTete">
+                <h2>Eleves <span>(3)</span></h2>
+                <ul>
+                    <a href="/students/add" class="lien-menu">
+                        <li><img src="fontawesome/svgs/solid/plus.svg" alt="">Nouvel élève</li>
+                    </a>
+                </ul>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Genre</th>
+                        <th>Classe</th>
+                        <th>Matricule</th>
+                        <th>Age</th>
+                        <th>Télephone</th>
+                        <th>Ville</th>
+                        <th style="float: inline-end;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Koffi</td>
+                        <td>Koffi</td>
+                        <td>Koffi</td>
+                        <td>Koffi</td>
+                        <td>Koffi</td>
+                        <td>Koffi</td>
+                        <td>Koffi</td>
+                        <td>Koffi</td>
+                        <td style="float: inline-end;">
+                            <a href="/students/update" class="lien-menu">
+                                <button  style="background-color: coral;">Modifier</button>
+                            </a>
+                            <button style="background-color: crimson;">Supprimer</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Koffi</td>
+                        <td>Koffi</td>
+                        <td>Koffi</td>
+                        <td>Koffi</td>
+                        <td>Koffi</td>
+                        <td>Koffi</td>
+                        <td>Koffi</td>
+                        <td>Koffi</td>
+                        <td style="float: inline-end;">
+                            <button style="background-color: coral;">Modifier</button>
+                            <button style="background-color: crimson;">Supprimer</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Koffi</td>
+                        <td>Koffi</td>
+                        <td>Koffi</td>
+                        <td>Koffi</td>
+                        <td>Koffi</td>
+                        <td>Koffi</td>
+                        <td>Koffi</td>
+                        <td>Koffi</td>
+                        <td style="float: inline-end;">
+                            <button style="background-color: coral;">Modifier</button>
+                            <button style="background-color: crimson;">Supprimer</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <!-- <div class="form-delete">
+            <form action="">
+                <h2 style="margin-bottom: 10px;">ATTENTION !!!</h2>
+                <p style="margin-bottom: 10px;">Voulez-vous supprimer cet élève ?</p>
+                <hr>
+                <div class="response">
+                    <button id="non">NON</button>
+                    <button id="oui">OUI</button>
+                </div>
+            </form>
+        </div> -->
+        
+    </div>
+</body>
+</html>
