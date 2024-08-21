@@ -1,59 +1,130 @@
 <!DOCTYPE html>
-<html lang="en" th:fragment="html"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-<head th:insert="fragments/fragment :: head"></head>
-<body>
-    <div class="containerPrincipal">
-        <div th:insert="fragments/fragment :: header"></div>
-        <div class="containerDroit">
-            <div class="enTete">
-                <div></div>
-                <ul>
-                    <a href="/teachers" class="lien-menu">
-                        <li ><img src="/fontawesome/svgs/solid/backward.svg" alt="">Retour</li>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Mon Etab</title>
+
+    <!-- Custom fonts for this template-->
+    <link
+            href="/vendor/fontawesome-free/css/all.min.css"
+            rel="stylesheet"
+            type="text/css"
+    />
+    <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet"
+    />
+
+    <!-- Custom styles for this template-->
+    <link href="/css/sb-admin-2.min.css" rel="stylesheet" />
+</head>
+
+<body id="page-top">
+<!-- Page Wrapper -->
+<div id="wrapper">
+    <!-- Sidebar -->
+    <ul th:insert="fragments/fragment :: sideBar"></ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+            <div class="p-5">
+                <div class="text-center d-flex justify-content-between">
+                    <h1 class="h4 text-gray-900 mb-4">Ajouter un professeur</h1>
+                    <div>
+                        <a href="/teachers" class="btn btn-info">Retour</a>
+                    </div>
+                </div>
+                <form class="user">
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                   placeholder="Nom">
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control form-control-user" id="exampleLastName"
+                                   placeholder="Prenom">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <input type="text" class="form-control form-control-user" id="exampleInputEmail"
+                                   placeholder="Telephone">
+                        </div>
+                        <select name="classe" id="classe" class="form-control col-sm-6 mb-3 mb-sm-0" >
+                            <option value="">Sélectionner une matiere</option>
+                            <option value="classe1">matiere1</option>
+                            <option value="classe2">matiere2</option>
+                            <option value="classe3">matiere3</option>
+                        </select>
+                    </div>
+                    <div class="form-group d-flex align-items-center justify-content-between">
+                        <div class="homme">
+                            <label for="genre">homme</label>
+                            <input type="radio" name="genre" id="genre" class="form-radio">
+                        </div>
+                        <div class="femme">
+                            <label for="genre">femme</label>
+                            <input type="radio" name="genre" id="genre" class="form-radio">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <input type="text" class="form-control form-control-user"
+                                   id="exampleInputPassword" placeholder="Ville">
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="date" class="form-control form-control-user"
+                                   id="exampleRepeatPassword" >
+                        </div>
+                    </div>
+
+                    <a href="/teachers" class="btn btn-danger btn-user ">
+                        Annuler
                     </a>
-                </ul>
+                    <a href="" class="btn btn-success btn-user ">
+                        Enregistrer
+                    </a>
+                    <hr>
+
+                </form>
+
             </div>
-            <form action="">
-                <h2 style="margin: 10px;">Ajouter un professeur</h2>
-                <div class="form-group">
-                    <input type="text" name="nom" id="nom" placeholder="NOM:">
-                    <input type="text" name="prenom" id="prenom" placeholder="PRENOM:">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="telephone" id="telephone" placeholder="TELEPHONE:">
-                    <select name="classe" id="classe">
-                        <option value="">Sélectionner une matière</option>
-                        <option value="classe1">matière1</option>
-                        <option value="classe2">matière2</option>
-                        <option value="classe3">matière3</option>
-                    </select>
-                </div>
-               
-                <div class="form-group group-radio" style="margin: 10px;">
-                    <div class="homme">
-                        <label for="genre">homme</label>
-                        <input type="radio" name="genre" id="genre">
-                    </div>
-                    <div class="femme">
-                        <label for="genre">femme</label>
-                    <input type="radio" name="genre" id="genre">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <input type="text" name="ville" id="ville" placeholder="VILLE:">
-                    <input type="date" name="calendrier" id="calendrier">
-                </div>
-                <div class="form-group group-button" style="margin: 10px;">
-                    <a href="/teachers" class="lien-menu">
-                        <button id="annuler">Annuler</button>
-                    </a>
-                    <button id="enregistrer">Enregistrer</button>
-                </div>
-            </form>
-          
         </div>
+        <!-- /.container-fluid -->
     </div>
+    <!-- End of Main Content -->
+
+
+</div>
+<!-- End of Content Wrapper -->
+</div>
+
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+<script src="vendor/chart.js/Chart.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="js/demo/chart-area-demo.js"></script>
+<script src="js/demo/chart-pie-demo.js"></script>
 </body>
 </html>

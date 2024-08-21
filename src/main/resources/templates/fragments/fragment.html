@@ -1,60 +1,66 @@
-<!DOCTYPE html>
-<html lang="en"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
->
-<head th:fragment="head">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/student.css">
-    <link rel="stylesheet" href="/css/login.css">
-    <link rel="stylesheet" href="/css/home.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/fontawesome/css/all.css">
-    <title>Title</title>
-</head>
-<body>
-
-<div class="containerGauche" th:fragment="header">
-  <div class="up">
-    <h1><img id="iconsEtab" src="/icons/school-solid.svg" alt="">Mon Etab</h1>
-    <div class="separateur"></div>
-    <hr>
-    <ul>
-        <a href="/home" class="lien-menu">
-            <li class="menuHorizontal"><img src="/fontawesome/svgs/solid/square-poll-horizontal.svg" alt="">Tableau de bord</li>
-        </a>
-        <a href="/students" class="lien-menu">
-            <li  class="menuHorizontal"><img src="/fontawesome/svgs/solid/user-large-slash.svg" alt="">Eleves</li>
-        </a>
-        <a href="/teachers" class="lien-menu">
-            <li  class="menuHorizontal"><img src="/fontawesome/svgs/solid/person-chalkboard.svg" alt="">Professeurs</li>
-        </a>
-        <a href="/users" class="lien-menu">
-            <li  class="menuHorizontal"><img src="/fontawesome/svgs/solid/user.svg" alt="">Utilisateurs</li>
-        </a>
-        <a href="/reports" class="lien-menu">
-            <li  class="menuHorizontal"><img src="/fontawesome/svgs/solid/chart-pie.svg" alt="">Rapport</li>
+<th:block th:fragment="sideBar">
+    <ul
+            class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+            id="accordionSidebar"
+    >
+        <!-- Sidebar - Brand -->
+        <a
+                class="sidebar-brand d-flex align-items-center justify-content-center"
+                href="index.html"
+        >
+            <div class="sidebar-brand-icon rotate-n-15">
+                <i class="fas fa-laugh-wink"></i>
+            </div>
+            <div class="sidebar-brand-text mx-3">ADMIN</div>
         </a>
 
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0" />
+        <li class="nav-item active">
+            <a class="nav-link" href="/home">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Tableau de bord</span></a
+            >
+        </li>
+        <hr class="sidebar-divider" />
+
+        <!-- Divider -->
+        <li class="nav-item">
+            <a class="nav-link" href="/students">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Eleves</span></a
+            >
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/teachers">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Professeurs</span></a
+            >
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/users">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Utilisateurs</span></a
+            >
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/reports">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Rapport</span></a
+            >
+        </li>
+
+        <!-- definition du bouton de deconnection -->
+        <li class="nav-item" style="padding-top: 100%">
+            <hr class="sidebar-divider" />
+
+            <a class="nav-link" href="/">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Deconnexion</span></a
+            >
+        </li>
     </ul>
-  </div>
-  <div class="separateur" id="separateur"></div>
-  <ul>
-    <a href="/" class="lien-menu">
-      <li   id="logout"><img src="/fontawesome/svgs/solid/right-from-bracket.svg" alt="">Déconnexion</li>
-    </a>
-  </ul>
-</div>
-</div>
-
-    <th:block th:fragment="script_fragment">
-        <script th:src="@{https://cdn.jsdelivr.net/npm/chart.js}"></script>
-        <script th:src="@{http://localhost:35729/livereload.js}"></script>
-        <script th:src="@{/fontawesome/js/all.js}"></script>
-    </th:block>
-
-</body>
-</html>
-</body>
-</html>
+</th:block>

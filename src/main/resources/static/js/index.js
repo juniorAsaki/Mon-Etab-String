@@ -19,5 +19,3 @@ const genderChart = new Chart(pieCanvas, {
         }
     }
 });
-
-console.log("OK");
