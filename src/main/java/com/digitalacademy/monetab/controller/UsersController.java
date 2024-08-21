@@ -6,20 +6,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/users")
-public class UserController {
+public class UsersController {
 
     @GetMapping
     public String showUserPage(){
-        return "gestionUtilisateur/users";
+        return "users/list";
     }
 
     @GetMapping("/add")
     public String showAddUserPage(){
-        return "gestionUtilisateur/addUser";
+        return "users/forms";
     }
 
     @GetMapping("/update")
     public String showUpdateUserPage(){
-        return "gestionUtilisateur/updateUser";
+        return "users/forms";
     }
 }

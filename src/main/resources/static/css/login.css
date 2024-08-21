@@ -52,9 +52,11 @@ img{
     color : #111;
     box-shadow : 4px 4px 0px 1px #111;
     margin: 0 auto;
-    padding : 10px 40px;
+    padding : 10px;
     text-decoration:none;
     border-radius : 5px;
     outline : none;
     font-weight: 700px;
+    width : 100%;
+    text-align : center;
 }

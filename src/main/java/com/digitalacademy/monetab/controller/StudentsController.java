@@ -4,24 +4,23 @@ package com.digitalacademy.monetab.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/students")
-public class StudentController {
+public class StudentsController {
 
-    @GetMapping()
+    @GetMapping
     public String showStudentPage() {
-        return "/gestionEleve/student";
+        return "students/list";
     }
 
     @GetMapping("/add")
     public String showAddStudentPage() {
-        return "/gestionEleve/addStudent";
+        return "students/forms";
     }
 
     @GetMapping("/update")
     public String showUpdateStudentPage() {
-        return "/gestionEleve/updateStudent";
+        return "students/forms";
     }
 }

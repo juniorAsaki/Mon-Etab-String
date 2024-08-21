@@ -7,21 +7,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/teachers")
-public class TeacherController {
+public class TeachersController {
 
 
     @GetMapping
     public String showTeachersPage(){
-        return "gestionProfesseur/teachers";
+        return "teachers/list";
     }
 
     @GetMapping("/add")
     public String showAddTeacherPage(){
-        return "gestionProfesseur/addTeacher";
+        return "teachers/forms";
     }
 
     @GetMapping("/update")
     public String showUpdateTeacherPage(){
-        return "gestionProfesseur/updateTeacher";
+        return "teachers/forms";
     }
 }

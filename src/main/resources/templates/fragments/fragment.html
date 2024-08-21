@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" th:fragment="html"
+<html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
 >
@@ -11,10 +11,6 @@
     <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/fontawesome/css/all.css">
-    <script src="/fontawesome/js/all.js"></script>
-    <script src="/js/index.js"></script>
-    <script src="/js/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Title</title>
 </head>
 <body>
@@ -25,7 +21,7 @@
     <div class="separateur"></div>
     <hr>
     <ul>
-        <a href="/" class="lien-menu">
+        <a href="/home" class="lien-menu">
             <li class="menuHorizontal"><img src="/fontawesome/svgs/solid/square-poll-horizontal.svg" alt="">Tableau de bord</li>
         </a>
         <a href="/students" class="lien-menu">
@@ -37,7 +33,7 @@
         <a href="/users" class="lien-menu">
             <li  class="menuHorizontal"><img src="/fontawesome/svgs/solid/user.svg" alt="">Utilisateurs</li>
         </a>
-        <a href="/rapport" class="lien-menu">
+        <a href="/reports" class="lien-menu">
             <li  class="menuHorizontal"><img src="/fontawesome/svgs/solid/chart-pie.svg" alt="">Rapport</li>
         </a>
 
@@ -45,12 +41,19 @@
   </div>
   <div class="separateur" id="separateur"></div>
   <ul>
-    <a href="/login" class="lien-menu">
-      <li onclick="goToLogin()"  id="logout"><img src="/fontawesome/svgs/solid/right-from-bracket.svg" alt="">Déconnexion</li>
+    <a href="/" class="lien-menu">
+      <li   id="logout"><img src="/fontawesome/svgs/solid/right-from-bracket.svg" alt="">Déconnexion</li>
     </a>
   </ul>
 </div>
 </div>
+
+    <th:block th:fragment="script_fragment">
+        <script th:src="@{https://cdn.jsdelivr.net/npm/chart.js}"></script>
+        <script th:src="@{http://localhost:35729/livereload.js}"></script>
+        <script th:src="@{/fontawesome/js/all.js}"></script>
+    </th:block>
+
 </body>
 </html>
 </body>

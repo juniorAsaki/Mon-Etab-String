@@ -14,7 +14,7 @@
                 <div class="grip">
                     <h3>Nombre d'éleve</h3>
                     <div class="resultat">
-                        <span>128 000</span>
+                        <span>135 000</span>
                     </div>
                 </div>
                 <div class="grip">
@@ -31,14 +31,15 @@
                 </div>
                 <div class="grip">
                     <h3>éleve par genre</h3>
-                    <!--                <div class="container-circle">-->
-                    <!--                    <canvas th:width="50px" th:height="50px" id="pieCanvas" aria-label="chart" role="img"></canvas>-->
-                    <!--                    <h1>Ok</h1>-->
-                    <!--                </div>-->
+                    <div class="container-circle" height="50px">
+                        <canvas  id="pieCanvas" ></canvas>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<th:block th:insert="fragments/fragment :: script_fragment"/>
 </body>
 </html>
