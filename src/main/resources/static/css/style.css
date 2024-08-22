@@ -1,0 +1,21 @@
+.svg-icon{
+    width: 20px;
+    height: 50px;
+    color: #ffffff;
+}
+
+.svg-icon path {
+    fill: #FFFFFF;
+}
+
+.pieClasse{
+    transform: translate(50% , 40%);
+    height: 100px;
+    width: 50%;
+}
+
+.font-size{
+    margin: 25px auto;
+    font-size: 4em;
+    text-align: center;
+}

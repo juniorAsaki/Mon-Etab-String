@@ -5,7 +5,7 @@ const genderChart = new Chart(pieCanvas, {
         labels: ['Homme', 'Femme'],
         datasets: [{
             data: [60, 40],
-            backgroundColor: ['#FF6384', '#36A2EB'],
+            backgroundColor: ['#FF6384', '#f6c23e'],
         }]
     },
     options: {
