@@ -1,3 +1,6 @@
+new DataTable('#dataTable');
+
+
 const pieCanvas = document.getElementById('pieCanvas').getContext('2d');
 const genderChart = new Chart(pieCanvas, {
     type: 'pie',
@@ -19,3 +22,5 @@ const genderChart = new Chart(pieCanvas, {
         }
     }
 });
+
+

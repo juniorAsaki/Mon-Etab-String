@@ -1,0 +1,575 @@
+2024-08-22T12:14:30.083+02:00  INFO 19384 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : Starting MonetabApplication using Java 17.0.12 with PID 19384 (C:\Users\Utilisateur\Desktop\projetSpring\web\monetab\target\classes started by Utilisateur in C:\Users\Utilisateur\Desktop\projetSpring\web\monetab)
+2024-08-22T12:14:30.088+02:00  INFO 19384 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-08-22T12:14:30.157+02:00  INFO 19384 --- [Monetab v1.4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-08-22T12:14:30.157+02:00  INFO 19384 --- [Monetab v1.4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-08-22T12:14:31.181+02:00  INFO 19384 --- [Monetab v1.4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-22T12:14:31.252+02:00  INFO 19384 --- [Monetab v1.4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 62 ms. Found 1 JPA repository interface.
+2024-08-22T12:14:32.025+02:00  INFO 19384 --- [Monetab v1.4] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-08-22T12:14:32.037+02:00  INFO 19384 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-22T12:14:32.037+02:00  INFO 19384 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-22T12:14:32.088+02:00  INFO 19384 --- [Monetab v1.4] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-22T12:14:32.088+02:00  INFO 19384 --- [Monetab v1.4] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1930 ms
+2024-08-22T12:14:32.474+02:00  INFO 19384 --- [Monetab v1.4] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-22T12:14:32.523+02:00  INFO 19384 --- [Monetab v1.4] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-22T12:14:32.551+02:00  INFO 19384 --- [Monetab v1.4] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-22T12:14:32.836+02:00  INFO 19384 --- [Monetab v1.4] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-22T12:14:32.859+02:00  INFO 19384 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-22T12:14:33.005+02:00  INFO 19384 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6f4a20d5
+2024-08-22T12:14:33.009+02:00  INFO 19384 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-22T12:14:33.066+02:00  WARN 19384 --- [Monetab v1.4] [restartedMain] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2024-08-22T12:14:33.798+02:00  INFO 19384 --- [Monetab v1.4] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-22T12:14:33.883+02:00  INFO 19384 --- [Monetab v1.4] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-22T12:14:34.241+02:00  WARN 19384 --- [Monetab v1.4] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-22T12:14:35.464+02:00  INFO 19384 --- [Monetab v1.4] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-08-22T12:14:35.472+02:00  INFO 19384 --- [Monetab v1.4] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2024-08-22T12:14:35.541+02:00  INFO 19384 --- [Monetab v1.4] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-08-22T12:14:35.557+02:00  INFO 19384 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : Started MonetabApplication in 5.891 seconds (process running for 6.536)
+2024-08-22T12:14:35.878+02:00  INFO 19384 --- [Monetab v1.4] [RMI TCP Connection(2)-192.168.1.36] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-22T12:14:35.878+02:00  INFO 19384 --- [Monetab v1.4] [RMI TCP Connection(2)-192.168.1.36] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-08-22T12:14:35.887+02:00  INFO 19384 --- [Monetab v1.4] [RMI TCP Connection(2)-192.168.1.36] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
+2024-08-22T12:16:10.050+02:00  INFO 19384 --- [Monetab v1.4] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-22T12:16:10.053+02:00  INFO 19384 --- [Monetab v1.4] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-22T12:16:10.059+02:00  INFO 19384 --- [Monetab v1.4] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-22T12:16:16.339+02:00  INFO 12808 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : Starting MonetabApplication using Java 17.0.12 with PID 12808 (C:\Users\Utilisateur\Desktop\projetSpring\web\monetab\target\classes started by Utilisateur in C:\Users\Utilisateur\Desktop\projetSpring\web\monetab)
+2024-08-22T12:16:16.341+02:00  INFO 12808 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-08-22T12:16:16.392+02:00  INFO 12808 --- [Monetab v1.4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-08-22T12:16:16.392+02:00  INFO 12808 --- [Monetab v1.4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-08-22T12:16:17.444+02:00  INFO 12808 --- [Monetab v1.4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-22T12:16:17.497+02:00  INFO 12808 --- [Monetab v1.4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 46 ms. Found 1 JPA repository interface.
+2024-08-22T12:16:18.433+02:00  INFO 12808 --- [Monetab v1.4] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-08-22T12:16:18.444+02:00  INFO 12808 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-22T12:16:18.444+02:00  INFO 12808 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-22T12:16:18.498+02:00  INFO 12808 --- [Monetab v1.4] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-22T12:16:18.498+02:00  INFO 12808 --- [Monetab v1.4] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2106 ms
+2024-08-22T12:16:18.853+02:00  INFO 12808 --- [Monetab v1.4] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-22T12:16:18.900+02:00  INFO 12808 --- [Monetab v1.4] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-22T12:16:18.932+02:00  INFO 12808 --- [Monetab v1.4] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-22T12:16:19.228+02:00  INFO 12808 --- [Monetab v1.4] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-22T12:16:19.248+02:00  INFO 12808 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-22T12:16:19.409+02:00  INFO 12808 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@31de4abf
+2024-08-22T12:16:19.409+02:00  INFO 12808 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-22T12:16:19.470+02:00  WARN 12808 --- [Monetab v1.4] [restartedMain] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2024-08-22T12:16:20.206+02:00  INFO 12808 --- [Monetab v1.4] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-22T12:16:20.303+02:00  INFO 12808 --- [Monetab v1.4] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-22T12:16:20.650+02:00  WARN 12808 --- [Monetab v1.4] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-22T12:16:22.217+02:00  INFO 12808 --- [Monetab v1.4] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-08-22T12:16:22.229+02:00  INFO 12808 --- [Monetab v1.4] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2024-08-22T12:16:22.314+02:00  INFO 12808 --- [Monetab v1.4] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-08-22T12:16:22.331+02:00  INFO 12808 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : Started MonetabApplication in 6.462 seconds (process running for 7.347)
+2024-08-22T12:16:23.012+02:00  INFO 12808 --- [Monetab v1.4] [RMI TCP Connection(2)-192.168.1.36] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-22T12:16:23.012+02:00  INFO 12808 --- [Monetab v1.4] [RMI TCP Connection(2)-192.168.1.36] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-08-22T12:16:23.014+02:00  INFO 12808 --- [Monetab v1.4] [RMI TCP Connection(2)-192.168.1.36] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-08-22T12:17:37.798+02:00  INFO 12808 --- [Monetab v1.4] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-22T12:17:37.814+02:00  INFO 12808 --- [Monetab v1.4] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-22T12:17:37.822+02:00  INFO 12808 --- [Monetab v1.4] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-22T12:17:42.455+02:00  INFO 14692 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : Starting MonetabApplication using Java 17.0.12 with PID 14692 (C:\Users\Utilisateur\Desktop\projetSpring\web\monetab\target\classes started by Utilisateur in C:\Users\Utilisateur\Desktop\projetSpring\web\monetab)
+2024-08-22T12:17:42.458+02:00  INFO 14692 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-08-22T12:17:42.520+02:00  INFO 14692 --- [Monetab v1.4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-08-22T12:17:42.520+02:00  INFO 14692 --- [Monetab v1.4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-08-22T12:17:43.430+02:00  INFO 14692 --- [Monetab v1.4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-22T12:17:43.495+02:00  INFO 14692 --- [Monetab v1.4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 57 ms. Found 1 JPA repository interface.
+2024-08-22T12:17:44.283+02:00  INFO 14692 --- [Monetab v1.4] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-08-22T12:17:44.293+02:00  INFO 14692 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-22T12:17:44.294+02:00  INFO 14692 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-22T12:17:44.344+02:00  INFO 14692 --- [Monetab v1.4] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-22T12:17:44.344+02:00  INFO 14692 --- [Monetab v1.4] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1823 ms
+2024-08-22T12:17:44.703+02:00  INFO 14692 --- [Monetab v1.4] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-22T12:17:44.757+02:00  INFO 14692 --- [Monetab v1.4] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-22T12:17:44.787+02:00  INFO 14692 --- [Monetab v1.4] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-22T12:17:45.059+02:00  INFO 14692 --- [Monetab v1.4] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-22T12:17:45.092+02:00  INFO 14692 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-22T12:17:45.235+02:00  INFO 14692 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1e7a6196
+2024-08-22T12:17:45.237+02:00  INFO 14692 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-22T12:17:45.289+02:00  WARN 14692 --- [Monetab v1.4] [restartedMain] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2024-08-22T12:17:46.010+02:00  INFO 14692 --- [Monetab v1.4] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-22T12:17:46.077+02:00  INFO 14692 --- [Monetab v1.4] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-22T12:17:46.413+02:00  WARN 14692 --- [Monetab v1.4] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-22T12:17:47.730+02:00  INFO 14692 --- [Monetab v1.4] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-08-22T12:17:47.739+02:00  INFO 14692 --- [Monetab v1.4] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2024-08-22T12:17:47.818+02:00  INFO 14692 --- [Monetab v1.4] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-08-22T12:17:47.834+02:00  INFO 14692 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : Started MonetabApplication in 5.823 seconds (process running for 6.491)
+2024-08-22T12:17:48.226+02:00  INFO 14692 --- [Monetab v1.4] [RMI TCP Connection(3)-192.168.1.36] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-22T12:17:48.227+02:00  INFO 14692 --- [Monetab v1.4] [RMI TCP Connection(3)-192.168.1.36] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-08-22T12:17:48.229+02:00  INFO 14692 --- [Monetab v1.4] [RMI TCP Connection(3)-192.168.1.36] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-08-22T12:22:54.511+02:00  INFO 14692 --- [Monetab v1.4] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-22T12:22:54.535+02:00  INFO 14692 --- [Monetab v1.4] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-22T12:22:54.549+02:00  INFO 14692 --- [Monetab v1.4] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-22T12:23:00.315+02:00  INFO 17084 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : Starting MonetabApplication using Java 17.0.12 with PID 17084 (C:\Users\Utilisateur\Desktop\projetSpring\web\monetab\target\classes started by Utilisateur in C:\Users\Utilisateur\Desktop\projetSpring\web\monetab)
+2024-08-22T12:23:00.318+02:00  INFO 17084 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-08-22T12:23:00.372+02:00  INFO 17084 --- [Monetab v1.4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-08-22T12:23:00.372+02:00  INFO 17084 --- [Monetab v1.4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-08-22T12:23:01.334+02:00  INFO 17084 --- [Monetab v1.4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-22T12:23:01.386+02:00  INFO 17084 --- [Monetab v1.4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 45 ms. Found 1 JPA repository interface.
+2024-08-22T12:23:02.192+02:00  INFO 17084 --- [Monetab v1.4] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-08-22T12:23:02.203+02:00  INFO 17084 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-22T12:23:02.204+02:00  INFO 17084 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-22T12:23:02.261+02:00  INFO 17084 --- [Monetab v1.4] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-22T12:23:02.261+02:00  INFO 17084 --- [Monetab v1.4] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1888 ms
+2024-08-22T12:23:02.692+02:00  INFO 17084 --- [Monetab v1.4] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-22T12:23:02.752+02:00  INFO 17084 --- [Monetab v1.4] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-22T12:23:02.787+02:00  INFO 17084 --- [Monetab v1.4] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-22T12:23:03.109+02:00  INFO 17084 --- [Monetab v1.4] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-22T12:23:03.136+02:00  INFO 17084 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-22T12:23:03.289+02:00  INFO 17084 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@45afa0aa
+2024-08-22T12:23:03.291+02:00  INFO 17084 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-22T12:23:03.340+02:00  WARN 17084 --- [Monetab v1.4] [restartedMain] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2024-08-22T12:23:04.114+02:00  INFO 17084 --- [Monetab v1.4] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-22T12:23:04.174+02:00  INFO 17084 --- [Monetab v1.4] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-22T12:23:04.483+02:00  WARN 17084 --- [Monetab v1.4] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-22T12:23:05.916+02:00  INFO 17084 --- [Monetab v1.4] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-08-22T12:23:05.925+02:00  INFO 17084 --- [Monetab v1.4] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2024-08-22T12:23:06.007+02:00  INFO 17084 --- [Monetab v1.4] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-08-22T12:23:06.024+02:00  INFO 17084 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : Started MonetabApplication in 6.189 seconds (process running for 6.858)
+2024-08-22T12:23:06.538+02:00  INFO 17084 --- [Monetab v1.4] [RMI TCP Connection(3)-192.168.1.36] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-22T12:23:06.538+02:00  INFO 17084 --- [Monetab v1.4] [RMI TCP Connection(3)-192.168.1.36] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-08-22T12:23:06.540+02:00  INFO 17084 --- [Monetab v1.4] [RMI TCP Connection(3)-192.168.1.36] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-08-22T12:24:44.391+02:00  INFO 17084 --- [Monetab v1.4] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-22T12:24:44.394+02:00  INFO 17084 --- [Monetab v1.4] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-22T12:24:44.401+02:00  INFO 17084 --- [Monetab v1.4] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-22T12:24:47.218+02:00  INFO 17444 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : Starting MonetabApplication using Java 17.0.12 with PID 17444 (C:\Users\Utilisateur\Desktop\projetSpring\web\monetab\target\classes started by Utilisateur in C:\Users\Utilisateur\Desktop\projetSpring\web\monetab)
+2024-08-22T12:24:47.221+02:00  INFO 17444 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-08-22T12:24:47.284+02:00  INFO 17444 --- [Monetab v1.4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-08-22T12:24:47.284+02:00  INFO 17444 --- [Monetab v1.4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-08-22T12:24:48.151+02:00  INFO 17444 --- [Monetab v1.4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-22T12:24:48.206+02:00  INFO 17444 --- [Monetab v1.4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 49 ms. Found 1 JPA repository interface.
+2024-08-22T12:24:48.935+02:00  INFO 17444 --- [Monetab v1.4] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-08-22T12:24:48.945+02:00  INFO 17444 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-22T12:24:48.945+02:00  INFO 17444 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-22T12:24:48.992+02:00  INFO 17444 --- [Monetab v1.4] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-22T12:24:48.992+02:00  INFO 17444 --- [Monetab v1.4] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1708 ms
+2024-08-22T12:24:49.375+02:00  INFO 17444 --- [Monetab v1.4] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-22T12:24:49.434+02:00  INFO 17444 --- [Monetab v1.4] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-22T12:24:49.468+02:00  INFO 17444 --- [Monetab v1.4] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-22T12:24:49.791+02:00  INFO 17444 --- [Monetab v1.4] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-22T12:24:49.820+02:00  INFO 17444 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-22T12:24:49.945+02:00  INFO 17444 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@eb64a4e
+2024-08-22T12:24:49.947+02:00  INFO 17444 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-22T12:24:49.993+02:00  WARN 17444 --- [Monetab v1.4] [restartedMain] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2024-08-22T12:24:50.719+02:00  INFO 17444 --- [Monetab v1.4] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-22T12:24:50.811+02:00  INFO 17444 --- [Monetab v1.4] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-22T12:24:51.142+02:00  WARN 17444 --- [Monetab v1.4] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-22T12:24:52.371+02:00  INFO 17444 --- [Monetab v1.4] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-08-22T12:24:52.380+02:00  INFO 17444 --- [Monetab v1.4] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2024-08-22T12:24:52.451+02:00  INFO 17444 --- [Monetab v1.4] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-08-22T12:24:52.468+02:00  INFO 17444 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : Started MonetabApplication in 5.665 seconds (process running for 6.292)
+2024-08-22T12:24:53.015+02:00  INFO 17444 --- [Monetab v1.4] [RMI TCP Connection(2)-192.168.1.36] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-22T12:24:53.016+02:00  INFO 17444 --- [Monetab v1.4] [RMI TCP Connection(2)-192.168.1.36] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-08-22T12:24:53.017+02:00  INFO 17444 --- [Monetab v1.4] [RMI TCP Connection(2)-192.168.1.36] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-08-22T12:26:52.069+02:00  INFO 17444 --- [Monetab v1.4] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-22T12:26:52.085+02:00  INFO 17444 --- [Monetab v1.4] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-22T12:26:52.092+02:00  INFO 17444 --- [Monetab v1.4] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-22T12:26:56.908+02:00  INFO 2100 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : Starting MonetabApplication using Java 17.0.12 with PID 2100 (C:\Users\Utilisateur\Desktop\projetSpring\web\monetab\target\classes started by Utilisateur in C:\Users\Utilisateur\Desktop\projetSpring\web\monetab)
+2024-08-22T12:26:56.912+02:00  INFO 2100 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-08-22T12:26:56.978+02:00  INFO 2100 --- [Monetab v1.4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-08-22T12:26:56.979+02:00  INFO 2100 --- [Monetab v1.4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-08-22T12:26:58.252+02:00  INFO 2100 --- [Monetab v1.4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-22T12:26:58.320+02:00  INFO 2100 --- [Monetab v1.4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 59 ms. Found 1 JPA repository interface.
+2024-08-22T12:26:59.239+02:00  INFO 2100 --- [Monetab v1.4] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-08-22T12:26:59.254+02:00  INFO 2100 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-22T12:26:59.254+02:00  INFO 2100 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-22T12:26:59.318+02:00  INFO 2100 --- [Monetab v1.4] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-22T12:26:59.319+02:00  INFO 2100 --- [Monetab v1.4] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2340 ms
+2024-08-22T12:26:59.704+02:00  INFO 2100 --- [Monetab v1.4] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-22T12:26:59.776+02:00  INFO 2100 --- [Monetab v1.4] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-22T12:26:59.829+02:00  INFO 2100 --- [Monetab v1.4] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-22T12:27:00.279+02:00  INFO 2100 --- [Monetab v1.4] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-22T12:27:00.306+02:00  INFO 2100 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-22T12:27:00.445+02:00  INFO 2100 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2f18d860
+2024-08-22T12:27:00.448+02:00  INFO 2100 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-22T12:27:00.512+02:00  WARN 2100 --- [Monetab v1.4] [restartedMain] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2024-08-22T12:27:01.410+02:00  INFO 2100 --- [Monetab v1.4] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-22T12:27:01.480+02:00  INFO 2100 --- [Monetab v1.4] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-22T12:27:01.819+02:00  WARN 2100 --- [Monetab v1.4] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-22T12:27:03.028+02:00  INFO 2100 --- [Monetab v1.4] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-08-22T12:27:03.038+02:00  INFO 2100 --- [Monetab v1.4] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2024-08-22T12:27:03.111+02:00  INFO 2100 --- [Monetab v1.4] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-08-22T12:27:03.126+02:00  INFO 2100 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : Started MonetabApplication in 6.644 seconds (process running for 7.542)
+2024-08-22T12:27:03.533+02:00  INFO 2100 --- [Monetab v1.4] [RMI TCP Connection(2)-192.168.1.36] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-22T12:27:03.533+02:00  INFO 2100 --- [Monetab v1.4] [RMI TCP Connection(2)-192.168.1.36] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-08-22T12:27:03.535+02:00  INFO 2100 --- [Monetab v1.4] [RMI TCP Connection(2)-192.168.1.36] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-08-22T12:27:33.749+02:00  INFO 2100 --- [Monetab v1.4] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-22T12:27:33.765+02:00  INFO 2100 --- [Monetab v1.4] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-22T12:27:33.772+02:00  INFO 2100 --- [Monetab v1.4] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-22T12:27:38.123+02:00  INFO 12332 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : Starting MonetabApplication using Java 17.0.12 with PID 12332 (C:\Users\Utilisateur\Desktop\projetSpring\web\monetab\target\classes started by Utilisateur in C:\Users\Utilisateur\Desktop\projetSpring\web\monetab)
+2024-08-22T12:27:38.125+02:00  INFO 12332 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-08-22T12:27:38.171+02:00  INFO 12332 --- [Monetab v1.4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-08-22T12:27:38.171+02:00  INFO 12332 --- [Monetab v1.4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-08-22T12:27:39.247+02:00  INFO 12332 --- [Monetab v1.4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-22T12:27:39.310+02:00  INFO 12332 --- [Monetab v1.4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 54 ms. Found 1 JPA repository interface.
+2024-08-22T12:27:40.051+02:00  INFO 12332 --- [Monetab v1.4] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-08-22T12:27:40.061+02:00  INFO 12332 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-22T12:27:40.061+02:00  INFO 12332 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-22T12:27:40.107+02:00  INFO 12332 --- [Monetab v1.4] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-22T12:27:40.107+02:00  INFO 12332 --- [Monetab v1.4] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1936 ms
+2024-08-22T12:27:40.406+02:00  INFO 12332 --- [Monetab v1.4] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-22T12:27:40.454+02:00  INFO 12332 --- [Monetab v1.4] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-22T12:27:40.482+02:00  INFO 12332 --- [Monetab v1.4] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-22T12:27:40.775+02:00  INFO 12332 --- [Monetab v1.4] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-22T12:27:40.803+02:00  INFO 12332 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-22T12:27:40.952+02:00  INFO 12332 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@773ee5dc
+2024-08-22T12:27:40.955+02:00  INFO 12332 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-22T12:27:41.028+02:00  WARN 12332 --- [Monetab v1.4] [restartedMain] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2024-08-22T12:27:41.814+02:00  INFO 12332 --- [Monetab v1.4] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-22T12:27:41.880+02:00  INFO 12332 --- [Monetab v1.4] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-22T12:27:42.210+02:00  WARN 12332 --- [Monetab v1.4] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-22T12:27:43.441+02:00  INFO 12332 --- [Monetab v1.4] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-08-22T12:27:43.449+02:00  INFO 12332 --- [Monetab v1.4] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2024-08-22T12:27:43.522+02:00  INFO 12332 --- [Monetab v1.4] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-08-22T12:27:43.539+02:00  INFO 12332 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : Started MonetabApplication in 5.833 seconds (process running for 6.621)
+2024-08-22T12:27:44.260+02:00  INFO 12332 --- [Monetab v1.4] [RMI TCP Connection(2)-192.168.1.36] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-22T12:27:44.260+02:00  INFO 12332 --- [Monetab v1.4] [RMI TCP Connection(2)-192.168.1.36] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-08-22T12:27:44.261+02:00  INFO 12332 --- [Monetab v1.4] [RMI TCP Connection(2)-192.168.1.36] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-08-22T12:28:08.604+02:00  INFO 12332 --- [Monetab v1.4] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-22T12:28:08.626+02:00  INFO 12332 --- [Monetab v1.4] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-22T12:28:08.639+02:00  INFO 12332 --- [Monetab v1.4] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-22T12:28:12.930+02:00  INFO 12116 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : Starting MonetabApplication using Java 17.0.12 with PID 12116 (C:\Users\Utilisateur\Desktop\projetSpring\web\monetab\target\classes started by Utilisateur in C:\Users\Utilisateur\Desktop\projetSpring\web\monetab)
+2024-08-22T12:28:12.932+02:00  INFO 12116 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-08-22T12:28:12.991+02:00  INFO 12116 --- [Monetab v1.4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-08-22T12:28:12.991+02:00  INFO 12116 --- [Monetab v1.4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-08-22T12:28:14.059+02:00  INFO 12116 --- [Monetab v1.4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-22T12:28:14.126+02:00  INFO 12116 --- [Monetab v1.4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 57 ms. Found 1 JPA repository interface.
+2024-08-22T12:28:14.870+02:00  INFO 12116 --- [Monetab v1.4] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-08-22T12:28:14.881+02:00  INFO 12116 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-22T12:28:14.881+02:00  INFO 12116 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-22T12:28:14.922+02:00  INFO 12116 --- [Monetab v1.4] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-22T12:28:14.922+02:00  INFO 12116 --- [Monetab v1.4] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1930 ms
+2024-08-22T12:28:15.229+02:00  INFO 12116 --- [Monetab v1.4] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-22T12:28:15.283+02:00  INFO 12116 --- [Monetab v1.4] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-22T12:28:15.313+02:00  INFO 12116 --- [Monetab v1.4] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-22T12:28:15.602+02:00  INFO 12116 --- [Monetab v1.4] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-22T12:28:15.626+02:00  INFO 12116 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-22T12:28:15.787+02:00  INFO 12116 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@27160c4b
+2024-08-22T12:28:15.789+02:00  INFO 12116 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-22T12:28:15.853+02:00  WARN 12116 --- [Monetab v1.4] [restartedMain] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2024-08-22T12:28:16.570+02:00  INFO 12116 --- [Monetab v1.4] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-22T12:28:16.639+02:00  INFO 12116 --- [Monetab v1.4] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-22T12:28:16.986+02:00  WARN 12116 --- [Monetab v1.4] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-22T12:28:18.281+02:00  INFO 12116 --- [Monetab v1.4] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-08-22T12:28:18.291+02:00  INFO 12116 --- [Monetab v1.4] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2024-08-22T12:28:18.370+02:00  INFO 12116 --- [Monetab v1.4] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-08-22T12:28:18.387+02:00  INFO 12116 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : Started MonetabApplication in 5.884 seconds (process running for 6.555)
+2024-08-22T12:28:19.151+02:00  INFO 12116 --- [Monetab v1.4] [RMI TCP Connection(3)-192.168.1.36] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-22T12:28:19.151+02:00  INFO 12116 --- [Monetab v1.4] [RMI TCP Connection(3)-192.168.1.36] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-08-22T12:28:19.153+02:00  INFO 12116 --- [Monetab v1.4] [RMI TCP Connection(3)-192.168.1.36] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-08-22T12:30:33.279+02:00  INFO 12116 --- [Monetab v1.4] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-22T12:30:33.298+02:00  INFO 12116 --- [Monetab v1.4] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-22T12:30:33.305+02:00  INFO 12116 --- [Monetab v1.4] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-22T12:30:38.276+02:00  INFO 11224 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : Starting MonetabApplication using Java 17.0.12 with PID 11224 (C:\Users\Utilisateur\Desktop\projetSpring\web\monetab\target\classes started by Utilisateur in C:\Users\Utilisateur\Desktop\projetSpring\web\monetab)
+2024-08-22T12:30:38.281+02:00  INFO 11224 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-08-22T12:30:38.335+02:00  INFO 11224 --- [Monetab v1.4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-08-22T12:30:38.335+02:00  INFO 11224 --- [Monetab v1.4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-08-22T12:30:39.428+02:00  INFO 11224 --- [Monetab v1.4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-22T12:30:39.497+02:00  INFO 11224 --- [Monetab v1.4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 59 ms. Found 1 JPA repository interface.
+2024-08-22T12:30:40.228+02:00  INFO 11224 --- [Monetab v1.4] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-08-22T12:30:40.237+02:00  INFO 11224 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-22T12:30:40.238+02:00  INFO 11224 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-22T12:30:40.288+02:00  INFO 11224 --- [Monetab v1.4] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-22T12:30:40.289+02:00  INFO 11224 --- [Monetab v1.4] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1952 ms
+2024-08-22T12:30:40.604+02:00  INFO 11224 --- [Monetab v1.4] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-22T12:30:40.653+02:00  INFO 11224 --- [Monetab v1.4] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-22T12:30:40.682+02:00  INFO 11224 --- [Monetab v1.4] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-22T12:30:40.970+02:00  INFO 11224 --- [Monetab v1.4] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-22T12:30:40.994+02:00  INFO 11224 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-22T12:30:41.125+02:00  INFO 11224 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@ab1a23
+2024-08-22T12:30:41.128+02:00  INFO 11224 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-22T12:30:41.179+02:00  WARN 11224 --- [Monetab v1.4] [restartedMain] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2024-08-22T12:30:41.936+02:00  INFO 11224 --- [Monetab v1.4] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-22T12:30:42.013+02:00  INFO 11224 --- [Monetab v1.4] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-22T12:30:42.337+02:00  WARN 11224 --- [Monetab v1.4] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-22T12:30:43.593+02:00  INFO 11224 --- [Monetab v1.4] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-08-22T12:30:43.602+02:00  INFO 11224 --- [Monetab v1.4] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2024-08-22T12:30:43.676+02:00  INFO 11224 --- [Monetab v1.4] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-08-22T12:30:43.693+02:00  INFO 11224 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : Started MonetabApplication in 5.833 seconds (process running for 6.545)
+2024-08-22T12:30:44.495+02:00  INFO 11224 --- [Monetab v1.4] [RMI TCP Connection(2)-192.168.1.36] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-22T12:30:44.495+02:00  INFO 11224 --- [Monetab v1.4] [RMI TCP Connection(2)-192.168.1.36] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-08-22T12:30:44.496+02:00  INFO 11224 --- [Monetab v1.4] [RMI TCP Connection(2)-192.168.1.36] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-08-22T12:31:20.108+02:00  INFO 11224 --- [Monetab v1.4] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-22T12:31:20.121+02:00  INFO 11224 --- [Monetab v1.4] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-22T12:31:20.129+02:00  INFO 11224 --- [Monetab v1.4] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-22T12:31:24.565+02:00  INFO 6308 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : Starting MonetabApplication using Java 17.0.12 with PID 6308 (C:\Users\Utilisateur\Desktop\projetSpring\web\monetab\target\classes started by Utilisateur in C:\Users\Utilisateur\Desktop\projetSpring\web\monetab)
+2024-08-22T12:31:24.569+02:00  INFO 6308 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-08-22T12:31:24.621+02:00  INFO 6308 --- [Monetab v1.4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-08-22T12:31:24.621+02:00  INFO 6308 --- [Monetab v1.4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-08-22T12:31:25.667+02:00  INFO 6308 --- [Monetab v1.4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-22T12:31:25.733+02:00  INFO 6308 --- [Monetab v1.4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 56 ms. Found 1 JPA repository interface.
+2024-08-22T12:31:26.576+02:00  INFO 6308 --- [Monetab v1.4] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-08-22T12:31:26.594+02:00  INFO 6308 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-22T12:31:26.595+02:00  INFO 6308 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-22T12:31:26.660+02:00  INFO 6308 --- [Monetab v1.4] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-22T12:31:26.660+02:00  INFO 6308 --- [Monetab v1.4] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2039 ms
+2024-08-22T12:31:26.991+02:00  INFO 6308 --- [Monetab v1.4] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-22T12:31:27.042+02:00  INFO 6308 --- [Monetab v1.4] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-22T12:31:27.071+02:00  INFO 6308 --- [Monetab v1.4] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-22T12:31:27.348+02:00  INFO 6308 --- [Monetab v1.4] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-22T12:31:27.375+02:00  INFO 6308 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-22T12:31:27.506+02:00  INFO 6308 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@bcda9b4
+2024-08-22T12:31:27.508+02:00  INFO 6308 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-22T12:31:27.561+02:00  WARN 6308 --- [Monetab v1.4] [restartedMain] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2024-08-22T12:31:28.457+02:00  INFO 6308 --- [Monetab v1.4] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-22T12:31:28.531+02:00  INFO 6308 --- [Monetab v1.4] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-22T12:31:28.899+02:00  WARN 6308 --- [Monetab v1.4] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-22T12:31:30.258+02:00  INFO 6308 --- [Monetab v1.4] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-08-22T12:31:30.267+02:00  INFO 6308 --- [Monetab v1.4] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2024-08-22T12:31:30.393+02:00  INFO 6308 --- [Monetab v1.4] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-08-22T12:31:30.423+02:00  INFO 6308 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : Started MonetabApplication in 6.299 seconds (process running for 6.971)
+2024-08-22T12:31:31.273+02:00  INFO 6308 --- [Monetab v1.4] [RMI TCP Connection(3)-192.168.1.36] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-22T12:31:31.274+02:00  INFO 6308 --- [Monetab v1.4] [RMI TCP Connection(3)-192.168.1.36] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-08-22T12:31:31.275+02:00  INFO 6308 --- [Monetab v1.4] [RMI TCP Connection(3)-192.168.1.36] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-08-22T12:32:15.928+02:00  INFO 6308 --- [Monetab v1.4] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-22T12:32:15.943+02:00  INFO 6308 --- [Monetab v1.4] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-22T12:32:15.952+02:00  INFO 6308 --- [Monetab v1.4] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-22T12:32:22.091+02:00  INFO 6232 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : Starting MonetabApplication using Java 17.0.12 with PID 6232 (C:\Users\Utilisateur\Desktop\projetSpring\web\monetab\target\classes started by Utilisateur in C:\Users\Utilisateur\Desktop\projetSpring\web\monetab)
+2024-08-22T12:32:22.094+02:00  INFO 6232 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-08-22T12:32:22.147+02:00  INFO 6232 --- [Monetab v1.4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-08-22T12:32:22.147+02:00  INFO 6232 --- [Monetab v1.4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-08-22T12:32:23.060+02:00  INFO 6232 --- [Monetab v1.4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-22T12:32:23.119+02:00  INFO 6232 --- [Monetab v1.4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 51 ms. Found 1 JPA repository interface.
+2024-08-22T12:32:24.036+02:00  INFO 6232 --- [Monetab v1.4] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-08-22T12:32:24.047+02:00  INFO 6232 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-22T12:32:24.047+02:00  INFO 6232 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-22T12:32:24.097+02:00  INFO 6232 --- [Monetab v1.4] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-22T12:32:24.098+02:00  INFO 6232 --- [Monetab v1.4] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1951 ms
+2024-08-22T12:32:24.460+02:00  INFO 6232 --- [Monetab v1.4] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-22T12:32:24.523+02:00  INFO 6232 --- [Monetab v1.4] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-22T12:32:24.556+02:00  INFO 6232 --- [Monetab v1.4] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-22T12:32:24.902+02:00  INFO 6232 --- [Monetab v1.4] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-22T12:32:24.932+02:00  INFO 6232 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-22T12:32:25.084+02:00  INFO 6232 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@16cd368d
+2024-08-22T12:32:25.086+02:00  INFO 6232 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-22T12:32:25.151+02:00  WARN 6232 --- [Monetab v1.4] [restartedMain] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2024-08-22T12:32:25.898+02:00  INFO 6232 --- [Monetab v1.4] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-22T12:32:25.967+02:00  INFO 6232 --- [Monetab v1.4] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-22T12:32:26.307+02:00  WARN 6232 --- [Monetab v1.4] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-22T12:32:27.554+02:00  INFO 6232 --- [Monetab v1.4] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-08-22T12:32:27.563+02:00  INFO 6232 --- [Monetab v1.4] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2024-08-22T12:32:27.640+02:00  INFO 6232 --- [Monetab v1.4] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-08-22T12:32:27.658+02:00  INFO 6232 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : Started MonetabApplication in 5.968 seconds (process running for 6.622)
+2024-08-22T12:32:28.367+02:00  INFO 6232 --- [Monetab v1.4] [RMI TCP Connection(2)-192.168.1.36] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-22T12:32:28.367+02:00  INFO 6232 --- [Monetab v1.4] [RMI TCP Connection(2)-192.168.1.36] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-08-22T12:32:28.368+02:00  INFO 6232 --- [Monetab v1.4] [RMI TCP Connection(2)-192.168.1.36] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-08-22T12:52:25.920+02:00  WARN 6232 --- [Monetab v1.4] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=10m30s593ms741µs500ns).
+2024-08-22T12:54:41.557+02:00  INFO 6232 --- [Monetab v1.4] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-22T12:54:41.574+02:00  INFO 6232 --- [Monetab v1.4] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-22T12:54:41.581+02:00  INFO 6232 --- [Monetab v1.4] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-22T15:34:55.878+02:00  INFO 18840 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : Starting MonetabApplication using Java 17.0.12 with PID 18840 (C:\Users\Utilisateur\Desktop\projetSpring\web\monetab\target\classes started by Utilisateur in C:\Users\Utilisateur\Desktop\projetSpring\web\monetab)
+2024-08-22T15:34:55.881+02:00  INFO 18840 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-08-22T15:34:55.955+02:00  INFO 18840 --- [Monetab v1.4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-08-22T15:34:55.956+02:00  INFO 18840 --- [Monetab v1.4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-08-22T15:34:57.483+02:00  INFO 18840 --- [Monetab v1.4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-22T15:34:57.582+02:00  INFO 18840 --- [Monetab v1.4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 83 ms. Found 5 JPA repository interfaces.
+2024-08-22T15:34:58.866+02:00  INFO 18840 --- [Monetab v1.4] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-08-22T15:34:58.884+02:00  INFO 18840 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-22T15:34:58.884+02:00  INFO 18840 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-22T15:34:58.958+02:00  INFO 18840 --- [Monetab v1.4] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-22T15:34:58.959+02:00  INFO 18840 --- [Monetab v1.4] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3001 ms
+2024-08-22T15:34:59.529+02:00  INFO 18840 --- [Monetab v1.4] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-22T15:34:59.697+02:00  INFO 18840 --- [Monetab v1.4] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-22T15:34:59.775+02:00  INFO 18840 --- [Monetab v1.4] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-22T15:35:00.380+02:00  INFO 18840 --- [Monetab v1.4] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-22T15:35:00.455+02:00  INFO 18840 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-22T15:35:00.685+02:00  INFO 18840 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@724c800e
+2024-08-22T15:35:00.687+02:00  INFO 18840 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-22T15:35:00.769+02:00  WARN 18840 --- [Monetab v1.4] [restartedMain] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2024-08-22T15:35:02.121+02:00  INFO 18840 --- [Monetab v1.4] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-22T15:35:02.385+02:00  INFO 18840 --- [Monetab v1.4] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-22T15:35:02.943+02:00  WARN 18840 --- [Monetab v1.4] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-22T15:35:05.349+02:00  INFO 18840 --- [Monetab v1.4] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-08-22T15:35:05.370+02:00  INFO 18840 --- [Monetab v1.4] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2024-08-22T15:35:05.534+02:00  INFO 18840 --- [Monetab v1.4] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-08-22T15:35:05.573+02:00  INFO 18840 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : Started MonetabApplication in 10.361 seconds (process running for 11.381)
+2024-08-22T15:35:06.505+02:00  INFO 18840 --- [Monetab v1.4] [RMI TCP Connection(4)-192.168.1.36] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-22T15:35:06.507+02:00  INFO 18840 --- [Monetab v1.4] [RMI TCP Connection(4)-192.168.1.36] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-08-22T15:35:06.514+02:00  INFO 18840 --- [Monetab v1.4] [RMI TCP Connection(4)-192.168.1.36] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2024-08-22T15:35:30.856+02:00  INFO 18840 --- [Monetab v1.4] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-22T15:35:30.988+02:00  INFO 18840 --- [Monetab v1.4] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-22T15:35:31.004+02:00  INFO 18840 --- [Monetab v1.4] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-22T15:35:33.342+02:00  INFO 18940 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : Starting MonetabApplication using Java 17.0.12 with PID 18940 (C:\Users\Utilisateur\Desktop\projetSpring\web\monetab\target\classes started by Utilisateur in C:\Users\Utilisateur\Desktop\projetSpring\web\monetab)
+2024-08-22T15:35:33.346+02:00  INFO 18940 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-08-22T15:35:33.400+02:00  INFO 18940 --- [Monetab v1.4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-08-22T15:35:33.400+02:00  INFO 18940 --- [Monetab v1.4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-08-22T15:35:34.642+02:00  INFO 18940 --- [Monetab v1.4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-22T15:35:34.737+02:00  INFO 18940 --- [Monetab v1.4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 83 ms. Found 5 JPA repository interfaces.
+2024-08-22T15:35:35.556+02:00  INFO 18940 --- [Monetab v1.4] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-08-22T15:35:35.571+02:00  INFO 18940 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-22T15:35:35.571+02:00  INFO 18940 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-22T15:35:35.632+02:00  INFO 18940 --- [Monetab v1.4] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-22T15:35:35.633+02:00  INFO 18940 --- [Monetab v1.4] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2233 ms
+2024-08-22T15:35:36.036+02:00  INFO 18940 --- [Monetab v1.4] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-22T15:35:36.096+02:00  INFO 18940 --- [Monetab v1.4] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-22T15:35:36.143+02:00  INFO 18940 --- [Monetab v1.4] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-22T15:35:36.564+02:00  INFO 18940 --- [Monetab v1.4] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-22T15:35:36.600+02:00  INFO 18940 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-22T15:35:36.782+02:00  INFO 18940 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@20856b32
+2024-08-22T15:35:36.786+02:00  INFO 18940 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-22T15:35:36.846+02:00  WARN 18940 --- [Monetab v1.4] [restartedMain] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2024-08-22T15:35:37.815+02:00  INFO 18940 --- [Monetab v1.4] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-22T15:35:38.042+02:00  INFO 18940 --- [Monetab v1.4] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-22T15:35:38.502+02:00  WARN 18940 --- [Monetab v1.4] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-22T15:35:39.923+02:00  INFO 18940 --- [Monetab v1.4] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-08-22T15:35:39.934+02:00  INFO 18940 --- [Monetab v1.4] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2024-08-22T15:35:40.025+02:00  INFO 18940 --- [Monetab v1.4] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-08-22T15:35:40.044+02:00  INFO 18940 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : Started MonetabApplication in 7.226 seconds (process running for 8.145)
+2024-08-22T15:35:40.854+02:00  INFO 18940 --- [Monetab v1.4] [RMI TCP Connection(2)-192.168.1.36] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-22T15:35:40.854+02:00  INFO 18940 --- [Monetab v1.4] [RMI TCP Connection(2)-192.168.1.36] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-08-22T15:35:40.856+02:00  INFO 18940 --- [Monetab v1.4] [RMI TCP Connection(2)-192.168.1.36] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-08-22T15:38:27.373+02:00  INFO 18940 --- [Monetab v1.4] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-22T15:38:27.601+02:00  INFO 18940 --- [Monetab v1.4] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-22T15:38:27.609+02:00  INFO 18940 --- [Monetab v1.4] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-22T15:38:33.955+02:00  INFO 9772 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : Starting MonetabApplication using Java 17.0.12 with PID 9772 (C:\Users\Utilisateur\Desktop\projetSpring\web\monetab\target\classes started by Utilisateur in C:\Users\Utilisateur\Desktop\projetSpring\web\monetab)
+2024-08-22T15:38:33.955+02:00  INFO 9772 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-08-22T15:38:34.035+02:00  INFO 9772 --- [Monetab v1.4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-08-22T15:38:34.035+02:00  INFO 9772 --- [Monetab v1.4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-08-22T15:38:36.290+02:00  INFO 9772 --- [Monetab v1.4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-22T15:38:36.414+02:00  INFO 9772 --- [Monetab v1.4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 112 ms. Found 5 JPA repository interfaces.
+2024-08-22T15:38:37.552+02:00  INFO 9772 --- [Monetab v1.4] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-08-22T15:38:37.570+02:00  INFO 9772 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-22T15:38:37.570+02:00  INFO 9772 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-22T15:38:37.628+02:00  INFO 9772 --- [Monetab v1.4] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-22T15:38:37.628+02:00  INFO 9772 --- [Monetab v1.4] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3593 ms
+2024-08-22T15:38:38.052+02:00  INFO 9772 --- [Monetab v1.4] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-22T15:38:38.123+02:00  INFO 9772 --- [Monetab v1.4] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-22T15:38:38.163+02:00  INFO 9772 --- [Monetab v1.4] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-22T15:38:38.503+02:00  INFO 9772 --- [Monetab v1.4] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-22T15:38:38.547+02:00  INFO 9772 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-22T15:38:38.733+02:00  INFO 9772 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@51a46e04
+2024-08-22T15:38:38.736+02:00  INFO 9772 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-22T15:38:38.812+02:00  WARN 9772 --- [Monetab v1.4] [restartedMain] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2024-08-22T15:38:39.754+02:00  INFO 9772 --- [Monetab v1.4] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-22T15:38:39.973+02:00  INFO 9772 --- [Monetab v1.4] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-22T15:38:40.635+02:00  WARN 9772 --- [Monetab v1.4] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-22T15:38:43.232+02:00  INFO 9772 --- [Monetab v1.4] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-08-22T15:38:43.256+02:00  INFO 9772 --- [Monetab v1.4] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2024-08-22T15:38:43.465+02:00  INFO 9772 --- [Monetab v1.4] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-08-22T15:38:43.506+02:00  INFO 9772 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : Started MonetabApplication in 10.416 seconds (process running for 11.379)
+2024-08-22T15:38:44.554+02:00  INFO 9772 --- [Monetab v1.4] [RMI TCP Connection(1)-192.168.1.36] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-22T15:38:44.554+02:00  INFO 9772 --- [Monetab v1.4] [RMI TCP Connection(1)-192.168.1.36] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-08-22T15:38:44.554+02:00  INFO 9772 --- [Monetab v1.4] [RMI TCP Connection(1)-192.168.1.36] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-08-22T15:41:18.066+02:00  INFO 9772 --- [Monetab v1.4] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-22T15:41:18.212+02:00  INFO 9772 --- [Monetab v1.4] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-22T15:41:18.223+02:00  INFO 9772 --- [Monetab v1.4] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-22T15:41:23.990+02:00  INFO 17968 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : Starting MonetabApplication using Java 17.0.12 with PID 17968 (C:\Users\Utilisateur\Desktop\projetSpring\web\monetab\target\classes started by Utilisateur in C:\Users\Utilisateur\Desktop\projetSpring\web\monetab)
+2024-08-22T15:41:23.994+02:00  INFO 17968 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-08-22T15:41:24.055+02:00  INFO 17968 --- [Monetab v1.4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-08-22T15:41:24.056+02:00  INFO 17968 --- [Monetab v1.4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-08-22T15:41:25.769+02:00  INFO 17968 --- [Monetab v1.4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-22T15:41:25.869+02:00  INFO 17968 --- [Monetab v1.4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 89 ms. Found 5 JPA repository interfaces.
+2024-08-22T15:41:27.001+02:00  INFO 17968 --- [Monetab v1.4] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-08-22T15:41:27.010+02:00  INFO 17968 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-22T15:41:27.010+02:00  INFO 17968 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-22T15:41:27.071+02:00  INFO 17968 --- [Monetab v1.4] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-22T15:41:27.071+02:00  INFO 17968 --- [Monetab v1.4] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3014 ms
+2024-08-22T15:41:27.504+02:00  INFO 17968 --- [Monetab v1.4] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-22T15:41:27.561+02:00  INFO 17968 --- [Monetab v1.4] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-22T15:41:27.600+02:00  INFO 17968 --- [Monetab v1.4] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-22T15:41:27.971+02:00  INFO 17968 --- [Monetab v1.4] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-22T15:41:28.003+02:00  INFO 17968 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-22T15:41:28.159+02:00  INFO 17968 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4732418
+2024-08-22T15:41:28.160+02:00  INFO 17968 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-22T15:41:28.249+02:00  WARN 17968 --- [Monetab v1.4] [restartedMain] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2024-08-22T15:41:29.908+02:00  INFO 17968 --- [Monetab v1.4] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-22T15:41:30.123+02:00  INFO 17968 --- [Monetab v1.4] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-22T15:41:30.159+02:00  WARN 17968 --- [Monetab v1.4] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'monetabApplication': Unsatisfied dependency expressed through field 'studentService': No qualifying bean of type 'com.digitalacademy.monetab.services.StudentService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2024-08-22T15:41:30.159+02:00  INFO 17968 --- [Monetab v1.4] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-22T15:41:30.229+02:00  INFO 17968 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-22T15:41:30.242+02:00  INFO 17968 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-22T15:41:30.244+02:00  INFO 17968 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-08-22T15:41:30.285+02:00  INFO 17968 --- [Monetab v1.4] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-08-22T15:41:30.331+02:00 ERROR 17968 --- [Monetab v1.4] [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field studentService in com.digitalacademy.monetab.MonetabApplication required a bean of type 'com.digitalacademy.monetab.services.StudentService' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.digitalacademy.monetab.services.StudentService' in your configuration.
+
+2024-08-22T15:43:14.188+02:00  INFO 19812 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : Starting MonetabApplication using Java 17.0.12 with PID 19812 (C:\Users\Utilisateur\Desktop\projetSpring\web\monetab\target\classes started by Utilisateur in C:\Users\Utilisateur\Desktop\projetSpring\web\monetab)
+2024-08-22T15:43:14.191+02:00  INFO 19812 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-08-22T15:43:14.241+02:00  INFO 19812 --- [Monetab v1.4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-08-22T15:43:14.241+02:00  INFO 19812 --- [Monetab v1.4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-08-22T15:43:15.284+02:00  INFO 19812 --- [Monetab v1.4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-22T15:43:15.352+02:00  INFO 19812 --- [Monetab v1.4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 63 ms. Found 5 JPA repository interfaces.
+2024-08-22T15:43:16.159+02:00  INFO 19812 --- [Monetab v1.4] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-08-22T15:43:16.172+02:00  INFO 19812 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-22T15:43:16.173+02:00  INFO 19812 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-22T15:43:16.229+02:00  INFO 19812 --- [Monetab v1.4] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-22T15:43:16.230+02:00  INFO 19812 --- [Monetab v1.4] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1988 ms
+2024-08-22T15:43:16.682+02:00  INFO 19812 --- [Monetab v1.4] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-22T15:43:16.746+02:00  INFO 19812 --- [Monetab v1.4] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-22T15:43:16.787+02:00  INFO 19812 --- [Monetab v1.4] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-22T15:43:17.173+02:00  INFO 19812 --- [Monetab v1.4] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-22T15:43:17.200+02:00  INFO 19812 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-22T15:43:17.333+02:00  INFO 19812 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@33cde5af
+2024-08-22T15:43:17.336+02:00  INFO 19812 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-22T15:43:17.387+02:00  WARN 19812 --- [Monetab v1.4] [restartedMain] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2024-08-22T15:43:18.249+02:00  INFO 19812 --- [Monetab v1.4] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-22T15:43:18.396+02:00  INFO 19812 --- [Monetab v1.4] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-22T15:43:18.409+02:00  WARN 19812 --- [Monetab v1.4] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'monetabApplication': Unsatisfied dependency expressed through field 'studentService': No qualifying bean of type 'com.digitalacademy.monetab.services.StudentService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2024-08-22T15:43:18.410+02:00  INFO 19812 --- [Monetab v1.4] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-22T15:43:18.475+02:00  INFO 19812 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-22T15:43:18.493+02:00  INFO 19812 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-22T15:43:18.495+02:00  INFO 19812 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-08-22T15:43:18.530+02:00  INFO 19812 --- [Monetab v1.4] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-08-22T15:43:18.571+02:00 ERROR 19812 --- [Monetab v1.4] [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field studentService in com.digitalacademy.monetab.MonetabApplication required a bean of type 'com.digitalacademy.monetab.services.StudentService' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.digitalacademy.monetab.services.StudentService' in your configuration.
+
+2024-08-22T15:45:10.277+02:00  INFO 13756 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : Starting MonetabApplication using Java 17.0.12 with PID 13756 (C:\Users\Utilisateur\Desktop\projetSpring\web\monetab\target\classes started by Utilisateur in C:\Users\Utilisateur\Desktop\projetSpring\web\monetab)
+2024-08-22T15:45:10.280+02:00  INFO 13756 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-08-22T15:45:10.329+02:00  INFO 13756 --- [Monetab v1.4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-08-22T15:45:10.330+02:00  INFO 13756 --- [Monetab v1.4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-08-22T15:45:11.384+02:00  INFO 13756 --- [Monetab v1.4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-22T15:45:11.455+02:00  INFO 13756 --- [Monetab v1.4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 63 ms. Found 5 JPA repository interfaces.
+2024-08-22T15:45:12.163+02:00  INFO 13756 --- [Monetab v1.4] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-08-22T15:45:12.173+02:00  INFO 13756 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-22T15:45:12.173+02:00  INFO 13756 --- [Monetab v1.4] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-22T15:45:12.219+02:00  INFO 13756 --- [Monetab v1.4] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-22T15:45:12.221+02:00  INFO 13756 --- [Monetab v1.4] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1889 ms
+2024-08-22T15:45:12.556+02:00  INFO 13756 --- [Monetab v1.4] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-22T15:45:12.624+02:00  INFO 13756 --- [Monetab v1.4] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-22T15:45:12.656+02:00  INFO 13756 --- [Monetab v1.4] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-22T15:45:12.985+02:00  INFO 13756 --- [Monetab v1.4] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-22T15:45:13.013+02:00  INFO 13756 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-22T15:45:13.156+02:00  INFO 13756 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@10b358d8
+2024-08-22T15:45:13.158+02:00  INFO 13756 --- [Monetab v1.4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-22T15:45:13.217+02:00  WARN 13756 --- [Monetab v1.4] [restartedMain] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2024-08-22T15:45:14.334+02:00  INFO 13756 --- [Monetab v1.4] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-22T15:45:14.479+02:00  INFO 13756 --- [Monetab v1.4] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-22T15:45:14.979+02:00  WARN 13756 --- [Monetab v1.4] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-22T15:45:16.164+02:00  INFO 13756 --- [Monetab v1.4] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-08-22T15:45:16.173+02:00  INFO 13756 --- [Monetab v1.4] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2024-08-22T15:45:16.263+02:00  INFO 13756 --- [Monetab v1.4] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-08-22T15:45:16.281+02:00  INFO 13756 --- [Monetab v1.4] [restartedMain] c.d.monetab.MonetabApplication           : Started MonetabApplication in 6.716 seconds (process running for 7.645)
+2024-08-22T15:45:16.584+02:00  INFO 13756 --- [Monetab v1.4] [RMI TCP Connection(2)-192.168.1.36] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-22T15:45:16.585+02:00  INFO 13756 --- [Monetab v1.4] [RMI TCP Connection(2)-192.168.1.36] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-08-22T15:45:16.587+02:00  INFO 13756 --- [Monetab v1.4] [RMI TCP Connection(2)-192.168.1.36] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-08-22T15:45:39.688+02:00  INFO 13756 --- [Monetab v1.4] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-22T15:45:39.759+02:00  INFO 13756 --- [Monetab v1.4] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-22T15:45:39.770+02:00  INFO 13756 --- [Monetab v1.4] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
