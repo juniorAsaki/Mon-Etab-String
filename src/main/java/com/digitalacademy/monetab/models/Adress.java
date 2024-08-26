@@ -24,5 +24,4 @@ public class Adress {
 
     @Column(name = "street" , nullable = false)
     private String street;
-
 }

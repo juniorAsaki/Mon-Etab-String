@@ -34,24 +34,36 @@
                             <thead>
                             <tr>
                                 <td>ID</td>
+                                <th>NOM</th>
+                                <th>PRENOM</th>
                                 <th>MATIERE</th>
+                                <th>TELEPHONE</th>
+                                <th>EMAIL</th>
                                 <th>ACTIONS</th>
                             </tr>
                             </thead>
                             <tfoot>
                             <tr>
                                 <td>ID</td>
+                                <th>NOM</th>
+                                <th>PRENOM</th>
                                 <th>MATIERE</th>
+                                <th>TELEPHONE</th>
+                                <th>EMAIL</th>
                                 <th>ACTIONS</th>
                             </tr>
                             </tfoot>
                             <tbody>
                             <tr th:each="teacher , status : ${teachers}">
                                 <td th:text="${status.count}"></td>
+                                <td th:text="${teacher.getFirstName()()}"></td>
+                                <td th:text="${teacher.getLastName()}"></td>
                                 <td th:text="${teacher.getMatiere()}"></td>
+                                <td th:text="${teacher.getNumbers()}"></td>
+                                <td th:text="${teacher.getEmail()}"></td>
                                 <td>
-                                    <a th:href="@{/teachers/update/{id}(id=${teacher.getId_teacher()})}"  class="btn btn-primary">MODIFIER</a>
-                                    <a th:href="@{/teachers/delete/{id}(id=${teacher.getId_teacher()})}" class="btn btn-danger">SUPPRIMER</a>
+                                    <a th:href="@{/teachers/update/{id}(id=${teacher.getId_person()})}"  class="btn btn-primary">MODIFIER</a>
+                                    <a th:href="@{/teachers/delete/{id}(id=${teacher.getId_person()})}" class="btn btn-danger">SUPPRIMER</a>
                                 </td>
                             </tr>
                             </tbody>

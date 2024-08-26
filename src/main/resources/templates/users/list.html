@@ -34,14 +34,20 @@
                             <tr>
                                 <th>ID</th>
                                 <th>PSEUDO</th>
+                                <th>PAYS</th>
+                                <th>VILLE</th>
+                                <th>RUE</th>
                                 <th>DATE DE CREATION</th>
-                                <th>ACTIONS</th>
+                                <th >ACTIONS</th>
                             </tr>
                             </thead>
                             <tfoot>
                             <tr>
                                 <th>ID</th>
                                 <th>PSEUDO</th>
+                                <th>PAYS</th>
+                                <th>VILLE</th>
+                                <th>RUE</th>
                                 <th>DATE DE CREATION</th>
                                 <th >ACTIONS</th>
                             </tr>
@@ -50,6 +56,9 @@
                                 <tr th:each="user , status : ${users}">
                                     <td th:text="${status.count}"></td>
                                     <td th:text="${user.getPseudo()}"></td>
+                                    <td th:text="${user.getAdress().getCountry()}"></td>
+                                    <td th:text="${user.getAdress().getCity()}"></td>
+                                    <td th:text="${user.getAdress().getStreet()}"></td>
                                     <td th:text="${#dates.format(user.getCreatedDate() , 'd MMMM yyyy')}"></td>
                                     <td>
                                         <a th:href="@{/users/update/{id}(id=${user.getId_user()})}" class="btn btn-primary">MODIFIER</a>

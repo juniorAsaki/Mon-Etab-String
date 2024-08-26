@@ -23,17 +23,19 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student update(Student student) {
-        Optional<Student> optionalStudent = studentRepository.findById(student.getId_student());
+//        Optional<Student> optionalStudent = studentRepository.findById(student.getId_student());
+//
+//        if(optionalStudent.isPresent()){
+//            Student studentUpdate = optionalStudent.get();
+//
+//            studentUpdate.setMatricule(student.getMatricule());
+//
+//            return studentRepository.save(studentUpdate);
+//        }else{
+//            throw new IllegalArgumentException();
+//        }
 
-        if(optionalStudent.isPresent()){
-            Student studentUpdate = optionalStudent.get();
-
-            studentUpdate.setMatricule(student.getMatricule());
-
-            return studentRepository.save(studentUpdate);
-        }else{
-            throw new IllegalArgumentException();
-        }
+        return new Student();
     }
 
     @Override

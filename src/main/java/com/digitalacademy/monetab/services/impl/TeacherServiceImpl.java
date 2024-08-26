@@ -22,17 +22,18 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public Teacher update(Teacher teacher) {
-        Optional<Teacher> optionalTeacher = teacherRepository.findById(teacher.getId_teacher());
-
-        if(optionalTeacher.isPresent()){
-            Teacher teacherUpdate = optionalTeacher.get();
-
-            teacherUpdate.setMatiere(teacher.getMatiere());
-
-            return teacherRepository.save(teacherUpdate);
-        }else{
-            throw new IllegalArgumentException();
-        }
+//        Optional<Teacher> optionalTeacher = teacherRepository.findById(teacher.getId_teacher());
+//
+//        if(optionalTeacher.isPresent()){
+//            Teacher teacherUpdate = optionalTeacher.get();
+//
+//            teacherUpdate.setMatiere(teacher.getMatiere());
+//
+//            return teacherRepository.save(teacherUpdate);
+//        }else{
+//            throw new IllegalArgumentException();
+//        }
+        return new Teacher();
     }
 
     @Override

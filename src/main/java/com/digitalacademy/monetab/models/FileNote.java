@@ -20,7 +20,7 @@ public class FileNote {
     @Column(name = "note" , nullable = false)
     private Double note ;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_teacher")
     private Teacher teacher ;
 }

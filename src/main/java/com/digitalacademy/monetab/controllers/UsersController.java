@@ -1,14 +1,15 @@
 package com.digitalacademy.monetab.controllers;
 
+import com.digitalacademy.monetab.models.Adress;
 import com.digitalacademy.monetab.models.User;
+import com.digitalacademy.monetab.services.AdressService;
 import com.digitalacademy.monetab.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
+import java.time.Instant;
 import java.util.Optional;
 
 @Controller
@@ -17,6 +18,9 @@ public class UsersController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private AdressService adressService;
 
 
     @GetMapping
@@ -28,7 +32,9 @@ public class UsersController {
 
     @GetMapping("/add")
     public String showAddUserPage(Model model){
-        model.addAttribute("user", new User());
+        User user = new User();
+        user.setAdress(new Adress());
+        model.addAttribute("user", user);
         model.addAttribute("action", "add");
         return "users/forms";
     }
@@ -40,5 +46,18 @@ public class UsersController {
         model.addAttribute("user", user);
         model.addAttribute("action", "update");
         return "users/forms";
+    }
+
+    @PostMapping("/save")
+    public String saveUser(@ModelAttribute("user") User user){
+
+        if(user.getPseudo() != null){
+            adressService.save(user.getAdress());
+        }
+
+        user.setCreatedDate(Instant.now());
+        userService.save(user);
+
+        return "redirect:/users";
     }
 }
