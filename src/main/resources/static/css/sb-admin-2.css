@@ -9800,6 +9800,8 @@ a:focus {
   background-color: #f8f9fc;
   width: 100%;
   overflow-x: hidden;
+  margin-left: 6.5rem;
+  overflow: auto;
 }
 
 #wrapper #content-wrapper #content {
@@ -10320,8 +10322,10 @@ a:focus {
 }
 
 .sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 6.5rem;
-  min-height: 100vh;
 }
 
 .sidebar .nav-item {

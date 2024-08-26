@@ -23,7 +23,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student update(Student student) {
-        Optional<Student> optionalStudent = studentRepository.findById(student.getId());
+        Optional<Student> optionalStudent = studentRepository.findById(student.getId_student());
 
         if(optionalStudent.isPresent()){
             Student studentUpdate = optionalStudent.get();

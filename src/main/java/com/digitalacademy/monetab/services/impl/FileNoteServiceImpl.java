@@ -22,7 +22,7 @@ public class FileNoteServiceImpl implements FileNoteService {
 
     @Override
     public FileNote update(FileNote fileNote) {
-        Optional<FileNote> optionalFileNote = fileNoteRepository.findById(fileNote.getId());
+        Optional<FileNote> optionalFileNote = fileNoteRepository.findById(fileNote.getId_file_note());
 
         if(optionalFileNote.isPresent()){
             FileNote fileNoteUpdate = optionalFileNote.get();

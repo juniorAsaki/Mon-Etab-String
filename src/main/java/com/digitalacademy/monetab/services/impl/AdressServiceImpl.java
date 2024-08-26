@@ -22,7 +22,7 @@ public class AdressServiceImpl implements AdressService {
 
     @Override
     public Adress update(Adress adress) {
-        Optional<Adress> optionalAdress = adressRepository.findById(adress.getId());
+        Optional<Adress> optionalAdress = adressRepository.findById(adress.getId_adress());
 
         if(optionalAdress.isPresent()){
             Adress adressUpdate = optionalAdress.get();

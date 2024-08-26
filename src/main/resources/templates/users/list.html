@@ -1,32 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head th:insert="fragments/fragment :: header" ></head>
 
-    <title>Mon Etab</title>
-
-    <!-- Custom fonts for this template-->
-    <link
-            href="/vendor/fontawesome-free/css/all.min.css"
-            rel="stylesheet"
-            type="text/css"
-    />
-    <link
-            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-            rel="stylesheet"
-    />
-
-    <!-- Custom styles for this template-->
-    <link href="/css/sb-admin-2.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="/css/style.css">
-</head>
 
 <body id="page-top">
 <!-- Page Wrapper -->
@@ -42,10 +20,10 @@
             <div class="card shadow mb-4">
                 <div class="border card-header py-3 d-flex align-items-center justify-content-between">
                     <div>
-                        <h6 class="m-0 font-weight-bold text-primary">Utilisateurs(2)</h6>
+                        <h6 class="m-0 font-weight-bold text-primary" th:text="'Utilisateur:('+${users.size()}+')'"></h6>
                     </div>
                     <div>
-                        <a class="nav-link" href="/users/add">
+                        <a class="nav-link" th:href="@{/users/add}">
                             <span>Nouvel utilisateur</span></a>
                     </div>
                 </div>
@@ -54,6 +32,7 @@
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                             <tr>
+                                <th>ID</th>
                                 <th>PSEUDO</th>
                                 <th>DATE DE CREATION</th>
                                 <th>ACTIONS</th>
@@ -61,29 +40,22 @@
                             </thead>
                             <tfoot>
                             <tr>
+                                <th>ID</th>
                                 <th>PSEUDO</th>
                                 <th>DATE DE CREATION</th>
-                                <th>ACTIONS</th>
+                                <th >ACTIONS</th>
                             </tr>
                             </tfoot>
                             <tbody>
-                            <tr>
-                                <td>Kdev001</td>
-                                <td>2024-08-22</td>
-                                <td>
-                                    <a href="students/update" class="btn btn-primary">MODIFIER</a>
-                                    <a href="" class="btn btn-danger">SUPPRIMER</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Kdev001</td>
-                                <td>2024-08-22</td>
-                                <td>
-                                    <a href="students/update" class="btn btn-primary">MODIFIER</a>
-                                    <a href="" class="btn btn-danger">SUPPRIMER</a>
-                                </td>
-                            </tr>
-
+                                <tr th:each="user , status : ${users}">
+                                    <td th:text="${status.count}"></td>
+                                    <td th:text="${user.getPseudo()}"></td>
+                                    <td th:text="${#dates.format(user.getCreatedDate() , 'd MMMM yyyy')}"></td>
+                                    <td>
+                                        <a th:href="@{/users/update/{id}(id=${user.getId_user()})}" class="btn btn-primary">MODIFIER</a>
+                                        <a th:href="@{/users/delete/{id}(id=${user.getId_user()})}" class="btn btn-danger">SUPPRIMER</a>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>

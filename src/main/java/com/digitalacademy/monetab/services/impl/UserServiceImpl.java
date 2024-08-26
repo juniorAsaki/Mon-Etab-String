@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
 //                    return save(existingUser);
 //                }).orElseThrow(()-> new IllegalArgumentException());
 
-        Optional<User> optionalUser = userRepository.findById(user.getId());
+        Optional<User> optionalUser = userRepository.findById(user.getId_user());
 
         if(optionalUser.isPresent()){
             User userUpdate = optionalUser.get();
@@ -67,5 +67,10 @@ public class UserServiceImpl implements UserService {
     public void deleteById(Long id) {
         log.debug("Deleting user by id {}", id);
         userRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<User> findByPseudo(String pseudo) {
+        return userRepository.findByPseudo(pseudo);
     }
 }

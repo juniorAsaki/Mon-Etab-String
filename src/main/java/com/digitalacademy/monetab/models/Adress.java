@@ -2,10 +2,7 @@ package com.digitalacademy.monetab.models;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
@@ -17,7 +14,7 @@ public class Adress {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id_adress;
 
     @Column(name = "country" , nullable = false)
     private String country;
@@ -27,4 +24,5 @@ public class Adress {
 
     @Column(name = "street" , nullable = false)
     private String street;
+
 }

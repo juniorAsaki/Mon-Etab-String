@@ -15,4 +15,5 @@ public interface UserService {
     Optional<User> findById(Long id);
     List<User> findAll();
     void deleteById(Long id);
+    Optional<User> findByPseudo(String username);
 }

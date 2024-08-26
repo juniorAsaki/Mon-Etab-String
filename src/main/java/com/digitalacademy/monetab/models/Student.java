@@ -1,10 +1,7 @@
 package com.digitalacademy.monetab.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Getter
@@ -12,12 +9,13 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "student")
-public class Student {
+@ToString
+public class Student{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id_student;
 
-    @Column(name = "matiere" , nullable = false)
+    @Column(name = "matricule" , nullable = false)
     private String matricule;
 }

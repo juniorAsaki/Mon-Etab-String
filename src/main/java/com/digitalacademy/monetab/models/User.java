@@ -12,13 +12,11 @@ import java.time.Instant;
 @AllArgsConstructor
 @Entity
 @Table(name = "user")
-@ToString
-
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id_user;
 
     @Column(name = "pseudo" , unique = true , nullable = false)
     private String pseudo;
@@ -28,4 +26,10 @@ public class User {
 
     @Column(name = "creation_date" , nullable = false)
     private Instant createdDate;
+
+    @OneToOne
+    @JoinColumn(name = "id_adress")
+    private Adress adress;
+
+
 }

@@ -1,33 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head th:insert="fragments/fragment :: header" ></head>
 
-    <title>Mon Etab</title>
-
-    <!-- Custom fonts for this template-->
-    <link
-            href="/vendor/fontawesome-free/css/all.min.css"
-            rel="stylesheet"
-            type="text/css"
-    />
-    <link
-            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-            rel="stylesheet"
-    />
-
-    <!-- Custom styles for this template-->
-    <link href="/css/sb-admin-2.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.4/css/dataTables.dataTables.css">
-</head>
 
 <body id="page-top">
 <!-- Page Wrapper -->
@@ -43,10 +20,10 @@
             <div class="card shadow mb-4">
                 <div class="border card-header py-3 d-flex align-items-center justify-content-between">
                     <div>
-                        <h6 class="m-0 font-weight-bold text-primary">Eleves(2)</h6>
+                        <h6 class="m-0 font-weight-bold text-primary" th:text="'Elève:('+${students.size()}+')'"></h6>
                     </div>
                     <div>
-                        <a class="nav-link" href="/students/add">
+                        <a class="nav-link" th:href="@{/students/add}">
                             <span>Nouvel éleve</span></a>
                     </div>
                 </div>
@@ -55,60 +32,46 @@
                         <table class="table table-bordered" id="dataTable" >
                             <thead>
                             <tr>
-                                <th>NOM</th>
-                                <th>PRENOM</th>
-                                <th>GENRE</th>
-                                <th>CLASSE</th>
+                                <th>ID</th>
                                 <th>MATRICULE</th>
-                                <th>AGE</th>
-                                <th>TELEPHONE</th>
-                                <th>VILLE</th>
                                 <th>ACTIONS</th>
                             </tr>
                             </thead>
                             <tfoot>
                             <tr>
-                                <th>NOM</th>
-                                <th>PRENOM</th>
-                                <th>GENRE</th>
-                                <th>CLASSE</th>
+                                <th>ID</th>
                                 <th>MATRICULE</th>
-                                <th>AGE</th>
-                                <th>TELEPHONE</th>
-                                <th>VILLE</th>
                                 <th>ACTIONS</th>
                             </tr>
                             </tfoot>
                             <tbody>
-                            <tr>
-                                <td>Koffi</td>
-                                <td>Kouadio</td>
-                                <td>Masculin</td>
-                                <td>JAVA</td>
-                                <td>11115215D</td>
-                                <td>22 ANS</td>
-                                <td>0704817000</td>
-                                <td>Yamoussoukro</td>
+                            <tr th:each="student , status : ${students}">
+                                <td th:text="${status.count}"></td>
+                                <td th:text="${student.getMatricule()}"></td>
                                 <td>
-                                    <a href="/students/update" class="btn btn-primary">MODIFIER</a>
-                                    <a href="" class="btn btn-danger">SUPPRIMER</a>
+                                    <a th:href="@{/students/update/{id}(id=${student.getId_student()})}" class="btn btn-primary">MODIFIER</a>
+                                    <a th:href="@{/students/delete/{id}(id=${student.getId_student()})}" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">SUPPRIMER</a>
                                 </td>
-                            </tr>
-                            <tr>
-                                <td>Koffi</td>
-                                <td>Kouadio</td>
-                                <td>Masculin</td>
-                                <td>JAVA</td>
-                                <td>11115215D</td>
-                                <td>22 ANS</td>
-                                <td>0704817000</td>
-                                <td>Yamoussoukro</td>
-                                <td>
-                                    <a href="students/update" class="btn btn-primary">MODIFIER</a>
-                                    <a href="" class="btn btn-danger">SUPPRIMER</a>
-                                </td>
-                            </tr>
 
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Suppression</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Voulez-vous supprimer cet élève ?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                                <button type="button" class="btn btn-primary">OK</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
