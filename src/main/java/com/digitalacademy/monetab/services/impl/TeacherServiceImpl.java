@@ -1,7 +1,6 @@
 package com.digitalacademy.monetab.services.impl;
 
 import com.digitalacademy.monetab.models.Teacher;
-import com.digitalacademy.monetab.models.User;
 import com.digitalacademy.monetab.repositories.TeacherRepository;
 import com.digitalacademy.monetab.services.TeacherService;
 import lombok.RequiredArgsConstructor;

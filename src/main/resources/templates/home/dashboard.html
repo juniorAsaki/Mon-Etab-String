@@ -41,8 +41,11 @@
                                         >
                                             Nombre élève
                                         </div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800 font-size">
-                                            140 000
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800 font-size" th:if="${!students.isEmpty()}">
+                                            <span style="font-size: 20px" th:text="${students.size()}" ></span>
+                                        </div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800 font-size" th:if="${students.isEmpty()}">
+                                            <span style="font-size: 20px">Aucun élève</span>
                                         </div>
                                     </div>
                                 </div>
@@ -61,8 +64,11 @@
                                         >
                                             Nombre professeur
                                         </div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800 font-size">
-                                            128 000
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800 font-size" th:if="${!teachers.isEmpty()}">
+                                            <span style="font-size: 20px" th:text="${teachers.size()}"></span>
+                                        </div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800 font-size" th:if="${teachers.isEmpty()}">
+                                            <span style="font-size: 20px">Aucun professeur</span>
                                         </div>
                                     </div>
                                 </div>
@@ -84,11 +90,14 @@
                                         <div class="row no-gutters align-items-center">
                                             <div class="col-auto">
                                                 <div
-                                                        class=" font-weight-bold text-gray-800 font-size"
+                                                        class=" font-weight-bold text-gray-800 printNbreUSer"
                                                 >
-                                                    <span class="text-align-center">
-                                                        128 000
-                                                    </span>
+                                                    <div class="font-weight-bold text-gray-800 " th:if="${!users.isEmpty()}">
+                                                        <span style="font-size: 20px" th:text="${users.size()}"></span>
+                                                    </div>
+                                                    <div class="font-weight-bold text-gray-800 " th:if="${users.isEmpty()}">
+                                                        <span style="font-size: 20px">Aucun utilisateur</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

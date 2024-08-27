@@ -1,7 +1,6 @@
 package com.digitalacademy.monetab.services;
 
 import com.digitalacademy.monetab.models.Student;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;

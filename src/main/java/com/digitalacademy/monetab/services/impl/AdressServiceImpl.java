@@ -1,7 +1,6 @@
 package com.digitalacademy.monetab.services.impl;
 
 import com.digitalacademy.monetab.models.Adress;
-import com.digitalacademy.monetab.models.FileNote;
 import com.digitalacademy.monetab.repositories.AdressRepository;
 import com.digitalacademy.monetab.services.AdressService;
 import lombok.RequiredArgsConstructor;

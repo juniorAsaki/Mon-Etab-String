@@ -43,9 +43,14 @@ public class UsersController {
     public String showUpdateUserPage(@PathVariable Long id, Model model)
     {
         Optional<User> user = userService.findById(id);
-        model.addAttribute("user", user);
-        model.addAttribute("action", "update");
-        return "users/forms";
+        if(user.isPresent()){
+            model.addAttribute("user", user);
+            model.addAttribute("action", "update");
+            return "users/forms";
+        }
+
+        return "/users";
+
     }
 
     @PostMapping("/save")
@@ -53,11 +58,14 @@ public class UsersController {
 
         if(user.getPseudo() != null){
             adressService.save(user.getAdress());
+            user.setCreatedDate(Instant.now());
+            userService.save(user);
+
+            return "redirect:/users";
+
         }
 
-        user.setCreatedDate(Instant.now());
-        userService.save(user);
+        return "redirect:/users/add";
 
-        return "redirect:/users";
     }
 }

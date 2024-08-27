@@ -1,7 +1,6 @@
 package com.digitalacademy.monetab.services.impl;
 
 import com.digitalacademy.monetab.models.FileNote;
-import com.digitalacademy.monetab.models.Student;
 import com.digitalacademy.monetab.repositories.FileNoteRepository;
 import com.digitalacademy.monetab.services.FileNoteService;
 import lombok.RequiredArgsConstructor;

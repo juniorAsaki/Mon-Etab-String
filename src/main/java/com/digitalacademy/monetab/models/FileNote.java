@@ -1,8 +1,11 @@
 package com.digitalacademy.monetab.models;
 
-import jakarta.persistence.*;
-import lombok.*;
 
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Setter
@@ -10,7 +13,6 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "file_note")
-@ToString
 public class FileNote {
 
     @Id

@@ -62,8 +62,9 @@
                                     <td th:text="${#dates.format(user.getCreatedDate() , 'd MMMM yyyy')}"></td>
                                     <td>
                                         <a th:href="@{/users/update/{id}(id=${user.getId_user()})}" class="btn btn-primary">MODIFIER</a>
-                                        <a th:href="@{/users/delete/{id}(id=${user.getId_user()})}" class="btn btn-danger">SUPPRIMER</a>
+                                        <a onclick="alert('Voulez-vous supprimer cet utilisateur ?')" th:href="@{/users/delete/{id}(id=${user.getId_user()})}"  class="btn btn-danger">Supprimer</a>
                                     </td>
+
                                 </tr>
                             </tbody>
                         </table>
