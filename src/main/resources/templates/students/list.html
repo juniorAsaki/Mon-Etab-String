@@ -61,11 +61,9 @@
                                 <td th:text="${student.getNumbers()}"></td>
                                 <td th:text="${student.getEmail()}"></td>
                                 <td>
-                                    <a th:href="@{/students/update/{id}(id=${student.getId_student()})}" class="btn btn-primary">MODIFIER</a>
-                                    <a onclick="alert('Voulez-vous supprimer cet élève ?')" th:href="@{/students/delete/{id}(id=${student.getId_student()})}" class="btn btn-danger" >SUPPRIMER</a>
+                                    <a th:href="@{/students/update/{id}(id=${student.getId_person()})}" class="btn btn-primary">MODIFIER</a>
+                                    <a onclick="alert('Voulez-vous supprimer cet élève ?')" th:href="@{/students/delete/{id}(id=${student.getId_person()})}" class="btn btn-danger" >SUPPRIMER</a>
                                 </td>
-
-
                             </tr>
                             </tbody>
                         </table>

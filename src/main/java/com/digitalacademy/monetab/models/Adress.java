@@ -10,18 +10,19 @@ import lombok.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "adress")
+@ToString
 public class Adress {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_adress;
 
-    @Column(name = "country" , nullable = false)
+    @Column(name = "country")
     private String country;
 
-    @Column(name = "city" , nullable = false)
+    @Column(name = "city")
     private String city;
 
-    @Column(name = "street" , nullable = false)
+    @Column(name = "street")
     private String street;
 }

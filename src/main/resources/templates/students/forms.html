@@ -24,62 +24,78 @@
                         <a th:href="@{/students}" class="btn btn-info">Retour</a>
                     </div>
                 </div>
-                <form class="user">
+                <form class="user" th:object="${student}" th:action="@{/students/save}" method="post">
+
+                    <input type="hidden" th:field="*{id_person}">
+
                     <div class="form-group row">
                         <div class="col-sm-6 mb-3 mb-sm-0">
                             <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                   placeholder="Nom">
+                                   placeholder="Nom" th:field="*{lastName}">
                         </div>
                         <div class="col-sm-6">
                             <input type="text" class="form-control form-control-user" id="exampleLastName"
-                                   placeholder="Prenom">
+                                   placeholder="Prenom" th:field="*{firstName}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-6 mb-3 mb-sm-0">
                             <input type="text" class="form-control form-control-user"
-                                   placeholder="Matricule">
+                                   placeholder="Matricule" th:field="*{matricule}">
                         </div>
                         <div class="col-sm-6 mb-3 mb-sm-0">
                             <input type="text" class="form-control form-control-user"
-                                   placeholder="Telephone">
+                                   placeholder="Telephone" th:field="*{numbers}">
                         </div>
 
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-6 mb-3 mb-sm-0">
                             <input type="text" class="form-control form-control-user"
-                                   id="exampleInputPassword" placeholder="Ville">
+                                    placeholder="Ville" th:field="*{adress.city}">
                         </div>
                         <div class="col-sm-6">
                             <input type="date" class="form-control form-control-user"
-                                   id="exampleRepeatPassword" >
+                                   th:field="*{dateOfBirth}"  >
                         </div>
                     </div>
-                    <div class="form-group d-flex align-items-center justify-content-between">
-                        <div class="homme">
-                            <label for="genre">homme</label>
-                            <input type="radio" name="genre" id="genre" class="form-radio">
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <input type="text" class="form-control form-control-user"
+                                    placeholder="pays" th:field="*{adress.country}">
                         </div>
-                        <div class="femme">
-                            <label for="genre">femme</label>
-                            <input type="radio" name="genre" id="genre" class="form-radio">
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control form-control-user"
+                                    placeholder="Rue" th:field="*{adress.street}">
                         </div>
                     </div>
                     <div class="form-group">
-                        <select name="classe" id="classe" class="form-control" >
+                        <input type="email" class="form-control form-control-user"
+                               placeholder="Email" th:field="*{email}">
+                    </div>
+                    <div class="form-group d-flex align-items-center justify-content-between">
+                        <label for="genre">Genre</label>
+                        <div class="homme">
+                            <input type="radio" name="genre"  class="form-radio" th:value="${'M'}" th:field="*{genre}">
+                        </div>
+                        <div class="femme">
+                            <input type="radio" name="genre"  id="genre" class="form-radio" th:value="${'F'}" th:field="*{genre}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <select name="classe" id="classe" class="form-control"  th:field="*{classe}">
                             <option value="">Sélectionner une classe</option>
-                            <option value="classe1">classe1</option>
-                            <option value="classe2">classe2</option>
-                            <option value="classe3">classe3</option>
+                            <option th:each="enum_classe : ${enum_classes}"
+                                    th:value="${enum_classe.name()}"
+                                    th:text="${enum_classe.name()}"
+                            ></option>
                         </select>
                     </div>
                     <a th:href="@{/students}" class="btn btn-danger btn-user ">
                         Annuler
                     </a>
-                    <a href="" class="btn btn-success btn-user" th:text="${action != null and action == 'add' ? 'Enregistrer':'Modifier'}">
-
-                    </a>
+                    <button type="submit" class="btn btn-success btn-user" th:text="${action != null and action == 'add' ? 'Enregistrer':'Modifier'}">
+                    </button>
                     <hr>
 
                 </form>

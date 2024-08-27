@@ -19,4 +19,9 @@ public class Student extends Person{
 
     @Column(unique=true , nullable=false , name = "matricule")
     private String matricule;
+
+    @Column(name = "classe" , nullable = false)
+    private String classe;
+
+
 }

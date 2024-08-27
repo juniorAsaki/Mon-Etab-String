@@ -25,6 +25,7 @@
                     </div>
                 </div>
                 <form class="user" th:action="@{/users/save}" th:object="${user}" method="post">
+                    <input type="hidden" th:field="*{id_user}" >
                     <div class="form-group row w-50">
                         <div class="col-sm-12 mb-3">
                             <input type="text" class="form-control form-control-user" id="exampleCountry"
@@ -42,7 +43,7 @@
                             <input type="text" class="form-control form-control-user" id="exampleLastName"
                                    placeholder="pseudo" th:field="*{pseudo}">
                         </div>
-                        <div class="col-sm-12 mb-3">
+                        <div class="col-sm-12 mb-3" >
                             <input type="password" class="form-control form-control-user"
                                    placeholder="password" th:field="*{password}">
                         </div>
@@ -50,7 +51,7 @@
                     <a th:href="@{/users}" class="btn btn-danger btn-user ">
                         Annuler
                     </a>
-                    <button class="btn btn-success btn-user " th:text="${action == 'add' ? 'Enregistrer':'Modifier'}"></button>
+                    <button type="submit" class="btn btn-success btn-user " th:text="${action == 'add' ? 'Enregistrer':'Modifier'}"></button>
                     <hr>
 
                 </form>

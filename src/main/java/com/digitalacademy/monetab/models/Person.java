@@ -1,10 +1,9 @@
 package com.digitalacademy.monetab.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
+import java.sql.Date;
 
 
 @Getter
@@ -15,6 +14,7 @@ import lombok.Setter;
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "person_type")
 @Table(name = "person")
+@ToString
 public abstract class Person {
 
     @Id
@@ -33,5 +33,16 @@ public abstract class Person {
 
     @Column(name = "numbers" , nullable = false)
     private String numbers;
+
+    @Column(name = "dateOfBirth" , nullable = false)
+    private Date dateOfBirth;
+
+    @Column(name = "genre")
+    private String genre;
+
+    @OneToOne
+    @JoinColumn(name = "id_adress")
+    private Adress adress;
+
 
 }
