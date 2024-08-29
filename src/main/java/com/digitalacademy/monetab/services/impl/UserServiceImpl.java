@@ -3,6 +3,8 @@ package com.digitalacademy.monetab.services.impl;
 import com.digitalacademy.monetab.models.User;
 import com.digitalacademy.monetab.repositories.UserRepository;
 import com.digitalacademy.monetab.services.UserService;
+import com.digitalacademy.monetab.services.dto.UserDTO;
+import com.digitalacademy.monetab.services.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -17,50 +19,39 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+
+
+    private final UserMapper userMapper;
     //private final Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
 
     @Override
-    public User save(User user) {
-        log.debug("Saving user {}", user);
-        return userRepository.save(user);
+    public UserDTO save(UserDTO userDTO) {
+        log.debug("Saving user {}", userDTO);
+
+        User user  = userMapper.DtoToEntity(userDTO);
+        return userMapper.ToDto(userRepository.save(user));
     }
 
     @Override
-    public User update(User user) {
-        log.debug("Updating user {}", user);
-//        return userRepository.findById(user.getId())
-//                .map(existingUser ->{
-//                    existingUser.setPassword(user.getPassword());
-//                    existingUser.setPseudo(user.getPseudo());
-//                    return existingUser;
-//                }).map(existingUser ->{
-//                    return save(existingUser);
-//                }).orElseThrow(()-> new IllegalArgumentException());
+    public UserDTO update(UserDTO userDTO) {
 
-        Optional<User> optionalUser = userRepository.findById(user.getId_user());
-
-        if(optionalUser.isPresent()){
-            User userUpdate = optionalUser.get();
-            userUpdate.setPseudo(user.getPseudo());
-            userUpdate.setPassword(user.getPassword());
-
-            return userRepository.save(userUpdate);
-        }else{
-            throw new IllegalArgumentException();
-        }
-
+        return findById(userDTO.getId_user()).map(existingUser ->{
+            existingUser.setPseudo(userDTO.getPseudo());
+            existingUser.setPassword(userDTO.getPassword());
+            return save(existingUser);
+        }).orElseThrow(()->new RuntimeException(""));
     }
 
     @Override
-    public Optional<User> findById(Long id) {
+    public Optional<UserDTO> findById(Long id) {
         log.debug("Finding user by id {}", id);
-        return userRepository.findById(id);
+        return userRepository.findById(id).map(userMapper::ToDto);
     }
 
     @Override
-    public List<User> findAll() {
+    public List<UserDTO> findAll() {
         log.debug("Finding all users");
-        return userRepository.findAll();
+        return userRepository.findAll().stream().map(userMapper::ToDto).toList();
     }
 
     @Override
@@ -70,7 +61,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<User> findByPseudo(String pseudo) {
-        return userRepository.findByPseudo(pseudo);
+    public Optional<UserDTO> findByPseudo(String pseudo) {
+
+        return userRepository.findByPseudo(pseudo).map(user -> userMapper.ToDto(user));
     }
 }

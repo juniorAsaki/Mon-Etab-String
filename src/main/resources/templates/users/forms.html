@@ -21,7 +21,7 @@
                 <div class="text-center d-flex justify-content-between">
                     <h1 class="h4 text-gray-900 mb-4" th:text="${action == 'add' ? 'Ajouter un utilisateur':'Modifier un utilisateur'}"></h1>
                     <div>
-                        <a th:href="@{/users}" class="btn btn-info">Retour</a>
+                        <a th:href="@{/users}" class="btn btn-outline-dark">Retour</a>
                     </div>
                 </div>
                 <form class="user" th:action="@{/users/save}" th:object="${user}" method="post">
@@ -29,15 +29,15 @@
                     <div class="form-group row w-50">
                         <div class="col-sm-12 mb-3">
                             <input type="text" class="form-control form-control-user" id="exampleCountry"
-                                   placeholder="pays" th:field="*{adress.country}">
+                                   placeholder="pays" th:field="${user.adressDTO.country}">
                         </div>
                         <div class="col-sm-12 mb-3">
                             <input type="text" class="form-control form-control-user" id="exampleCity"
-                                   placeholder="ville" th:field="*{adress.city}">
+                                   placeholder="ville" th:field="${user.adressDTO.city}">
                         </div>
                         <div class="col-sm-12 mb-3">
                             <input type="text" class="form-control form-control-user" id="exampleStreet"
-                                   placeholder="rue" th:field="*{adress.street}">
+                                   placeholder="rue" th:field="*{adressDTO.street}">
                         </div>
                         <div class="col-sm-12 mb-3">
                             <input type="text" class="form-control form-control-user" id="exampleLastName"
@@ -48,10 +48,10 @@
                                    placeholder="password" th:field="*{password}">
                         </div>
                     </div>
-                    <a th:href="@{/users}" class="btn btn-danger btn-user ">
+                    <a th:href="@{/users}" class="btn btn-outline-info btn-user ">
                         Annuler
                     </a>
-                    <button type="submit" class="btn btn-success btn-user " th:text="${action == 'add' ? 'Enregistrer':'Modifier'}"></button>
+                    <button type="submit" class="btn btn-primary btn-user " th:text="${action == 'add' ? 'Enregistrer':'Modifier'}"></button>
                     <hr>
 
                 </form>

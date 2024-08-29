@@ -1,9 +1,9 @@
 package com.digitalacademy.monetab.controllers;
 
-import com.digitalacademy.monetab.models.Adress;
-import com.digitalacademy.monetab.models.User;
 import com.digitalacademy.monetab.services.AdressService;
 import com.digitalacademy.monetab.services.UserService;
+import com.digitalacademy.monetab.services.dto.AdressDTO;
+import com.digitalacademy.monetab.services.dto.UserDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,6 +27,8 @@ public class UsersController {
 
     @GetMapping
     public String showUserPage(Model model) {
+        log.debug("show user page ");
+        System.out.println(userService.findAll());
 
         model.addAttribute("users", userService.findAll());
         return "users/list";
@@ -34,9 +36,15 @@ public class UsersController {
 
     @GetMapping("/add")
     public String showAddUserPage(Model model){
-        User user = new User();
-        user.setAdress(new Adress());
-        model.addAttribute("user", user);
+        log.debug("show add user page");
+
+        UserDTO userDTO = new UserDTO();
+        userDTO.setAdress(new AdressDTO());
+
+        // Log pour vérifier l'initialisation
+        log.debug("UserDTO initialized: {}", userDTO);
+
+        model.addAttribute("user", userDTO);
         model.addAttribute("action", "add");
         return "users/forms";
     }
@@ -44,11 +52,14 @@ public class UsersController {
     @GetMapping("/update/{id}")
     public String showUpdateUserPage(@PathVariable Long id, Model model)
     {
+        log.debug("show update user page {}" , id);
 
-        Optional<User> user = userService.findById(id);
+        Optional<UserDTO> userDTO = userService.findById(id);
 
-        if(user.isPresent()){
-            model.addAttribute("user", user);
+        System.out.println(userDTO.isPresent());
+
+        if(userDTO.isPresent()){
+            model.addAttribute("user", userDTO);
             model.addAttribute("action", "update");
             return "users/forms";
         }else{
@@ -58,12 +69,22 @@ public class UsersController {
     }
 
     @PostMapping("/save")
-    public String saveUser(@ModelAttribute("user") User user){
-        log.info("id save user {}", user.getId_user());
+    public String saveUser(UserDTO userDTO){
+        log.debug("save user {}", userDTO);
+        userDTO.setCreatedDate(Instant.now());
+        userService.save(userDTO);
+        return "redirect:/users";
 
-        adressService.save(user.getAdress());
-        user.setCreatedDate(Instant.now());
-        userService.save(user);
+    }
+
+    @PostMapping("/delete/{id}")
+    public String deleteUser(@PathVariable Long id){
+        log.debug("delete user {}", id);
+
+        if(userService.findById(id).isPresent()){
+            userService.deleteById(id);
+        }
+
         return "redirect:/users";
 
     }

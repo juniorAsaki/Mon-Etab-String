@@ -4,10 +4,7 @@ package com.digitalacademy.monetab.models;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.Instant;
 
@@ -17,6 +14,7 @@ import java.time.Instant;
 @AllArgsConstructor
 @Entity
 @Table(name = "user")
+@ToString
 public class User {
 
     @Id
@@ -32,7 +30,7 @@ public class User {
     @Column(name = "creation_date" , nullable = false)
     private Instant createdDate;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_adress")
     private Adress adress;
 

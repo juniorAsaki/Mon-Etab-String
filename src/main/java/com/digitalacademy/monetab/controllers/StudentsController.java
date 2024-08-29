@@ -5,7 +5,10 @@ import com.digitalacademy.monetab.models.Adress;
 import com.digitalacademy.monetab.models.Student;
 import com.digitalacademy.monetab.services.AdressService;
 import com.digitalacademy.monetab.services.StudentService;
+import com.digitalacademy.monetab.services.dto.AdressDTO;
+import com.digitalacademy.monetab.services.dto.StudentDTO;
 import com.digitalacademy.monetab.services.impl.EnumClasse;
+import com.digitalacademy.monetab.services.mapper.AdressMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,6 +33,7 @@ public class StudentsController {
 
     @GetMapping
     public String showStudentPage(Model model) {
+        log.debug("Showing students page");
 
         model.addAttribute("students", studentService.findAll());
         return "students/list";
@@ -37,9 +41,11 @@ public class StudentsController {
 
     @GetMapping("/add")
     public String showAddStudentPage(Model model) {
-        Student student = new Student();
-        student.setAdress(new Adress());
-        model.addAttribute("student", student);
+        log.debug("show add student page");
+
+        StudentDTO studentDTO = new StudentDTO();
+        studentDTO.setAdress(new AdressDTO());
+        model.addAttribute("student", studentDTO);
         model.addAttribute("enum_classes", EnumClasse.values());
         model.addAttribute("action", "add");
         return "students/forms";
@@ -50,9 +56,11 @@ public class StudentsController {
             @PathVariable Long id ,
             Model model
     ) {
-        Optional<Student> student = studentService.findById(id);
-        if( student.isPresent()){
-            model.addAttribute("student", student.get());
+        log.debug("show update student page {}" , id);
+
+        Optional<StudentDTO> studentDTO = studentService.findById(id);
+        if( studentDTO.isPresent()){
+            model.addAttribute("student", studentDTO.get());
             model.addAttribute("enum_classes", EnumClasse.values());
             model.addAttribute("action", "update");
             return "students/forms";
@@ -64,12 +72,19 @@ public class StudentsController {
     }
 
     @PostMapping("/save")
-    public String saveStudent(Student student) {
-        log.info("student {}", student);
+    public String saveStudent(StudentDTO studentDTO) {
+        log.info("student {}", studentDTO);
+        studentService.save(studentDTO);
+        return "redirect:/students";
+    }
 
-        adressService.save(student.getAdress());
-        studentService.save(student);
+    @PostMapping("/delete/{id}")
+    public String deleteStudent(@PathVariable Long id) {
+        log.debug("delete student {}", id);
 
+        if(studentService.findById(id).isPresent()){
+            studentService.deleteById(id);
+        }
         return "redirect:/students";
     }
 }

@@ -40,7 +40,7 @@ public abstract class Person {
     @Column(name = "genre")
     private String genre;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_adress")
     private Adress adress;
 

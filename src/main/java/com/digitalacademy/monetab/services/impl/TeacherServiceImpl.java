@@ -3,6 +3,8 @@ package com.digitalacademy.monetab.services.impl;
 import com.digitalacademy.monetab.models.Teacher;
 import com.digitalacademy.monetab.repositories.TeacherRepository;
 import com.digitalacademy.monetab.services.TeacherService;
+import com.digitalacademy.monetab.services.dto.TeacherDTO;
+import com.digitalacademy.monetab.services.mapper.TeacherMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,34 +17,32 @@ public class TeacherServiceImpl implements TeacherService {
 
     private final TeacherRepository teacherRepository;
     @Override
-    public Teacher save(Teacher teacher) {
-        return teacherRepository.save(teacher);
+    public TeacherDTO save(TeacherDTO teacherDTO) {
+        Teacher teacher = TeacherMapper.ToTeacher(teacherDTO);
+        return TeacherMapper.ToTeacherDTO(teacherRepository.save(teacher));
     }
 
     @Override
-    public Teacher update(Teacher teacher) {
-//        Optional<Teacher> optionalTeacher = teacherRepository.findById(teacher.getId_teacher());
-//
-//        if(optionalTeacher.isPresent()){
-//            Teacher teacherUpdate = optionalTeacher.get();
-//
-//            teacherUpdate.setMatiere(teacher.getMatiere());
-//
-//            return teacherRepository.save(teacherUpdate);
-//        }else{
-//            throw new IllegalArgumentException();
-//        }
-        return new Teacher();
+    public TeacherDTO update(TeacherDTO teacherDTO) {
+
+        return findById(teacherDTO.getId_person()).map(existingTeacher ->{
+            Teacher teacher = TeacherMapper.ToTeacher(teacherDTO);
+            teacher.setEmail(existingTeacher.getEmail());
+            teacher.setMatiere(existingTeacher.getMatiere());
+            return save(existingTeacher);
+        }).orElseThrow(()-> new RuntimeException("Teacher not found"));
     }
 
     @Override
-    public Optional<Teacher> findById(Long id) {
-        return teacherRepository.findById(id);
+    public Optional<TeacherDTO> findById(Long id) {
+        return teacherRepository.findById(id).map(teacher -> TeacherMapper.ToTeacherDTO(teacher));
     }
 
     @Override
-    public List<Teacher> findAll() {
-        return teacherRepository.findAll();
+    public List<TeacherDTO> findAll() {
+        return teacherRepository.findAll().stream().map(teacher -> {
+            return TeacherMapper.ToTeacherDTO(teacher);
+        }).toList();
     }
 
     @Override

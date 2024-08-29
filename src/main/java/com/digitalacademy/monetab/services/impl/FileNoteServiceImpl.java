@@ -3,6 +3,8 @@ package com.digitalacademy.monetab.services.impl;
 import com.digitalacademy.monetab.models.FileNote;
 import com.digitalacademy.monetab.repositories.FileNoteRepository;
 import com.digitalacademy.monetab.services.FileNoteService;
+import com.digitalacademy.monetab.services.dto.FileNoteDTO;
+import com.digitalacademy.monetab.services.mapper.FileNoteMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,34 +16,29 @@ import java.util.Optional;
 public class FileNoteServiceImpl implements FileNoteService {
 
     private final FileNoteRepository fileNoteRepository;
+
     @Override
-    public FileNote save(FileNote fileNote) {
-        return fileNoteRepository.save(fileNote);
+    public FileNoteDTO save(FileNoteDTO fileNoteDTO) {
+
+        FileNote fileNote = FileNoteMapper.toFileNote(fileNoteDTO);
+        return FileNoteMapper.toFileNoteDTO(fileNoteRepository.save(fileNote));
     }
 
     @Override
-    public FileNote update(FileNote fileNote) {
-        Optional<FileNote> optionalFileNote = fileNoteRepository.findById(fileNote.getId_file_note());
+    public FileNoteDTO update(FileNoteDTO fileNoteDTO) {
 
-        if(optionalFileNote.isPresent()){
-            FileNote fileNoteUpdate = optionalFileNote.get();
-
-            fileNoteUpdate.setNote(fileNote.getNote());
-
-            return fileNoteRepository.save(fileNoteUpdate);
-        }else{
-            throw new IllegalArgumentException();
-        }
+        FileNote fileNote = FileNoteMapper.toFileNote(fileNoteDTO);
+        return FileNoteMapper.toFileNoteDTO(fileNoteRepository.save(fileNote));
     }
 
     @Override
-    public Optional<FileNote> findById(Long id) {
-        return fileNoteRepository.findById(id);
+    public Optional<FileNoteDTO> findById(Long id) {
+        return fileNoteRepository.findById(id).map(fileNote -> FileNoteMapper.toFileNoteDTO(fileNote));
     }
 
     @Override
-    public List<FileNote> findAll() {
-        return fileNoteRepository.findAll();
+    public List<FileNoteDTO> findAll() {
+        return fileNoteRepository.findAll().stream().map(fileNote -> FileNoteMapper.toFileNoteDTO(fileNote)).toList();
     }
 
     @Override

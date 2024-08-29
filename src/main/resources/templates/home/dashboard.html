@@ -87,12 +87,12 @@
                                         >
                                             Nombre utilisateur
                                         </div>
-                                        <div class="row no-gutters align-items-center">
+                                        <div>
                                             <div class="col-auto">
                                                 <div
                                                         class=" font-weight-bold text-gray-800 printNbreUSer"
                                                 >
-                                                    <div class="font-weight-bold text-gray-800 " th:if="${!users.isEmpty()}">
+                                                    <div class="font-weight-bold text-gray-800 text-center" th:if="${!users.isEmpty()}">
                                                         <span style="font-size: 20px" th:text="${users.size()}"></span>
                                                     </div>
                                                     <div class="font-weight-bold text-gray-800 " th:if="${users.isEmpty()}">

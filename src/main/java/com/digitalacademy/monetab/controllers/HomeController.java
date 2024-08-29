@@ -4,6 +4,7 @@ package com.digitalacademy.monetab.controllers;
 import com.digitalacademy.monetab.services.StudentService;
 import com.digitalacademy.monetab.services.TeacherService;
 import com.digitalacademy.monetab.services.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/home")
+@Slf4j
 public class HomeController {
 
     @Autowired
@@ -23,6 +25,7 @@ public class HomeController {
 
     @GetMapping
     public String home(Model model) {
+        log.debug("home page");
 
         model.addAttribute("students", studentService.findAll());
         model.addAttribute("teachers", teacherService.findAll());

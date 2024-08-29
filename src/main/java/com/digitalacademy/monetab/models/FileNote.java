@@ -22,7 +22,7 @@ public class FileNote {
     @Column(name = "note" , nullable = false)
     private Double note ;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY , cascade = CascadeType.ALL)
     @JoinColumn(name = "id_teacher")
     private Teacher teacher ;
 }

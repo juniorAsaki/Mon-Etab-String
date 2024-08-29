@@ -21,7 +21,7 @@
                 <div class="text-center d-flex justify-content-between">
                     <h1 class="h4 text-gray-900 mb-4" th:text="${action == 'add'} ? 'Ajouter un professeur':'Modifier un professeur'"></h1>
                     <div>
-                        <a th:href="@{/teachers}" class="btn btn-info">Retour</a>
+                        <a th:href="@{/teachers}" class="btn btn-outline-dark">Retour</a>
                     </div>
                 </div>
                 <form class="user" th:object="${teacher}" th:action="@{/teachers/save}"  method="post">
@@ -45,17 +45,17 @@
                         </div>
                         <div class="col-sm-6">
                             <input type="text" class="form-control form-control-user"
-                                   placeholder="Ville" th:field="*{adress.city}">
+                                   placeholder="Ville" th:field="*{adressDTO.city}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-6 mb-3 mb-sm-0">
                             <input type="text" class="form-control form-control-user"
-                                   placeholder="pays" th:field="*{adress.country}">
+                                   placeholder="pays" th:field="*{adressDTO.country}">
                         </div>
                         <div class="col-sm-6">
                             <input type="text" class="form-control form-control-user"
-                                   placeholder="Rue" th:field="*{adress.street}">
+                                   placeholder="Rue" th:field="*{adressDTO.street}">
                         </div>
                     </div>
                     <div class="form-group row d-flex justify-content-between align-items-center">
@@ -81,7 +81,6 @@
                                     th:each="enum_matiere : ${enum_matieres}"
                                     th:value="${enum_matiere.name()}"
                                     th:text="${enum_matiere.name()}"
-
                             ></option>
                         </select>
                     </div>
@@ -89,10 +88,10 @@
                         <input th:field="*{email}" type="email" name="email"  class="form-control form-control-user w-50" placeholder="Email">
                     </div>
 
-                    <a th:href="@{/teachers}" class="btn btn-danger btn-user ">
+                    <a th:href="@{/teachers}" class="btn btn-outline-info btn-user ">
                         Annuler
                     </a>
-                    <button type="submit" class="btn btn-success btn-user" th:text="${action != null and action == 'add' ? 'Enregistrer' : 'Modifier'}">
+                    <button type="submit" class="btn btn-primary btn-user" th:text="${action != null and action == 'add' ? 'Enregistrer' : 'Modifier'}">
                     </button>
                     <hr>
 

@@ -6,15 +6,16 @@ import com.digitalacademy.monetab.models.Student;
 import com.digitalacademy.monetab.models.Teacher;
 import com.digitalacademy.monetab.services.AdressService;
 import com.digitalacademy.monetab.services.TeacherService;
+import com.digitalacademy.monetab.services.dto.AdressDTO;
+import com.digitalacademy.monetab.services.dto.TeacherDTO;
 import com.digitalacademy.monetab.services.impl.EnumMatiere;
+import com.digitalacademy.monetab.services.mapper.AdressMapper;
+import com.digitalacademy.monetab.services.mapper.TeacherMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/teachers")
@@ -30,6 +31,7 @@ public class TeachersController {
 
     @GetMapping
     public String showTeachersPage(Model model) {
+        log.debug("show teachers page");
 
         model.addAttribute("teachers", teacherService.findAll());
         return "teachers/list";
@@ -39,10 +41,12 @@ public class TeachersController {
     public String showAddTeacherPage(
             Model model
     ){
-        Teacher teacher = new Teacher();
-        teacher.setAdress(new Adress());
-        log.info("student {}" , teacher);
-        model.addAttribute("teacher", teacher);
+        log.debug("show add teacher page");
+
+        TeacherDTO teacherDTO = new TeacherDTO();
+        teacherDTO.setAdress(new AdressDTO());
+        log.info("student {}" , teacherDTO);
+        model.addAttribute("teacher", teacherDTO);
         model.addAttribute("enum_matieres" , EnumMatiere.values());
         model.addAttribute("action", "add");
         return "teachers/forms";
@@ -53,6 +57,8 @@ public class TeachersController {
             @PathVariable Long id,
             Model model
     ){
+        log.debug("show update teacher page {}" , id);
+
         model.addAttribute("teacher", teacherService.findById(id));
         model.addAttribute("enum_matieres" , EnumMatiere.values());
         model.addAttribute("action", "update");
@@ -60,12 +66,20 @@ public class TeachersController {
     }
 
     @PostMapping("/save")
-    public String saveTeacher(Teacher teacher) {
-        log.info("teacher {}" , teacher);
+    public String saveTeacher(TeacherDTO teacherDTO) {
+        log.debug("teacher {}" , teacherDTO);
+        teacherService.save(teacherDTO);
+        return "redirect:/teachers";
+    }
 
-        adressService.save(teacher.getAdress());
-        teacherService.save(teacher);
+    @PostMapping("/delete/{id}")
+    public String deleteTeacher(@PathVariable Long id) {
+        log.debug("delete teacher : {}", id);
 
-        return "redirect:/students";
+        if(teacherService.findById(id).isPresent()) {
+            teacherService.deleteById(id);
+        }
+
+        return "redirect:/teachers";
     }
 }

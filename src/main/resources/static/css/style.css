@@ -24,3 +24,45 @@
     margin: 0;
     padding: 0;
 }
+
+/* form delete */
+
+.form-delete{
+    position: absolute;
+    z-index: 100;
+    height: 100vh;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.3); /* Couleur de fond avec transparence */
+    backdrop-filter: blur(5px); /* Appliquer le flou */
+    border-radius: 10px;
+}
+
+.form-delete form{
+    background-color: #fff;
+    transform: translate(5% , 100%);
+    width: 250px;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.form-delete form .response{
+    display: flex;
+}
+
+
+.form-delete form button{
+    width: 50%;
+    outline: none;
+    border: 0;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#non{
+    background-color: crimson;
+}
+
+#oui{
+    background-color: green;
+}

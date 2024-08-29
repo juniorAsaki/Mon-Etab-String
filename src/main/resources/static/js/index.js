@@ -1,3 +1,4 @@
+// diagramme circulaire
 
 const pieCanvas = document.getElementById('pieCanvas').getContext('2d');
 const genderChart = new Chart(pieCanvas, {
@@ -20,5 +21,4 @@ const genderChart = new Chart(pieCanvas, {
         }
     }
 });
-
 
