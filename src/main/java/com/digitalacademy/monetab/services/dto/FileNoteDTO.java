@@ -12,5 +12,5 @@ public class FileNoteDTO {
 
     private Double note ;
 
-    private Teacher teacher ;
+    private TeacherDTO teacher ;
 }

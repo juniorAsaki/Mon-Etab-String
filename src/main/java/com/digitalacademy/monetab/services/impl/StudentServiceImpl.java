@@ -16,11 +16,12 @@ import java.util.Optional;
 public class StudentServiceImpl implements StudentService {
 
     private final StudentRepository studentRepository;
+    private final StudentMapper studentMapper;
 
     @Override
     public StudentDTO save(StudentDTO studentDTO) {
-        Student student = StudentMapper.ToStudent(studentDTO);
-        return StudentMapper.ToStudentDTO(studentRepository.save(student));
+        Student student = studentMapper.DtoToEntity(studentDTO);
+        return studentMapper.ToDto(studentRepository.save(student));
     }
 
     @Override
@@ -35,13 +36,13 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Optional<StudentDTO> findById(Long id) {
-        return studentRepository.findById(id).map(student -> StudentMapper.ToStudentDTO(student));
+        return studentRepository.findById(id).map(student -> studentMapper.ToDto(student));
     }
 
     @Override
     public List<StudentDTO> findAll() {
         return studentRepository.findAll().stream().map(student -> {
-            return StudentMapper.ToStudentDTO(student);
+            return studentMapper.ToDto(student);
         }).toList();
     }
 

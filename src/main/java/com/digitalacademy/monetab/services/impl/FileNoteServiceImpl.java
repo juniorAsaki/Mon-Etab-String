@@ -16,29 +16,30 @@ import java.util.Optional;
 public class FileNoteServiceImpl implements FileNoteService {
 
     private final FileNoteRepository fileNoteRepository;
+    private final FileNoteMapper fileNoteMapper;
 
     @Override
     public FileNoteDTO save(FileNoteDTO fileNoteDTO) {
 
-        FileNote fileNote = FileNoteMapper.toFileNote(fileNoteDTO);
-        return FileNoteMapper.toFileNoteDTO(fileNoteRepository.save(fileNote));
+        FileNote fileNote = fileNoteMapper.DtoToEntity(fileNoteDTO);
+        return fileNoteMapper.ToDto(fileNoteRepository.save(fileNote));
     }
 
     @Override
     public FileNoteDTO update(FileNoteDTO fileNoteDTO) {
 
-        FileNote fileNote = FileNoteMapper.toFileNote(fileNoteDTO);
-        return FileNoteMapper.toFileNoteDTO(fileNoteRepository.save(fileNote));
+        FileNote fileNote = fileNoteMapper.DtoToEntity(fileNoteDTO);
+        return fileNoteMapper.ToDto(fileNoteRepository.save(fileNote));
     }
 
     @Override
     public Optional<FileNoteDTO> findById(Long id) {
-        return fileNoteRepository.findById(id).map(fileNote -> FileNoteMapper.toFileNoteDTO(fileNote));
+        return fileNoteRepository.findById(id).map(fileNote -> fileNoteMapper.ToDto(fileNote));
     }
 
     @Override
     public List<FileNoteDTO> findAll() {
-        return fileNoteRepository.findAll().stream().map(fileNote -> FileNoteMapper.toFileNoteDTO(fileNote)).toList();
+        return fileNoteRepository.findAll().stream().map(fileNote -> fileNoteMapper.ToDto(fileNote)).toList();
     }
 
     @Override

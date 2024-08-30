@@ -16,11 +16,12 @@ import java.util.Optional;
 public class AdressServiceImpl implements AdressService {
 
     private final AdressRepository adressRepository;
+    private final AdressMapper adressMapper;
 
     @Override
     public AdressDTO save(AdressDTO adressDTO) {
-        Adress adress = AdressMapper.toAdress(adressDTO);
-        return AdressMapper.toAdressDTO(adressRepository.save(adress));
+        Adress adress = adressMapper.DtoToEntity(adressDTO);
+        return adressMapper.ToDto(adressRepository.save(adress));
     }
 
     @Override
@@ -36,7 +37,7 @@ public class AdressServiceImpl implements AdressService {
     @Override
     public Optional<AdressDTO> findById(Long id) {
         return adressRepository.findById(id).map(adress -> {
-            return AdressMapper.toAdressDTO(adress);
+            return adressMapper.ToDto(adress);
         });
     }
 
@@ -44,7 +45,7 @@ public class AdressServiceImpl implements AdressService {
     public List<AdressDTO> findAll() {
 
         return adressRepository.findAll().stream().map(adress -> {
-            return AdressMapper.toAdressDTO(adress);
+            return adressMapper.ToDto(adress);
         }).toList();
     }
 

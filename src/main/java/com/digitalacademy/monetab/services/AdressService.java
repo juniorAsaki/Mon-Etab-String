@@ -1,6 +1,5 @@
 package com.digitalacademy.monetab.services;
 
-import com.digitalacademy.monetab.models.Adress;
 import com.digitalacademy.monetab.services.dto.AdressDTO;
 
 import java.util.List;

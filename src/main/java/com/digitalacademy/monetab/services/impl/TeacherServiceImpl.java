@@ -16,17 +16,18 @@ import java.util.Optional;
 public class TeacherServiceImpl implements TeacherService {
 
     private final TeacherRepository teacherRepository;
+    private final TeacherMapper teacherMapper;
     @Override
     public TeacherDTO save(TeacherDTO teacherDTO) {
-        Teacher teacher = TeacherMapper.ToTeacher(teacherDTO);
-        return TeacherMapper.ToTeacherDTO(teacherRepository.save(teacher));
+        Teacher teacher = teacherMapper.DtoToEntity(teacherDTO);
+        return teacherMapper.ToDto(teacherRepository.save(teacher));
     }
 
     @Override
     public TeacherDTO update(TeacherDTO teacherDTO) {
 
         return findById(teacherDTO.getId_person()).map(existingTeacher ->{
-            Teacher teacher = TeacherMapper.ToTeacher(teacherDTO);
+            Teacher teacher = teacherMapper.DtoToEntity(teacherDTO);
             teacher.setEmail(existingTeacher.getEmail());
             teacher.setMatiere(existingTeacher.getMatiere());
             return save(existingTeacher);
@@ -35,13 +36,13 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public Optional<TeacherDTO> findById(Long id) {
-        return teacherRepository.findById(id).map(teacher -> TeacherMapper.ToTeacherDTO(teacher));
+        return teacherRepository.findById(id).map(teacher -> teacherMapper.ToDto(teacher));
     }
 
     @Override
     public List<TeacherDTO> findAll() {
         return teacherRepository.findAll().stream().map(teacher -> {
-            return TeacherMapper.ToTeacherDTO(teacher);
+            return teacherMapper.ToDto(teacher);
         }).toList();
     }
 

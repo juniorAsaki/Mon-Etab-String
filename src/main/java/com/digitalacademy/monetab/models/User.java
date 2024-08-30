@@ -34,5 +34,13 @@ public class User {
     @JoinColumn(name = "id_adress")
     private Adress adress;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_role_user")
+    private RoleUser roleUser;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_school")
+    private School school;
+
 
 }
