@@ -46,17 +46,20 @@ public class AppSettingServiceImpl implements AppSettingService {
     }
 
     @Override
-    public void initAppSetting(AppSettingDTO appSettingDTO) {
-        log.debug("Request to initAppSetting {}", appSettingDTO);
-        if(!existingParameter()){
-            save(appSettingDTO);
+    public AppSettingDTO initAppSetting(AppSettingDTO appSettingDTO) {
+        log.debug("Request to init app {}", appSettingDTO);
+        AppSettingDTO settingDTO = existingParameter();
+        if (settingDTO == null){
+            return save(appSettingDTO);
         }
+        return settingDTO;
+
     }
 
     @Override
-    public Boolean existingParameter() {
+    public AppSettingDTO existingParameter() {
         log.debug("Request to check existing parameter");
         List<AppSettingDTO> appSettingDTOS = findAll();
-        return !appSettingDTOS.isEmpty();
+        return appSettingDTOS.stream().findFirst().orElse(null);
     }
 }

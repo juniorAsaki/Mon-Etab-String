@@ -24,6 +24,6 @@ public class School {
     @Column(nullable = false , name = "url_logo")
     private String urlLogo;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     private AppSetting appSetting;
 }

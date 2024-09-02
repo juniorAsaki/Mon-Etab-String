@@ -5,56 +5,40 @@
 >
 <head th:insert="fragments/fragment :: header" ></head>
 
-<body class="bg-gradient-primary">
+<body class="bg-gradient-light">
 
 <div class="container">
 
-    <!-- Outer Row -->
-    <div class="row justify-content-center">
-
-        <div class="col-xl-10 col-lg-12 col-md-9">
-
-            <div class="card o-hidden border-0 shadow-lg my-5" style="height: 85vh;">
-                <div class="card-body p-0">
-                    <!-- Nested Row within Card Body -->
-                    <div class="row">
-                        <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                        <div class="col-lg-6">
-                            <div class="p-5" style="margin: 5rem auto;">
-                                <div class="text-center" style="transform: translate(-67%);">
-                                    <h1 class="h4 text-gray-900 mb-4">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="svg-icon" width="50px" style="margin-right: 10px">
-                                            <path d="M337.8 5.4C327-1.8 313-1.8 302.2 5.4L166.3 96 48 96C21.5 96 0 117.5 0 144L0 464c0 26.5 21.5 48 48 48l208 0 0-96c0-35.3 28.7-64 64-64s64 28.7 64 64l0 96 208 0c26.5 0 48-21.5 48-48l0-320c0-26.5-21.5-48-48-48L473.7 96 337.8 5.4zM96 192l32 0c8.8 0 16 7.2 16 16l0 64c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-64c0-8.8 7.2-16 16-16zm400 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 64c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-64zM96 320l32 0c8.8 0 16 7.2 16 16l0 64c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-64c0-8.8 7.2-16 16-16zm400 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 64c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-64zM232 176a88 88 0 1 1 176 0 88 88 0 1 1 -176 0zm88-48c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16s-7.2-16-16-16l-16 0 0-16c0-8.8-7.2-16-16-16z"/>
-                                        </svg>Mon Etab
-                                    </h1>
-                                </div>
-                                <form th:action="@{/login}" th:object="${user}" method="post" class="user" style="transform: translate(-67%);">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control form-control-user"
-                                               id="InputPseudo"
-                                               th:field="*{pseudo}"
-                                               placeholder="Identifiant">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control form-control-user"
-                                               id="InputPassword" placeholder="Mot de passe"
-                                                th:field="*{password}"
-                                        >
-                                    </div>
-
-                                    <button class="btn btn-primary btn-user btn-block">
-                                        Connexion
-                                    </button>
-
-                                </form>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="border d-flex align-items-center flex-column w-75 form-connection">
+        <div class="text-center d-flex align-items-center justify-content-center w-50">
+            <svg th:if="${school == null}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="svg-icon"  id="svg-icon"  style="margin-right: 10px">
+                <path d="M337.8 5.4C327-1.8 313-1.8 302.2 5.4L166.3 96 48 96C21.5 96 0 117.5 0 144L0 464c0 26.5 21.5 48 48 48l208 0 0-96c0-35.3 28.7-64 64-64s64 28.7 64 64l0 96 208 0c26.5 0 48-21.5 48-48l0-320c0-26.5-21.5-48-48-48L473.7 96 337.8 5.4zM96 192l32 0c8.8 0 16 7.2 16 16l0 64c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-64c0-8.8 7.2-16 16-16zm400 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 64c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-64zM96 320l32 0c8.8 0 16 7.2 16 16l0 64c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-64c0-8.8 7.2-16 16-16zm400 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 64c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-64zM232 176a88 88 0 1 1 176 0 88 88 0 1 1 -176 0zm88-48c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16s-7.2-16-16-16l-16 0 0-16c0-8.8-7.2-16-16-16z"/>
+            </svg>
+            <img th:src="${school?.urlLogo}" th:if="${school != null}" width="50px">
+            <h1 th:text="${school?.nameSchool}">
+                Mon Etab
+            </h1>
+        </div>
+        <form th:action="@{/login/save}" th:object="${user}" method="post" class="user w-50">
+            <input type="hidden" th:field="*{id_user}">
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user"
+                       id="InputPseudo"
+                       th:field="*{pseudo}"
+                       placeholder="Identifiant">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control form-control-user"
+                       id="InputPassword" placeholder="Mot de passe"
+                       th:field="*{password}"
+                >
             </div>
 
-        </div>
+            <button class="btn btn-primary btn-user btn-block">
+                Connexion
+            </button>
+
+        </form>
 
     </div>
 

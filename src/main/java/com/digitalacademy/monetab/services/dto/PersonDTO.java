@@ -30,7 +30,7 @@ public class PersonDTO {
 
     private Gender gender;
 
-    private Adress adress;
+    private AdressDTO adress;
 
     private User user;
 

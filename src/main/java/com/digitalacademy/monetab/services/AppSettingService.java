@@ -12,6 +12,6 @@ public interface AppSettingService {
     List<AppSettingDTO> findAll();
     AppSettingDTO update(AppSettingDTO appSettingDTO);
     void deleteById(Long id);
-    void initAppSetting(AppSettingDTO appSettingDTO);
-    Boolean existingParameter();
+    AppSettingDTO initAppSetting(AppSettingDTO appSettingDTO);
+    AppSettingDTO existingParameter();
 }

@@ -32,10 +32,10 @@ public class User {
     @Column(name = "creation_date" , nullable = false)
     private Instant createdDate;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<RoleUser> roleUser;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "id_school")
     private School school;
 

@@ -16,4 +16,6 @@ public interface UserService {
     List<UserDTO> findAll();
     void deleteById(Long id);
     Optional<UserDTO> findByPseudo(String username);
+    List<UserDTO> initUsers(List<UserDTO> users);
+
 }

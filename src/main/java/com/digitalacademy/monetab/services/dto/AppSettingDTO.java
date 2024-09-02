@@ -1,7 +1,12 @@
 package com.digitalacademy.monetab.services.dto;
 
 import com.digitalacademy.monetab.models.School;
+import lombok.Getter;
+import lombok.Setter;
 
+
+@Getter
+@Setter
 public class AppSettingDTO {
 
     private Long id_appsetting;
@@ -14,5 +19,4 @@ public class AppSettingDTO {
 
     private String smtpPassword;
 
-    private School school;
 }

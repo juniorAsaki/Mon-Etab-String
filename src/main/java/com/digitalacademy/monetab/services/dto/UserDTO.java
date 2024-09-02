@@ -23,8 +23,8 @@ public class UserDTO {
 
     private Instant createdDate;
 
-    private List<RoleUser> roleUser;
+    private List<RoleUserDTO> roleUser;
 
-    private School school;
+    private SchoolDTO school;
 
 }

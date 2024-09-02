@@ -8,6 +8,14 @@
     fill: #FFFFFF;
 }
 
+#svg-icon{
+    width: 50px;
+}
+
+#svg-icon path {
+    fill: #111;
+}
+
 .pieClasse{
     transform: translate(50% , 40%);
     height: 100px;
@@ -66,3 +74,37 @@
 #oui{
     background-color: green;
 }
+
+
+/*formulaire de connexion*/
+
+.form-connection{
+    position: relative;
+    transform: translate(17% , 10%);
+    box-shadow: 2px 2px 18px 0px #999999;
+    padding: 150px 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

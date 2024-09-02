@@ -40,7 +40,7 @@ public class TeachersController {
         log.debug("show add teacher page");
 
         TeacherDTO teacherDTO = new TeacherDTO();
-        teacherDTO.setAdress(new Adress());
+        teacherDTO.setAdress(new AdressDTO());
 
         log.info("student {}" , teacherDTO);
 

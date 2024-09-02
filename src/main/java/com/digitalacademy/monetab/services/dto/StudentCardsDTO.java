@@ -19,5 +19,5 @@ public class StudentCardsDTO {
 
     private Date expiryDate;
 
-    private Student student;
+    private StudentDTO student;
 }

@@ -4,6 +4,7 @@ package com.digitalacademy.monetab.controllers;
 
 import com.digitalacademy.monetab.models.Adress;
 import com.digitalacademy.monetab.services.StudentService;
+import com.digitalacademy.monetab.services.dto.AdressDTO;
 import com.digitalacademy.monetab.services.dto.StudentDTO;
 import com.digitalacademy.monetab.services.impl.Gender;
 import lombok.extern.slf4j.Slf4j;
@@ -39,7 +40,7 @@ public class StudentsController {
         log.debug("show add student page");
 
         StudentDTO studentDTO = new StudentDTO();
-        studentDTO.setAdress(new Adress());
+        studentDTO.setAdress(new AdressDTO());
 
         model.addAttribute("student", studentDTO);
         model.addAttribute("action", "add");

@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -64,5 +65,16 @@ public class UserServiceImpl implements UserService {
     public Optional<UserDTO> findByPseudo(String pseudo) {
 
         return userRepository.findByPseudo(pseudo).map(user -> userMapper.ToDto(user));
+    }
+
+    @Override
+    public List<UserDTO> initUsers(List<UserDTO> users) {
+
+        List<UserDTO> userDTOS = findAll();
+        if (userDTOS.isEmpty()){
+            users.forEach(user -> save(user));
+        }
+
+        return findAll();
     }
 }

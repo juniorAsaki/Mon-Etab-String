@@ -44,4 +44,17 @@ public class RoleUserServiceImpl implements RoleUserService {
     public List<RoleUserDTO> findAll() {
         return  roleUserRepository.findAll().stream().map(roleUser -> roleUserMapper.ToDto(roleUser)).toList();
     }
+
+    @Override
+    public List<RoleUserDTO> initRoles(List<RoleUserDTO> roles) {
+        log.debug("Request to init roles {}", roles);
+        List<RoleUserDTO> listRoles = findAll();
+
+        if (listRoles.isEmpty()) {
+            roles.forEach(roleUserDTO -> save(roleUserDTO));
+        }
+        return findAll();
+    }
+
+
 }

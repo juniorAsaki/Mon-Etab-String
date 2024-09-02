@@ -41,7 +41,7 @@ public class StudentCardsController {
         log.info("Show add student card");
 
         StudentCardsDTO studentCardsDTO = new StudentCardsDTO();
-        studentCardsDTO.setStudent(new Student());
+        studentCardsDTO.setStudent(new StudentDTO());
 
         model.addAttribute("card" , studentCardsDTO);
         model.addAttribute("students" , studentService.findAll());

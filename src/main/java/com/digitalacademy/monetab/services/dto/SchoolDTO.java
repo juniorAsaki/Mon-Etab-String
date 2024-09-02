@@ -1,7 +1,12 @@
 package com.digitalacademy.monetab.services.dto;
 
 import com.digitalacademy.monetab.models.AppSetting;
+import lombok.Getter;
+import lombok.Setter;
 
+
+@Getter
+@Setter
 public class SchoolDTO {
 
     private Long id_school;
@@ -10,5 +15,5 @@ public class SchoolDTO {
 
     private String urlLogo;
 
-    private AppSetting appSetting;
+    private AppSettingDTO appSetting;
 }

@@ -42,8 +42,8 @@ public class UsersController {
         log.debug("show add user page");
 
         UserDTO userDTO = new UserDTO();
-        List<RoleUser> roleUsers = new ArrayList<>();
-        userDTO.setSchool(new School());
+        List<RoleUserDTO> roleUsers = new ArrayList<>();
+        userDTO.setSchool(new SchoolDTO());
         userDTO.setRoleUser(roleUsers );
 
         // Log pour vérifier l'initialisation

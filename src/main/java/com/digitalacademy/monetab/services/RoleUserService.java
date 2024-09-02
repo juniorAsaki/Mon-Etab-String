@@ -13,4 +13,5 @@ public interface RoleUserService {
     RoleUserDTO update(RoleUserDTO roleUser);
     void delete(Long id);
     List<RoleUserDTO> findAll();
+    List<RoleUserDTO> initRoles(List<RoleUserDTO> roles);
 }
