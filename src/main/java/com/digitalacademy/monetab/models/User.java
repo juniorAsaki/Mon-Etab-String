@@ -7,6 +7,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.Instant;
+import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -30,13 +32,8 @@ public class User {
     @Column(name = "creation_date" , nullable = false)
     private Instant createdDate;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_adress")
-    private Adress adress;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_role_user")
-    private RoleUser roleUser;
+    @OneToMany
+    private List<RoleUser> roleUser;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_school")

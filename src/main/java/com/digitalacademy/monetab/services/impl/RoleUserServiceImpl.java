@@ -8,7 +8,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @RequiredArgsConstructor
 @Service
@@ -36,5 +38,10 @@ public class RoleUserServiceImpl implements RoleUserService {
     @Override
     public void delete(Long id) {
         roleUserRepository.deleteById(id);
+    }
+
+    @Override
+    public List<RoleUserDTO> findAll() {
+        return  roleUserRepository.findAll().stream().map(roleUser -> roleUserMapper.ToDto(roleUser)).toList();
     }
 }

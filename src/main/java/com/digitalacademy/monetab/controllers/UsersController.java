@@ -1,8 +1,11 @@
 package com.digitalacademy.monetab.controllers;
 
-import com.digitalacademy.monetab.services.AdressService;
+import com.digitalacademy.monetab.models.RoleUser;
+import com.digitalacademy.monetab.models.School;
+import com.digitalacademy.monetab.services.RoleUserService;
 import com.digitalacademy.monetab.services.UserService;
-import com.digitalacademy.monetab.services.dto.AdressDTO;
+import com.digitalacademy.monetab.services.dto.RoleUserDTO;
+import com.digitalacademy.monetab.services.dto.SchoolDTO;
 import com.digitalacademy.monetab.services.dto.UserDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Instant;
-import java.util.Optional;
+import java.util.*;
 
 @Slf4j
 @Controller
@@ -22,7 +25,7 @@ public class UsersController {
     private UserService userService;
 
     @Autowired
-    private AdressService adressService;
+    private RoleUserService roleUserService;
 
 
     @GetMapping
@@ -39,12 +42,16 @@ public class UsersController {
         log.debug("show add user page");
 
         UserDTO userDTO = new UserDTO();
-        userDTO.setAdress(new AdressDTO());
+        List<RoleUser> roleUsers = new ArrayList<>();
+        userDTO.setSchool(new School());
+        userDTO.setRoleUser(roleUsers );
 
         // Log pour vérifier l'initialisation
         log.debug("UserDTO initialized: {}", userDTO);
+        System.out.println(userDTO);
 
         model.addAttribute("user", userDTO);
+        model.addAttribute("roles", roleUserService.findAll());
         model.addAttribute("action", "add");
         return "users/forms";
     }
@@ -56,10 +63,9 @@ public class UsersController {
 
         Optional<UserDTO> userDTO = userService.findById(id);
 
-        System.out.println(userDTO.isPresent());
-
         if(userDTO.isPresent()){
             model.addAttribute("user", userDTO);
+            model.addAttribute("roles", roleUserService.findAll());
             model.addAttribute("action", "update");
             return "users/forms";
         }else{

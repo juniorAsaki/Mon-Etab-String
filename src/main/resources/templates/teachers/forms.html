@@ -29,63 +29,67 @@
                     <input type="hidden" th:field="*{id_person}">
 
                     <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
+                        <div class="col-sm-4 mb-3 mb-sm-0">
                             <input type="text" class="form-control form-control-user" id="exampleFirstName"
                                    placeholder="Nom" th:field="*{lastName}" >
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <input type="text" class="form-control form-control-user" id="exampleLastName"
                                    placeholder="Prenom" th:field="*{firstName}">
                         </div>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control form-control-user" id="urlPicture"
+                                   placeholder="urlPicture" th:field="*{urlPicture}" >
+                        </div>
                     </div>
                     <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
+                        <div class="col-sm-4 mb-3 mb-sm-0">
                             <input type="text" class="form-control form-control-user" id="exampleInputEmail"
                                    placeholder="Telephone" th:field="*{numbers}">
                         </div>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control form-control-user"
-                                   placeholder="Ville" th:field="*{adressDTO.city}">
+                        <div class="col-sm-4 mb-3 mb-sm-0">
+                            <select name="specialty" id="specialty" class="form-control" th:field="*{specialty}">
+                                <option
+                                        th:each="enum_matiere : ${matieres}"
+                                        th:value="${enum_matiere.name()}"
+                                        th:text="${enum_matiere.name()}"
+                                ></option>
+                            </select>
+                        </div>
+                        <div class="form-check form-switch col-sm-4 mb-3 mb-sm-0">
+                            <input class="form-check-input" type="checkbox" role="switch" id="available" th:field="*{available}">
+                            <label class="form-check-label" for="available">Vacant</label>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
+                        <div class="col-sm-4">
                             <input type="text" class="form-control form-control-user"
-                                   placeholder="pays" th:field="*{adressDTO.country}">
+                                   placeholder="Ville" th:field="*{adress.city}">
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4 mb-3 mb-sm-0">
                             <input type="text" class="form-control form-control-user"
-                                   placeholder="Rue" th:field="*{adressDTO.street}">
+                                   placeholder="pays" th:field="*{adress.country}">
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control form-control-user"
+                                   placeholder="Rue" th:field="*{adress.street}">
                         </div>
                     </div>
                     <div class="form-group row d-flex justify-content-between align-items-center">
                         <div class="form-group  w-25 d-flex align-items-center justify-content-center">
-                            <div class="homme mr-3">
-                                <label for="genre">homme</label>
-                                <input type="radio" name="genre"  class="form-radio-user"  th:value="${'M'}"  th:field="*{genre}">
-                            </div>
-                            <div class="femme">
-                                <label for="genre">femme</label>
-                                <input type="radio" name="genre" id="genre" class="form-radio"  th:value="${'F'}"  th:field="*{genre}">
-                            </div>
+                            <label id="gender">Genre</label>
+                            <select name="genre" id="gender" class="form-control" th:field="*{gender}">
+                                <option
+                                        th:each="enum_genre : ${genres}"
+                                        th:value="${enum_genre.name()}"
+                                        th:text="${enum_genre.name()}"
+                                ></option>
+                            </select>
                         </div>
                         <div class="col-sm-6">
                             <input type="date" class="form-control form-control-user"
                                    id="exampleRepeatPassword" th:field="*{dateOfBirth}">
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <select name="matiere" id="matiere" class="form-control" th:field="*{matiere}">
-                            <option value="">Sélectionner une matiere</option>
-                            <option
-                                    th:each="enum_matiere : ${enum_matieres}"
-                                    th:value="${enum_matiere.name()}"
-                                    th:text="${enum_matiere.name()}"
-                            ></option>
-                        </select>
-                    </div>
-                    <div class="homme mr-3 pb-3">
-                        <input th:field="*{email}" type="email" name="email"  class="form-control form-control-user w-50" placeholder="Email">
                     </div>
 
                     <a th:href="@{/teachers}" class="btn btn-outline-info btn-user ">

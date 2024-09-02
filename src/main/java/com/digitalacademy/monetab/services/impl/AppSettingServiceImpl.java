@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -30,8 +31,8 @@ public class AppSettingServiceImpl implements AppSettingService {
     }
 
     @Override
-    public Set<AppSettingDTO> findAll() {
-        return (Set<AppSettingDTO>) appSettingRepository.findAll().stream().map(appSetting -> appSettingMapper.ToDto(appSetting)).toList();
+    public List<AppSettingDTO> findAll() {
+        return  appSettingRepository.findAll().stream().map(appSetting -> appSettingMapper.ToDto(appSetting)).toList();
     }
 
     @Override
@@ -42,5 +43,20 @@ public class AppSettingServiceImpl implements AppSettingService {
     @Override
     public void deleteById(Long id) {
         appSettingRepository.deleteById(id);
+    }
+
+    @Override
+    public void initAppSetting(AppSettingDTO appSettingDTO) {
+        log.debug("Request to initAppSetting {}", appSettingDTO);
+        if(!existingParameter()){
+            save(appSettingDTO);
+        }
+    }
+
+    @Override
+    public Boolean existingParameter() {
+        log.debug("Request to check existing parameter");
+        List<AppSettingDTO> appSettingDTOS = findAll();
+        return !appSettingDTOS.isEmpty();
     }
 }

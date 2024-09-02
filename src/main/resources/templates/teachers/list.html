@@ -37,9 +37,8 @@
                                 <th>NOM</th>
                                 <th>PRENOM</th>
                                 <th>PAYS</th>
-                                <th>MATIERE</th>
+                                <th>SPECIALITE</th>
                                 <th>TELEPHONE</th>
-                                <th>EMAIL</th>
                                 <th>ACTIONS</th>
                             </tr>
                             </thead>
@@ -49,9 +48,8 @@
                                 <th>NOM</th>
                                 <th>PRENOM</th>
                                 <th>PAYS</th>
-                                <th>MATIERE</th>
+                                <th>SPECIALITE</th>
                                 <th>TELEPHONE</th>
-                                <th>EMAIL</th>
                                 <th>ACTIONS</th>
                             </tr>
                             </tfoot>
@@ -60,10 +58,9 @@
                                 <td th:text="${status.count}"></td>
                                 <td th:text="${teacher.getFirstName()}"></td>
                                 <td th:text="${teacher.getLastName()}"></td>
-                                <td th:text="${teacher.getAdressDTO().country}"></td>
-                                <td th:text="${teacher.getMatiere()}"></td>
+                                <td th:text="${teacher.getAdress().country}"></td>
+                                <td th:text="${teacher.specialty}"></td>
                                 <td th:text="${teacher.getNumbers()}"></td>
-                                <td th:text="${teacher.getEmail()}"></td>
                                 <td>
                                     <a th:href="@{/teachers/update/{id}(id=${teacher.getId_person()})}"  class="btn btn-primary">MODIFIER</a>
                                     <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" th:data-bs-target="'#exampleModal'+${status.count}">

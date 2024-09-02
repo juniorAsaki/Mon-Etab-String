@@ -30,30 +30,38 @@
                     <input type="hidden" th:field="*{id_person}">
 
                     <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
+                        <div class="col-sm-4 mb-3 mb-sm-0">
                             <input type="text" class="form-control form-control-user" id="FirstName"
                                    placeholder="Nom" th:field="*{lastName}" oninput="changeValueChampsMatricule()">
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <input type="text" class="form-control form-control-user" id="LastName"
                                    placeholder="Prenom" th:field="*{firstName}" oninput="changeValueChampsMatricule()">
                         </div>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control form-control-user" id="urlPicture"
+                                   placeholder="urlPicture" th:field="*{urlPicture}" >
+                        </div>
                     </div>
                     <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
+                        <div class="col-sm-4 mb-3 mb-sm-0">
                             <input type="text" readonly class="form-control form-control-user"
                                    placeholder="Matricule" th:field="*{matricule}" id="Matricule">
                         </div>
-                        <div class="col-sm-6 mb-3 mb-sm-0">
+                        <div class="col-sm-4 mb-3 mb-sm-0">
                             <input type="text" class="form-control form-control-user"
                                    placeholder="Telephone" th:field="*{numbers}">
+                        </div>
+                        <div class="col-sm-4 mb-3 mb-sm-0">
+                            <input type="text" class="form-control form-control-user"
+                                   placeholder="Telephone D'un Parent" th:field="*{phoneNumberParent}">
                         </div>
 
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-6 mb-3 mb-sm-0">
                             <input type="text" class="form-control form-control-user"
-                                    placeholder="Ville" th:field="*{adressDTO.city}">
+                                    placeholder="Ville" th:field="*{adress.city}">
                         </div>
                         <div class="col-sm-6">
                             <input type="date" class="form-control form-control-user"
@@ -63,34 +71,20 @@
                     <div class="form-group row">
                         <div class="col-sm-6 mb-3 mb-sm-0">
                             <input type="text" class="form-control form-control-user"
-                                    placeholder="pays" th:field="*{adressDTO.country}">
+                                    placeholder="pays" th:field="*{adress.country}">
                         </div>
                         <div class="col-sm-6">
                             <input type="text" class="form-control form-control-user"
-                                    placeholder="Rue" th:field="*{adressDTO.street}">
+                                    placeholder="Rue" th:field="*{adress.street}">
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" class="form-control form-control-user"
-                               placeholder="Email" th:field="*{email}">
                     </div>
                     <div class="form-group d-flex align-items-center justify-content-between">
-                        <label>Genre</label>
-                        <div class="homme">
-                            <label for="genre2">Homme</label>
-                            <input type="radio" name="genre" id="genre2"  class="form-radio" th:value="${'M'}" th:field="*{genre}">
-                        </div>
-                        <div class="femme">
-                            <label for="genre1">Femme</label>
-                            <input type="radio" name="genre"  id="genre1" class="form-radio" th:value="${'F'}" th:field="*{genre}">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <select name="classe" id="classe" class="form-control"  th:field="*{classe}">
-                            <option value="">Sélectionner une classe</option>
-                            <option th:each="enum_classe : ${enum_classes}"
-                                    th:value="${enum_classe.name()}"
-                                    th:text="${enum_classe.name()}"
+                        <label id="genre" class="mr-5">Genre</label>
+                        <select name="genre" id="genre" class="form-control" th:field="*{gender}">
+                            <option
+                                    th:each="enum_genre : ${genres}"
+                                    th:value="${enum_genre.name()}"
+                                    th:text="${enum_genre.name()}"
                             ></option>
                         </select>
                     </div>
@@ -113,23 +107,6 @@
 </div>
 <!-- End of Content Wrapper -->
 </div>
-
-<!-- Bootstrap core JavaScript-->
-<!--<script src="vendor/jquery/jquery.min.js"></script>-->
-<!--<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>-->
-
-<!--&lt;!&ndash; Core plugin JavaScript&ndash;&gt;-->
-<!--<script src="vendor/jquery-easing/jquery.easing.min.js"></script>-->
-
-<!--&lt;!&ndash; Custom scripts for all pages&ndash;&gt;-->
-<!--<script src="js/sb-admin-2.min.js"></script>-->
-
-<!--&lt;!&ndash; Page level plugins &ndash;&gt;-->
-<!--<script src="vendor/chart.js/Chart.min.js"></script>-->
-
-<!--&lt;!&ndash; Page level custom scripts &ndash;&gt;-->
-<!--<script src="js/demo/chart-area-demo.js"></script>-->
-<!--<script src="js/demo/chart-pie-demo.js"></script>-->
 
 <script th:src="@{/js/student.js}"></script>
 </body>

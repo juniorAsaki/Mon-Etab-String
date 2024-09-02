@@ -1,10 +1,7 @@
 package com.digitalacademy.monetab.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.sql.Date;
 
@@ -12,14 +9,14 @@ import java.sql.Date;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "student_cards")
+@ToString
 public class StudentCards {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id_student_card;
+    private Long idStudentCard;
 
     @Column(nullable = false , name = "reference")
     private String reference;
@@ -30,6 +27,6 @@ public class StudentCards {
     @Column(nullable = false , name = "expiry_date")
     private Date expiryDate;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Student student;
 }

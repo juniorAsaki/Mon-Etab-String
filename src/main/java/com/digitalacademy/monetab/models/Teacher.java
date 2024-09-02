@@ -1,20 +1,24 @@
 package com.digitalacademy.monetab.models;
 
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @DiscriminatorValue(value = "teacher")
 @ToString
 public class Teacher extends Person {
 
-    @Column(name = "matiere", nullable = false)
-    private String matiere;
+    private Boolean available;
+
+    private String specialty;
 
 
 }

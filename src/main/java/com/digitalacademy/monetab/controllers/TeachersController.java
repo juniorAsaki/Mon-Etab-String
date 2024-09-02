@@ -1,11 +1,13 @@
 package com.digitalacademy.monetab.controllers;
 
 
+import com.digitalacademy.monetab.models.Adress;
 import com.digitalacademy.monetab.services.AdressService;
 import com.digitalacademy.monetab.services.TeacherService;
 import com.digitalacademy.monetab.services.dto.AdressDTO;
 import com.digitalacademy.monetab.services.dto.TeacherDTO;
-import com.digitalacademy.monetab.services.impl.EnumMatiere;
+import com.digitalacademy.monetab.services.impl.Gender;
+import com.digitalacademy.monetab.services.impl.Matieres;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,7 +29,6 @@ public class TeachersController {
     @GetMapping
     public String showTeachersPage(Model model) {
         log.debug("show teachers page");
-
         model.addAttribute("teachers", teacherService.findAll());
         return "teachers/list";
     }
@@ -39,11 +40,16 @@ public class TeachersController {
         log.debug("show add teacher page");
 
         TeacherDTO teacherDTO = new TeacherDTO();
-        teacherDTO.setAdress(new AdressDTO());
+        teacherDTO.setAdress(new Adress());
+
         log.info("student {}" , teacherDTO);
+
         model.addAttribute("teacher", teacherDTO);
-        model.addAttribute("enum_matieres" , EnumMatiere.values());
+        model.addAttribute("matieres", Matieres.values());
+        model.addAttribute("genres", Gender.values());
+
         model.addAttribute("action", "add");
+
         return "teachers/forms";
     }
 
@@ -55,8 +61,9 @@ public class TeachersController {
         log.debug("show update teacher page {}" , id);
 
         model.addAttribute("teacher", teacherService.findById(id));
-        model.addAttribute("enum_matieres" , EnumMatiere.values());
+        model.addAttribute("matieres", Matieres.values());
         model.addAttribute("action", "update");
+        model.addAttribute("genres", Gender.values());
         return "teachers/forms";
     }
 

@@ -1,11 +1,9 @@
 package com.digitalacademy.monetab.services.impl;
 
-public enum EnumMatiere {
-
+public enum Matieres {
     JAVA,
     PYTHON,
-    ANGULAR,
-    JAVASCRIPT,
     PHP,
-    REACTJS
+    JAVASCRIPT,
+    ANGULAR
 }

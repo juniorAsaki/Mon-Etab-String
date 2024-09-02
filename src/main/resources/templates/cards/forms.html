@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head th:insert="fragments/fragment :: header" ></head>
+
+
+<body id="page-top">
+<!-- Page Wrapper -->
+<div id="wrapper">
+    <!-- Sidebar -->
+    <th:block th:insert="fragments/fragment :: sideBar"></th:block>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+            <div class="p-5">
+                <div class="text-center d-flex justify-content-between align-items-center">
+                    <h1 class="h4 text-gray-900 mb-4" th:text="${action != null and action == 'add' ? 'Ajouter une carte':'Modifier une carte '}"></h1>
+                    <div>
+                        <a th:href="@{/cards}" class="btn btn-outline-dark">Retour</a>
+                    </div>
+                </div>
+                <form method="post" th:object="${card}" th:action="@{/cards/save}">
+
+                    <input type="hidden" th:field="*{idStudentCard}">
+
+                    <div class="mb-3">
+                        <label for="reference" class="form-label">REFERENCE</label>
+                        <input th:field="*{reference}" class="form-control" type="text" name="reference" id="reference" placeholder="Entrer la reference de la carte">
+                    </div>
+                    <div class="mb-3">
+                        <label for="dateissue" class="form-label">DATE EMMISION</label>
+                        <input th:field="*{issueDate}"  class="form-control" type="date" name="dateissue" id="dateissue" >
+                    </div>
+                    <div class="mb-3">
+                        <label for="expiry" class="form-label">DATE EXPIRATION</label>
+                        <input th:field="*{expiryDate}"  class="form-control" type="date" name="expiry" id="expiry" >
+                    </div>
+
+                    <select class="form-select" aria-label="Default select example" th:field="${card.student}" >
+                        <option selected value=""  >Selectionner le matricule de l'etudiant</option>
+                        <th:block th:each="student : ${students}">
+                            <option
+                                    th:value="${student.id_person}"
+                                    th:text="${student.matricule}"
+                            ></option>
+                        </th:block>
+                    </select>
+
+                    <button type="submit" class="btn btn-primary mt-4">Enregistrer</button>
+
+                </form>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <!-- End of Main Content -->
+
+
+</div>
+<!-- End of Content Wrapper -->
+</div>
+
+<script th:src="@{/js/student.js}"></script>
+</body>
+</html>

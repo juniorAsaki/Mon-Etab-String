@@ -14,5 +14,5 @@ public class AppSettingDTO {
 
     private String smtpPassword;
 
-    private SchoolDTO school;
+    private School school;
 }

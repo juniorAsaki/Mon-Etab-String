@@ -28,7 +28,6 @@ public class StudentServiceImpl implements StudentService {
     public StudentDTO update(StudentDTO studentDTO) {
         return findById((studentDTO.getId_person())).map(existingStudent ->{
             existingStudent.setAdress(studentDTO.getAdress());
-            existingStudent.setEmail(studentDTO.getEmail());
             existingStudent.setFirstName(studentDTO.getFirstName());
             return save(existingStudent);
         }).orElseThrow(()-> new RuntimeException("Student not found"));
@@ -38,6 +37,7 @@ public class StudentServiceImpl implements StudentService {
     public Optional<StudentDTO> findById(Long id) {
         return studentRepository.findById(id).map(student -> studentMapper.ToDto(student));
     }
+
 
     @Override
     public List<StudentDTO> findAll() {

@@ -28,8 +28,7 @@ public class TeacherServiceImpl implements TeacherService {
 
         return findById(teacherDTO.getId_person()).map(existingTeacher ->{
             Teacher teacher = teacherMapper.DtoToEntity(teacherDTO);
-            teacher.setEmail(existingTeacher.getEmail());
-            teacher.setMatiere(existingTeacher.getMatiere());
+            teacher.setLastName(existingTeacher.getLastName());
             return save(existingTeacher);
         }).orElseThrow(()-> new RuntimeException("Teacher not found"));
     }

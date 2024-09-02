@@ -1,7 +1,7 @@
 package com.digitalacademy.monetab.services;
 
-import com.digitalacademy.monetab.models.Student;
 import com.digitalacademy.monetab.services.dto.StudentDTO;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 import java.util.Optional;

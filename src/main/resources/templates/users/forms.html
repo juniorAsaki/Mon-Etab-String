@@ -29,21 +29,26 @@
                     <div class="form-group row w-50">
                         <div class="col-sm-12 mb-3">
                             <input type="text" class="form-control form-control-user" id="exampleCountry"
-                                   placeholder="pays" th:field="${user.adressDTO.country}">
+                                   placeholder="Nom de l'école" th:field="${user.school.nameSchool}">
                         </div>
                         <div class="col-sm-12 mb-3">
                             <input type="text" class="form-control form-control-user" id="exampleCity"
-                                   placeholder="ville" th:field="${user.adressDTO.city}">
+                                   placeholder="Url du logo" th:field="${user.school.urlLogo}">
                         </div>
-                        <div class="col-sm-12 mb-3">
-                            <input type="text" class="form-control form-control-user" id="exampleStreet"
-                                   placeholder="rue" th:field="*{adressDTO.street}">
+                        <div class="form-group">
+                            <select name="roleUser" id="roleUser" class="form-control" th:field="*{roleUser}">
+                                <option value="">Sélectionner un role</option>
+                                <option th:each="role : ${roles}"
+                                        th:value="${role.idRoleUser}"
+                                        th:text="${role.nameRole}"
+                                ></option>
+                            </select>
                         </div>
                         <div class="col-sm-12 mb-3">
                             <input type="text" class="form-control form-control-user" id="exampleLastName"
                                    placeholder="pseudo" th:field="*{pseudo}">
                         </div>
-                        <div class="col-sm-12 mb-3" >
+                        <div th:style="${action == 'add' ? 'display:flex':'display:none'}" class="col-sm-12 mb-3" >
                             <input type="password" class="form-control form-control-user"
                                    placeholder="password" th:field="*{password}">
                         </div>

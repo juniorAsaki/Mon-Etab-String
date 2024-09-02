@@ -1,14 +1,11 @@
 package com.digitalacademy.monetab.controllers;
 
 
+
 import com.digitalacademy.monetab.models.Adress;
-import com.digitalacademy.monetab.models.Student;
-import com.digitalacademy.monetab.services.AdressService;
 import com.digitalacademy.monetab.services.StudentService;
-import com.digitalacademy.monetab.services.dto.AdressDTO;
 import com.digitalacademy.monetab.services.dto.StudentDTO;
-import com.digitalacademy.monetab.services.impl.EnumClasse;
-import com.digitalacademy.monetab.services.mapper.AdressMapper;
+import com.digitalacademy.monetab.services.impl.Gender;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 
 import java.util.Optional;
 
@@ -28,13 +26,10 @@ public class StudentsController {
     @Autowired
     private StudentService studentService;
 
-    @Autowired
-    private AdressService adressService;
 
     @GetMapping
     public String showStudentPage(Model model) {
         log.debug("Showing students page");
-
         model.addAttribute("students", studentService.findAll());
         return "students/list";
     }
@@ -44,10 +39,11 @@ public class StudentsController {
         log.debug("show add student page");
 
         StudentDTO studentDTO = new StudentDTO();
-        studentDTO.setAdress(new AdressDTO());
+        studentDTO.setAdress(new Adress());
+
         model.addAttribute("student", studentDTO);
-        model.addAttribute("enum_classes", EnumClasse.values());
         model.addAttribute("action", "add");
+        model.addAttribute("genres", Gender.values());
         return "students/forms";
     }
 
@@ -61,8 +57,8 @@ public class StudentsController {
         Optional<StudentDTO> studentDTO = studentService.findById(id);
         if( studentDTO.isPresent()){
             model.addAttribute("student", studentDTO.get());
-            model.addAttribute("enum_classes", EnumClasse.values());
             model.addAttribute("action", "update");
+            model.addAttribute("genres", Gender.values());
             return "students/forms";
         }else{
             return "redirect:/students";

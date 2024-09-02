@@ -1,8 +1,10 @@
 package com.digitalacademy.monetab.models;
 
+import com.digitalacademy.monetab.services.impl.Gender;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 
@@ -15,7 +17,7 @@ import java.sql.Date;
 @DiscriminatorColumn(name = "person_type")
 @Table(name = "person")
 @ToString
-public abstract class Person {
+public abstract class Person implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,21 +30,25 @@ public abstract class Person {
     @Column(name = "lastName" , nullable = false)
     private String lastName;
 
-    @Column(name = "email" , nullable = false)
-    private String email;
-
     @Column(name = "numbers" , nullable = false)
     private String numbers;
 
     @Column(name = "dateOfBirth" , nullable = false)
     private Date dateOfBirth;
 
-    @Column(name = "genre")
-    private String genre;
+    @Column(name = "url_picture")
+    private String urlPicture;
+
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_adress")
     private Adress adress;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_user")
+    private User user;
 
 
 }

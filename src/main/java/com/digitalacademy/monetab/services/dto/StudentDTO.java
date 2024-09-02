@@ -1,8 +1,11 @@
 package com.digitalacademy.monetab.services.dto;
 
+import com.digitalacademy.monetab.models.Absence;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -11,5 +14,8 @@ public class StudentDTO extends PersonDTO{
 
     private String matricule;
 
-    private String classe;
+    private List<Absence> absence;
+
+    private String phoneNumberParent;
+
 }

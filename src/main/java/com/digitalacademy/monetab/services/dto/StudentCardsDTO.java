@@ -1,11 +1,17 @@
 package com.digitalacademy.monetab.services.dto;
 
 import com.digitalacademy.monetab.models.Student;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.sql.Date;
 
+
+@Getter
+@Setter
 public class StudentCardsDTO {
 
-    private Long id_student_card;
+    private Long idStudentCard;
 
     private String reference;
 
@@ -13,5 +19,5 @@ public class StudentCardsDTO {
 
     private Date expiryDate;
 
-    private StudentDTO student;
+    private Student student;
 }

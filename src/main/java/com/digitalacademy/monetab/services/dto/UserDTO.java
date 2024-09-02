@@ -1,11 +1,14 @@
 package com.digitalacademy.monetab.services.dto;
 
 import com.digitalacademy.monetab.models.Adress;
+import com.digitalacademy.monetab.models.RoleUser;
+import com.digitalacademy.monetab.models.School;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 import java.time.Instant;
+import java.util.List;
 
 @Getter
 @Setter
@@ -20,5 +23,8 @@ public class UserDTO {
 
     private Instant createdDate;
 
-    private AdressDTO adress;
+    private List<RoleUser> roleUser;
+
+    private School school;
+
 }

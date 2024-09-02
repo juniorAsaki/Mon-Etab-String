@@ -2,22 +2,20 @@ package com.digitalacademy.monetab.models;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "role_user")
+@ToString
 public class RoleUser {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id_role_user;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_role_user")
+    private Long idRoleUser;
 
-    @Column(nullable = false , name = "role")
-    private String role;
+    @Column(unique = true , name = "name_role")
+    private String nameRole;
 }

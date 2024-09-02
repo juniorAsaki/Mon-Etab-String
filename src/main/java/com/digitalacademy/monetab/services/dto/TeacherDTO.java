@@ -8,6 +8,9 @@ import lombok.ToString;
 @Setter
 @ToString
 public class TeacherDTO extends PersonDTO{
-    private String matiere;
+
+    private Boolean available;
+
+    private String specialty;
 
 }

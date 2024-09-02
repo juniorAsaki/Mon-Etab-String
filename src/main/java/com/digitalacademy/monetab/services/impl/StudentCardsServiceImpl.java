@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 @RequiredArgsConstructor
@@ -24,8 +25,8 @@ public class StudentCardsServiceImpl implements StudentCardsService {
     }
 
     @Override
-    public Set<StudentCardsDTO> findAll() {
-        return (Set<StudentCardsDTO>) studentCardsRepository.findAll().stream().map(studentCards -> studentCardsMapper.ToDto(studentCards));
+    public List<StudentCardsDTO> findAll() {
+        return studentCardsRepository.findAll().stream().map(studentCards -> studentCardsMapper.ToDto(studentCards)).toList();
     }
 
     @Override
@@ -39,7 +40,7 @@ public class StudentCardsServiceImpl implements StudentCardsService {
     }
 
     @Override
-    public void delete(StudentCardsDTO studentCardsDTO) {
-        studentCardsRepository.delete(studentCardsMapper.DtoToEntity(studentCardsDTO));
+    public void delete(Long id) {
+        studentCardsRepository.deleteById(id);
     }
 }

@@ -34,9 +34,9 @@
                             <tr>
                                 <th>ID</th>
                                 <th>PSEUDO</th>
-                                <th>PAYS</th>
-                                <th>VILLE</th>
-                                <th>RUE</th>
+                                <th>NOM ETABLISSEMENT</th>
+                                <th>URL LOGO</th>
+                                <th>ROLES</th>
                                 <th>DATE DE CREATION</th>
                                 <th >ACTIONS</th>
                             </tr>
@@ -45,9 +45,9 @@
                             <tr>
                                 <th>ID</th>
                                 <th>PSEUDO</th>
-                                <th>PAYS</th>
-                                <th>VILLE</th>
-                                <th>RUE</th>
+                                <th>NOM ETABLISSEMENT</th>
+                                <th>URL LOGO</th>
+                                <th>ROLES</th>
                                 <th>DATE DE CREATION</th>
                                 <th >ACTIONS</th>
                             </tr>
@@ -56,9 +56,9 @@
                                 <tr th:each="user , status : ${users}">
                                     <td th:text="${status.count}"></td>
                                     <td th:text="${user.getPseudo()}"></td>
-                                    <td th:text="${user.adress?.country}"></td>
-                                    <td th:text="${user.adress?.city}"></td>
-                                    <td th:text="${user.adress?.street}"></td>
+                                    <td th:text="${user.school?.nameSchool}"></td>
+                                    <td th:text="${user.getSchool()?.urlLogo}"></td>
+                                    <td th:each="userRole : ${user.getRoleUser()}" th:text="${userRole.nameRole}"></td>
                                     <td th:text="${#dates.format(user?.getCreatedDate() , 'd MMMM yyyy')}"></td>
                                     <td>
                                         <a th:href="@{/users/update/{id}(id=${user.getId_user()})}" class="btn btn-primary">MODIFIER</a>

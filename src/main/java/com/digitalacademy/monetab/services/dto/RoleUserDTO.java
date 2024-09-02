@@ -1,9 +1,14 @@
 package com.digitalacademy.monetab.services.dto;
 
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class RoleUserDTO {
 
-    private Long id_role_user;
+    private Long idRoleUser;
 
-    private String role;
+    private String nameRole;
 }
