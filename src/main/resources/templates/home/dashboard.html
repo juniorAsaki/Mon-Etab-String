@@ -3,13 +3,13 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
 >
-<head th:insert="fragments/fragment :: header" ></head>
+<head th:insert="~{fragments/fragment :: header}" ></head>
 
 <body id="page-top">
 <!-- Page Wrapper -->
 <div id="wrapper">
     <!-- Sidebar -->
-    <th:block th:insert="fragments/fragment :: sideBar" th:with="school=${school}"></th:block>
+    <th:block th:insert="~{fragments/fragment :: sideBar(school=${school})}" ></th:block>
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -96,49 +96,49 @@
                     </div>
 
                 </div>
-            <div>
-                <button class="btn btn-outline-primary ml-3 mt-3 p-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Enregistrer une carte étudiante</button>
-            </div>
+<!--            <div>-->
+<!--                <button class="btn btn-outline-primary ml-3 mt-3 p-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Enregistrer une carte étudiante</button>-->
+<!--            </div>-->
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Ajouter une carte</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="mb-3">
-                                    <label for="reference" class="form-label">REFERENCE</label>
-                                    <input class="form-control" type="text" name="reference" id="reference" placeholder="Entrer la reference de la carte">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="dateissue" class="form-label">DATE EMMISION</label>
-                                    <input class="form-control" type="date" name="dateissue" id="dateissue" >
-                                </div>
-                                <div class="mb-3">
-                                    <label for="expiry" class="form-label">DATE EXPIRATION</label>
-                                    <input class="form-control" type="date" name="expiry" id="expiry" >
-                                </div>
+<!--            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--                <div class="modal-dialog">-->
+<!--                    <div class="modal-content">-->
+<!--                        <div class="modal-header">-->
+<!--                            <h1 class="modal-title fs-5" id="exampleModalLabel">Ajouter une carte</h1>-->
+<!--                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--                        </div>-->
+<!--                        <div class="modal-body">-->
+<!--                            <form>-->
+<!--                                <div class="mb-3">-->
+<!--                                    <label for="reference" class="form-label">REFERENCE</label>-->
+<!--                                    <input class="form-control" type="text" name="reference" id="reference" placeholder="Entrer la reference de la carte">-->
+<!--                                </div>-->
+<!--                                <div class="mb-3">-->
+<!--                                    <label for="dateissue" class="form-label">DATE EMMISION</label>-->
+<!--                                    <input class="form-control" type="date" name="dateissue" id="dateissue" >-->
+<!--                                </div>-->
+<!--                                <div class="mb-3">-->
+<!--                                    <label for="expiry" class="form-label">DATE EXPIRATION</label>-->
+<!--                                    <input class="form-control" type="date" name="expiry" id="expiry" >-->
+<!--                                </div>-->
 
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Selectionner le matricule de l'etudiant</option>
-                                    <option th:each="etudiant : ${etudiants}"
-<!--                                            th:value="*{matricule}"-->
-<!--                                            th:text="*{matricule}"-->
-                                    >One</option>
+<!--                                <select class="form-select" aria-label="Default select example">-->
+<!--                                    <option selected>Selectionner le matricule de l'etudiant</option>-->
+<!--                                    <option th:each="etudiant : ${etudiants}"-->
+<!--&lt;!&ndash;                                            th:value="*{matricule}"&ndash;&gt;-->
+<!--&lt;!&ndash;                                            th:text="*{matricule}"&ndash;&gt;-->
+<!--                                    >One</option>-->
 
-                                </select>
+<!--                                </select>-->
 
-                                <button type="submit">Enregistrer</button>
+<!--                                <button type="submit">Enregistrer</button>-->
 
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!--                            </form>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
 
                 <!-- Content Row -->
             </div>

@@ -1,23 +1,19 @@
 package com.digitalacademy.monetab.services.impl;
 
-import com.digitalacademy.monetab.models.User;
 import com.digitalacademy.monetab.services.*;
 import com.digitalacademy.monetab.services.dto.AppSettingDTO;
 import com.digitalacademy.monetab.services.dto.RoleUserDTO;
 import com.digitalacademy.monetab.services.dto.SchoolDTO;
-import com.digitalacademy.monetab.services.dto.UserDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
-import java.util.ArrayList;
 import java.util.List;
 
 
 @Service
 @Slf4j
-public class AppServiceImpl implements InitAppService {
+public class InitAppServiceImpl implements InitAppService {
 
 
     @Autowired

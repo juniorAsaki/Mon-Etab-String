@@ -49,4 +49,10 @@ public class TeacherServiceImpl implements TeacherService {
     public void deleteById(Long id) {
         teacherRepository.deleteById(id);
     }
+
+    @Override
+    public List<TeacherDTO> findByLastNameOrSpecialtyAndGender(String query, String gender) {
+        List<Teacher> teachers = teacherRepository.findByLastNameOrSpecialtyAndGender(query , query ,  Gender.valueOf(gender));
+        return teachers.stream().map(teacher -> teacherMapper.ToDto(teacher)).toList();
+    }
 }

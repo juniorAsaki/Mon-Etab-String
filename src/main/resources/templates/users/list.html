@@ -10,7 +10,7 @@
 <!-- Page Wrapper -->
 <div id="wrapper">
     <!-- Sidebar -->
-    <th:block th:insert="fragments/fragment :: sideBar"></th:block>
+    <th:block th:insert="fragments/fragment :: sideBar(school=${school})"></th:block>
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -21,6 +21,15 @@
                 <div class="border card-header py-3 d-flex align-items-center justify-content-between">
                     <div>
                         <h6 class="m-0 font-weight-bold text-primary" th:text="'Utilisateur:('+${users.size()}+')'"></h6>
+                        <form class="d-flex" role="search" th:action="@{/users/search}">
+                            <input name="date" th:value="${date}" class="form-control me-2 w-100" type="date" placeholder="RECHERCHE : (DATE DE CREATION)" aria-label="Search">
+                            <select name="role"  class="form-control">
+                                <th:block th:each="role : ${roles}" >
+                                    <option th:value="${role.nameRole}" th:text="${role.nameRole}" ></option>
+                                </th:block>
+                            </select>
+                            <button class="btn btn-outline-success" type="submit">Rechercher</button>
+                        </form>
                     </div>
                     <div>
                         <a class="nav-link" th:href="@{/users/add}">

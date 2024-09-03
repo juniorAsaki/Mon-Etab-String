@@ -24,19 +24,11 @@ public class HomeController {
     private TeacherService teacherService;
     @Autowired
     private UserService userService;
-    @Autowired
-    private SchoolService schoolService;
+
 
     @GetMapping
     public String home(Model model) {
         log.debug("home page");
-
-        List<SchoolDTO> schools = schoolService.findAll();
-
-        if(!schools.isEmpty()){
-            SchoolDTO school = schools.get(0);
-            model.addAttribute("school", school);
-        }
 
         model.addAttribute("students", studentService.findAll());
         model.addAttribute("teachers", teacherService.findAll());

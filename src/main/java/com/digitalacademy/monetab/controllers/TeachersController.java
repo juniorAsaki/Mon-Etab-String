@@ -5,26 +5,26 @@ import com.digitalacademy.monetab.models.Adress;
 import com.digitalacademy.monetab.services.AdressService;
 import com.digitalacademy.monetab.services.TeacherService;
 import com.digitalacademy.monetab.services.dto.AdressDTO;
+import com.digitalacademy.monetab.services.dto.StudentDTO;
 import com.digitalacademy.monetab.services.dto.TeacherDTO;
 import com.digitalacademy.monetab.services.impl.Gender;
 import com.digitalacademy.monetab.services.impl.Matieres;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/teachers")
 @Slf4j
+@RequiredArgsConstructor
 public class TeachersController {
 
-    @Autowired
-    private TeacherService teacherService;
-
-    @Autowired
-    private AdressService adressService;
-
+    private final TeacherService teacherService;
 
     @GetMapping
     public String showTeachersPage(Model model) {
@@ -83,5 +83,16 @@ public class TeachersController {
         }
 
         return "redirect:/teachers";
+    }
+
+    @GetMapping("/search")
+    public String searchTeachers(@RequestParam String query  ,@RequestParam String gender, Model model)
+    {
+        List<TeacherDTO> teachers = teacherService.findByLastNameOrSpecialtyAndGender(query  , gender);
+        model.addAttribute("teachers", teachers);
+        model.addAttribute("query", query);
+        model.addAttribute("gender", gender);
+
+        return "teachers/list";
     }
 }

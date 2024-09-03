@@ -10,7 +10,7 @@
 <!-- Page Wrapper -->
 <div id="wrapper">
     <!-- Sidebar -->
-    <th:block th:insert="fragments/fragment :: sideBar"></th:block>
+    <th:block th:insert="fragments/fragment :: sideBar(school=${school})"></th:block>
 
     <!-- End of Sidebar -->
 
@@ -22,6 +22,15 @@
                 <div class="border card-header py-3 d-flex align-items-center justify-content-between">
                     <div>
                         <h6 class="m-0 font-weight-bold text-primary" th:text="'Professeur:('+${teachers.size()}+')'"></h6>
+                        <form class="d-flex" role="search" method="get" th:action="@{/teachers/search}">
+                            <input class="form-control me-2 w-100" th:value="${query}" name="query" type="search" placeholder="RECHERCHE : (NOM , GENRE , SPECIALITE)" aria-label="Search">
+                            <select name="gender"  class="form-control" th:value="${gender}">
+                                <option value="MAN" th:if="${gender == 'MAN'} ? 'selected':''">HOMME</option>
+                                <option value="WOMAN" th:if="${gender == 'WOMAN'} ? 'selected':''">FEMME</option>
+                                <option value="OTHER" th:if="${gender == 'OTHER'} ? 'selected':''">AUTRE</option>
+                            </select>
+                            <button class="btn btn-outline-success" type="submit">Rechercher</button>
+                        </form>
                     </div>
                     <div>
                         <a class="nav-link" th:href="@{/teachers/add}">

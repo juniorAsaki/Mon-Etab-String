@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -76,5 +77,11 @@ public class UserServiceImpl implements UserService {
         }
 
         return findAll();
+    }
+
+    @Override
+    public List<UserDTO> findByCreatedDateLessThanAndRoleUserNameRole(Instant createdDate, String role) {
+        List<User> users = userRepository.findByCreatedDateLessThanAndRoleUserNameRole(createdDate, role);
+        return users.stream().map(user -> userMapper.ToDto(user)).toList();
     }
 }

@@ -7,25 +7,24 @@ import com.digitalacademy.monetab.services.StudentService;
 import com.digitalacademy.monetab.services.dto.AdressDTO;
 import com.digitalacademy.monetab.services.dto.StudentDTO;
 import com.digitalacademy.monetab.services.impl.Gender;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
 @RequestMapping("/students")
 @Slf4j
+@RequiredArgsConstructor
 public class StudentsController {
 
-    @Autowired
-    private StudentService studentService;
+    private final StudentService studentService;
 
 
     @GetMapping
@@ -83,5 +82,16 @@ public class StudentsController {
             studentService.deleteById(id);
         }
         return "redirect:/students";
+    }
+
+    @GetMapping("/search")
+    public String searchStudents(@RequestParam String query  ,@RequestParam String gender, Model model)
+    {
+        List<StudentDTO> students = studentService.findByLastNameOrGenderOrMatricule(query , gender);
+        model.addAttribute("students", students);
+        model.addAttribute("query", query);
+        model.addAttribute("gender", gender);
+
+        return "students/list";
     }
 }

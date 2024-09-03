@@ -10,12 +10,12 @@
 
 </head>
 <body>
-<div class="container mt-5">
-    <form th:action="@{/}" method="post" class="w-75 py-5" th:object="${appSetting}">
+<div class="container-fluid d-flex align-items-center justify-content-center" style="background-color: #2a96a5;height: 100vh">
+    <form th:action="@{/settings}" method="post" class="w-75 py-5" th:object="${setting}">
 
-        <input type="hidden" th:field="*{id_appsetting}">
+<!--        <input type="hidden" th:field="*{id_appsetting}">-->
 
-        <h2 class="text-center m-3">Ajouter Les Paramètres SMTP</h2>
+        <h2 class="text-center m-3 text-light">Ajouter Les Paramètres SMTP</h2>
         <div class="row">
             <div class="col mb-3">
                 <input th:field="*{smtpServer}" type="text" class="form-control py-3" placeholder="Server SMTP" aria-label="Server SMTP">
@@ -37,7 +37,7 @@
             </div>
         </div>
         <div class="row mb-3" style="margin-left: 3px">
-            <button type="submit" class="btn btn-outline-primary w-25 py-2">Enregistrer</button>
+            <button type="submit" class="btn btn-outline-light w-25 py-2">Enregistrer</button>
         </div>
     </form>
 </div>

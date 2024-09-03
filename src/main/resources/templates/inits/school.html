@@ -10,23 +10,25 @@
 
 </head>
 <body>
-<form th:action="@{/school}" method="post" class="w-75 py-5" th:object="${School}">
+<div class="container-fluid d-flex align-items-center justify-content-center" style="background-color: #2a96a5;height: 100vh">
+    <form th:action="@{/schools}" method="post" class="w-75 py-5" th:object="${school}" enctype="multipart/form-data">
 
-    <input type="hidden" th:field="*{id_school}">
+<!--        <input type="hidden" th:field="*{id_school}">-->
 
-
-    <div class="row">
-        <div class="col">
-            <input th:field="*{nameSchool}" type="text" class="form-control" placeholder="NAME SCHOOL" aria-label="NAME SCHOOL">
+        <h2 class="text-center m-3 text-light">Ajouter Les Paramètres de l'école</h2>
+        <div class="row">
+            <div class="col">
+                <input th:field="*{nameSchool}" type="text" class="form-control" placeholder="NAME SCHOOL" aria-label="NAME SCHOOL">
+            </div>
+            <div class="col">
+                <input th:field="*{file}" type="file" class="form-control" placeholder="URL LOGO" aria-label="URL LOGO">
+            </div>
         </div>
-        <div class="col">
-            <input th:field="*{urlLogo}" type="text" class="form-control" placeholder="URL LOGO" aria-label="URL LOGO">
+        <div class="row mt-3" style="margin-left: 3px">
+            <button type="submit" class="btn btn-outline-light w-25 py-2">Enregistrer</button>
         </div>
-    </div>
-    <div class="row mt-3" style="margin-left: 3px">
-        <button type="submit" class="btn btn-outline-primary w-25 py-2">Enregistrer</button>
-    </div>
 
-</form>
+    </form>
+</div>
 </body>
 </html>

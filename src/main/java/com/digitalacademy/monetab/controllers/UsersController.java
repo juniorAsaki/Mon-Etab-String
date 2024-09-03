@@ -6,7 +6,9 @@ import com.digitalacademy.monetab.services.RoleUserService;
 import com.digitalacademy.monetab.services.UserService;
 import com.digitalacademy.monetab.services.dto.RoleUserDTO;
 import com.digitalacademy.monetab.services.dto.SchoolDTO;
+import com.digitalacademy.monetab.services.dto.TeacherDTO;
 import com.digitalacademy.monetab.services.dto.UserDTO;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,26 +16,30 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneOffset;
 import java.util.*;
 
 @Slf4j
 @Controller
 @RequestMapping("/users")
+@RequiredArgsConstructor
 public class UsersController {
 
-    @Autowired
-    private UserService userService;
 
-    @Autowired
-    private RoleUserService roleUserService;
+    private final UserService userService;
+
+
+    private final RoleUserService roleUserService;
 
 
     @GetMapping
     public String showUserPage(Model model) {
         log.debug("show user page ");
-        System.out.println(userService.findAll());
+//        System.out.println(userService.findAll());
 
         model.addAttribute("users", userService.findAll());
+        model.addAttribute("roles", roleUserService.findAll());
         return "users/list";
     }
 
@@ -93,5 +99,17 @@ public class UsersController {
 
         return "redirect:/users";
 
+    }
+
+    @GetMapping("/search")
+    public String searchTeachers(@RequestParam LocalDate date  , @RequestParam String role, Model model)
+    {
+        List<UserDTO> users = userService.findByCreatedDateLessThanAndRoleUserNameRole(Instant.from(date.atStartOfDay(ZoneOffset.systemDefault())), role);
+        model.addAttribute("users", users);
+        model.addAttribute("date", date);
+        model.addAttribute("role", role);
+        model.addAttribute("roles", roleUserService.findAll());
+
+        return "users/list";
     }
 }
