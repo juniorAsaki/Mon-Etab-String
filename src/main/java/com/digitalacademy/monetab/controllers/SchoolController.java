@@ -7,6 +7,7 @@ import com.digitalacademy.monetab.services.*;
 import com.digitalacademy.monetab.services.dto.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,6 +43,8 @@ public class SchoolController {
     private final RoleUserService roleUserService;
 
     private final Cloudinary cloudinary;
+
+    private final PasswordEncoder passwordEncoder;
 
 
     @GetMapping
@@ -106,7 +109,8 @@ public class SchoolController {
 
         UserDTO userAdmin = new UserDTO();
         userAdmin.setPseudo("admin");
-        userAdmin.setPassword("admin");
+
+        userAdmin.setPassword(passwordEncoder.encode("admin"));
         userAdmin.setCreatedDate(Instant.now());
         userAdmin.setSchool(schoolDTO);
         userAdmin.setRoleUser(roleUserADMIN);
@@ -114,7 +118,7 @@ public class SchoolController {
 
         UserDTO userUser = new UserDTO();
         userUser.setPseudo("user");
-        userUser.setPassword("user");
+        userUser.setPassword(passwordEncoder.encode("user"));
         userUser.setCreatedDate(Instant.now());
         userUser.setSchool(schoolDTO);
         userUser.setRoleUser(roleUserUSER);
