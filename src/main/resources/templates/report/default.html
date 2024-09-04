@@ -29,21 +29,20 @@
                 </div>
                 <div class="card-body container w-50 mt-5">
                     <div class="table-responsive">
-                        <form action="" class="form-group">
-                    <h2 style="margin: 10px;">Rapport</h2>
-                    <div class="form-group">
-                        <select name="classe" id="classe" class="form-control">
-                            <option value="">Sélectionner une option</option>
-                            <option value="classe1">Liste des eleves</option>
-                            <option value="classe2">Listes des professeurs</option>
-                            <option value="classe3">Liste des utilisateurs</option>
-                        </select>
-                    </div>
-                    <div class="form-group group-button" style="margin: -5px;margin-top: 10px;">
-                        <button id="annuler" class="btn btn-warning">Generer format PDF</button>
-                        <button id="enregistrer" class="btn btn-success">Generer format Excel</button>
-                    </div>
-                </form>
+                        <form th:action="@{/reports/excel}" class="form-group" method="get">
+                            <h2 style="margin: 10px;">Rapport</h2>
+                            <div class="form-group">
+                                <select name="query" id="classe" class="form-control">
+                                    <option value="student">Liste des eleves</option>
+                                    <option value="teacher">Listes des professeurs</option>
+                                    <option value="user">Liste des utilisateurs</option>
+                                </select>
+                            </div>
+                            <div class="form-group group-button" style="margin: -5px;margin-top: 10px;">
+                                <button type="submit" class="btn btn-warning">Generer format PDF</button>
+                                <button type="submit" class="btn btn-success">Generer format Excel</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

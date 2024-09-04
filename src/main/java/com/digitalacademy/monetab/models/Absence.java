@@ -27,7 +27,7 @@ public class Absence {
     @Column(name = "number_absence" , nullable = false)
     private int numberAbsence;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_student")
     private Student student;
 }

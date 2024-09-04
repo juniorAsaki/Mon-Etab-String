@@ -20,7 +20,7 @@ public class Student extends Person{
     @Column(unique=true , nullable=false , name = "matricule")
     private String matricule;
 
-    @OneToMany(  mappedBy = "student")
+    @OneToMany(  mappedBy = "student" , fetch = FetchType.EAGER)
     @Column(nullable = true)
     private List<Absence> absence;
 

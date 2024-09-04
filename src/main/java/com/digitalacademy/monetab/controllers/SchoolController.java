@@ -1,6 +1,8 @@
 package com.digitalacademy.monetab.controllers;
 
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import com.digitalacademy.monetab.services.*;
 import com.digitalacademy.monetab.services.dto.*;
 import lombok.RequiredArgsConstructor;
@@ -12,9 +14,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.io.IOException;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import com.cloudinary.*;
+import com.cloudinary.utils.ObjectUtils;
+import io.github.cdimascio.dotenv.Dotenv;
+
 
 @Controller
 @RequestMapping("/schools")
@@ -32,6 +41,8 @@ public class SchoolController {
 
     private final RoleUserService roleUserService;
 
+    private final Cloudinary cloudinary;
+
 
     @GetMapping
     public String showSchoolPage(Model model){
@@ -40,12 +51,24 @@ public class SchoolController {
     }
 
     @PostMapping
-    public String saveSchool(@ModelAttribute RegistrationSchoolDTO schoolDTO) {
-        AppSettingDTO appSettingDTO = appSettingService.findAll().get(0);
-        initAppService.initSchool(schoolDTO , appSettingDTO);
+    public String saveSchool(@ModelAttribute RegistrationSchoolDTO schoolDTO) throws IOException {
 
-        RoleUserDTO roleUserDTO = new RoleUserDTO();
-        roleUserDTO.setNameRole("ADMIN");
+        // Upload the image
+        Map params1 = ObjectUtils.asMap(
+                "use_filename", true,
+                "unique_filename", false,
+                "overwrite", true
+        );
+
+        String fileUrl = cloudinary.uploader().upload(schoolDTO.getFile().getBytes(), params1).get("url").toString();
+
+        SchoolDTO schoolDTO1 = new SchoolDTO();
+        schoolDTO1.setNameSchool(schoolDTO.getNameSchool());
+        schoolDTO1.setUrlLogo(fileUrl);
+
+
+        AppSettingDTO appSettingDTO = appSettingService.findAll().get(0);
+        initAppService.initSchool(schoolDTO1 , appSettingDTO);
 
         initAppService.initRoleUsers(createRoleUser());
         userService.initUsers(createUser());

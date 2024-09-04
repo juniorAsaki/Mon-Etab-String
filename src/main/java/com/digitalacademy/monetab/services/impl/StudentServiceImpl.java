@@ -56,4 +56,6 @@ public class StudentServiceImpl implements StudentService {
         List<Student> students = studentRepository.findByLastNameIgnoreCaseOrMatriculeIgnoreCaseAndGender(query  , query , Gender.valueOf(gender));
         return students.stream().map(student -> studentMapper.ToDto(student)).toList();
     }
+
+
 }

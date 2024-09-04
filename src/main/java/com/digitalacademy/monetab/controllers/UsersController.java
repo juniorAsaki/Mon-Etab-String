@@ -84,6 +84,7 @@ public class UsersController {
     public String saveUser(UserDTO userDTO){
         log.debug("save user {}", userDTO);
         userDTO.setCreatedDate(Instant.now());
+
         userService.save(userDTO);
         return "redirect:/users";
 

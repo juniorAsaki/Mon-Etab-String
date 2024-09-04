@@ -7,11 +7,13 @@ import com.digitalacademy.monetab.services.dto.*;
 import com.digitalacademy.monetab.services.impl.UserServiceImpl;
 import com.digitalacademy.monetab.services.mapper.RoleUserMapper;
 import com.digitalacademy.monetab.services.mapper.StudentMapper;
+import org.apache.poi.hssf.usermodel.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.sql.Date;
 import java.time.Instant;
 import java.util.*;
 
@@ -28,8 +30,8 @@ public class MonetabApplication implements CommandLineRunner {
 //
 //	@Autowired
 //	private RoleUserService roleUserService;
-//    @Autowired
-//    private UserService userService;
+    @Autowired
+    private StudentService studentService;
 
 
 	public static void main(String[] args) {
@@ -99,5 +101,47 @@ public class MonetabApplication implements CommandLineRunner {
 //
 //		List<UserDTO> users = List.of(userAdmin, userUser, userOther);
 //		userService.initUsers(users);
+
+
+		List<StudentDTO> studentDTOS = studentService.findAll();
+
+		HSSFWorkbook workbook = new HSSFWorkbook();
+		HSSFSheet sheet = workbook.createSheet("Students");
+		HSSFRow row = sheet.createRow(0);
+
+		row.createCell(0).setCellValue("MATRICLE");
+		row.createCell(1).setCellValue("NOM");
+		row.createCell(2).setCellValue("PRENOM");
+		row.createCell(3).setCellValue("TELEPHONE");
+		row.createCell(4).setCellValue("DATE DE NAISSANCE");
+		row.createCell(5).setCellValue("URL PICTURE");
+
+		HSSFCellStyle dateCellStyle = workbook.createCellStyle();
+		HSSFDataFormat dateFormat = workbook.createDataFormat();
+		dateCellStyle.setDataFormat(dateFormat.getFormat("dd-mm-yyyy"));
+
+		int dataRowIndex = 1;
+
+		for (StudentDTO student : studentDTOS) {
+			HSSFRow dataRow = sheet.createRow(dataRowIndex);
+			dataRow.createCell(0).setCellValue(student.getMatricule());
+			dataRow.createCell(1).setCellValue(student.getFirstName());
+			dataRow.createCell(3).setCellValue(student.getLastName());
+			dataRow.createCell(4).setCellValue(student.getNumbers());
+			dataRow.createCell(5).setCellValue(student.getDateOfBirth());
+			dataRow.createCell(6).setCellValue(student.getUrlPicture());
+
+			if(student.getDateOfBirth() != null) {
+				HSSFCell dateCell = dataRow.createCell(5);
+				dateCell.setCellValue(Date.valueOf(student.getDateOfBirth().toLocalDate()));
+				dateCell.setCellStyle(dateCellStyle);
+			}
+
+			dataRowIndex++;
+		}
+
+		for (int i = 0; i < 4; i++) {
+			sheet.autoSizeColumn(i);
+		}
 	}
 }

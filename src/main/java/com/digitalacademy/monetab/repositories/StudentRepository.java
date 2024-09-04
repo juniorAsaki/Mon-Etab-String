@@ -9,4 +9,5 @@ import java.util.List;
 public interface StudentRepository extends JpaRepository<Student, Long> {
     //    etape 1)
     List<Student> findByLastNameIgnoreCaseOrMatriculeIgnoreCaseAndGender(String lastName, String matricule , Gender gender);
+
 }
