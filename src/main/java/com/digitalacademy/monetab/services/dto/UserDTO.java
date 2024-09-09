@@ -1,8 +1,5 @@
 package com.digitalacademy.monetab.services.dto;
 
-import com.digitalacademy.monetab.models.Adress;
-import com.digitalacademy.monetab.models.RoleUser;
-import com.digitalacademy.monetab.models.School;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -22,6 +19,8 @@ public class UserDTO {
     private String password;
 
     private Instant createdDate;
+
+    private Boolean disable;
 
     private List<RoleUserDTO> roleUser;
 

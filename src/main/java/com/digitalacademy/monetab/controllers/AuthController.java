@@ -5,38 +5,41 @@ import com.digitalacademy.monetab.services.AppSettingService;
 import com.digitalacademy.monetab.services.SchoolService;
 import com.digitalacademy.monetab.services.UserService;
 
+import com.digitalacademy.monetab.services.dto.AppSettingDTO;
 import com.digitalacademy.monetab.services.dto.SchoolDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Optional;
+
 @Controller
-@RequestMapping("login")
+@RequestMapping("connexion")
 @RequiredArgsConstructor
 @Slf4j
 public class AuthController {
 
-    @Autowired
-    private final UserService userService;
-
-    @Autowired
     private final SchoolService schoolService;
 
-    @Autowired
-    private final AppSettingService appSettingService;
 
     @GetMapping
     public String showLoginPage(Model model) {
-        SchoolDTO school = schoolService.findAll().stream().findFirst().get();
-        log.debug("Request to show login page: {}", school);
-        model.addAttribute("school", school);
-       return "auth/login";
+        log.debug("Request to show login page:");
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication.isAuthenticated() && !authentication.getPrincipal().equals("anonymousUser")) {
+            return "redirect:/home";
+        }
+
+        model.addAttribute("school", schoolService.findAll().stream().findFirst().get());
+        return "auth/login";
     }
 
 

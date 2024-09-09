@@ -32,7 +32,7 @@ public class AppSettingServiceImpl implements AppSettingService {
 
     @Override
     public List<AppSettingDTO> findAll() {
-        return  appSettingRepository.findAll().stream().map(appSetting -> appSettingMapper.ToDto(appSetting)).toList();
+        return appSettingRepository.findAll().stream().map(appSetting -> appSettingMapper.ToDto(appSetting)).toList();
     }
 
     @Override
@@ -49,10 +49,11 @@ public class AppSettingServiceImpl implements AppSettingService {
     public AppSettingDTO initAppSetting(AppSettingDTO appSettingDTO) {
         log.debug("Request to init app {}", appSettingDTO);
         AppSettingDTO settingDTO = existingParameter();
-        if (settingDTO == null){
+        if (settingDTO == null) {
             return save(appSettingDTO);
         }
-        return settingDTO;
+
+        return save(appSettingDTO);
 
     }
 

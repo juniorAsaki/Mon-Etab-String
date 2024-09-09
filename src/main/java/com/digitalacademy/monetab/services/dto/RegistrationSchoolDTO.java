@@ -9,5 +9,9 @@ import org.springframework.web.multipart.MultipartFile;
 @Setter
 public class RegistrationSchoolDTO extends SchoolDTO {
 
+    public RegistrationSchoolDTO() {
+        super();
+    }
+
     private MultipartFile file;
 }

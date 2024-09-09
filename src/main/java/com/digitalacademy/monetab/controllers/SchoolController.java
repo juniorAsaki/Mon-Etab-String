@@ -20,11 +20,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
-import com.cloudinary.*;
-import com.cloudinary.utils.ObjectUtils;
-import io.github.cdimascio.dotenv.Dotenv;
-
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/schools")
@@ -48,39 +44,81 @@ public class SchoolController {
 
 
     @GetMapping
-    public String showSchoolPage(Model model){
-        model.addAttribute("school" , new RegistrationSchoolDTO());
+    public String showSchoolPage(Model model) {
+        Optional<SchoolDTO> schoolDTO = schoolService.findAll().stream().findFirst();
+        if (schoolDTO.isPresent()) {
+            return "redirect:/";
+        }
+        model.addAttribute("school", new RegistrationSchoolDTO());
         return "inits/school";
+    }
+
+    @GetMapping("update")
+    public String updateSchool(Model model) {
+        SchoolDTO school = schoolService.findAll().stream().findFirst().get();
+        RegistrationSchoolDTO registrationSchool = new RegistrationSchoolDTO();
+        registrationSchool.setId_school(school.getId_school());
+        registrationSchool.setNameSchool(school.getNameSchool());
+        registrationSchool.setUrlLogo(school.getUrlLogo());
+        registrationSchool.setAppSetting(school.getAppSetting());
+        model.addAttribute("school", registrationSchool);
+        return "inits/config_interne/school";
     }
 
     @PostMapping
     public String saveSchool(@ModelAttribute RegistrationSchoolDTO schoolDTO) throws IOException {
 
+        log.debug("{}", schoolDTO);
+
         // Upload the image
         Map params1 = ObjectUtils.asMap(
                 "use_filename", true,
-                "unique_filename", false,
-                "overwrite", true
+                "unique_filename", true,
+                "overwrite", false
         );
-
-        String fileUrl = cloudinary.uploader().upload(schoolDTO.getFile().getBytes(), params1).get("url").toString();
-
         SchoolDTO schoolDTO1 = new SchoolDTO();
         schoolDTO1.setNameSchool(schoolDTO.getNameSchool());
-        schoolDTO1.setUrlLogo(fileUrl);
 
 
-        AppSettingDTO appSettingDTO = appSettingService.findAll().get(0);
-        initAppService.initSchool(schoolDTO1 , appSettingDTO);
+        if (schoolDTO.getId_school() != null) {
 
-        initAppService.initRoleUsers(createRoleUser());
-        userService.initUsers(createUser());
+            SchoolDTO school = schoolService.findAll().stream().findFirst().get();
 
-        return "redirect:/login";
+
+            if (!schoolDTO.getFile().isEmpty()) {
+                String fileUrl = cloudinary.uploader().upload(schoolDTO.getFile().getBytes(), params1).get("url").toString();
+                schoolDTO1.setUrlLogo(fileUrl);
+            } else {
+                schoolDTO1.setUrlLogo(school.getUrlLogo());
+            }
+
+            schoolDTO1.setId_school(schoolDTO.getId_school());
+            schoolDTO1.setAppSetting(school.getAppSetting());
+
+            schoolService.save(schoolDTO1);
+
+        } else {
+            String fileUrl = cloudinary.uploader().upload(schoolDTO.getFile().getBytes(), params1).get("url").toString();
+            schoolDTO1.setUrlLogo(fileUrl);
+            AppSettingDTO appSettingDTO = appSettingService.findAll().stream().findFirst().orElse(null);
+            initAppService.initSchool(schoolDTO1, appSettingDTO);
+
+
+            initAppService.initRoleUsers(createRoleUser());
+            userService.initUsers(createUser());
+        }
+
+
+        if (schoolDTO.getId_school() != null) {
+            return "redirect:/home";
+        } else {
+            return "redirect:/connexion";
+        }
+
 
     }
 
-    public List<RoleUserDTO> createRoleUser(){
+    public List<RoleUserDTO> createRoleUser() {
         List<RoleUserDTO> roleUserDTOList = new ArrayList<>();
 
         RoleUserDTO roleUserDTO1 = new RoleUserDTO();
@@ -94,7 +132,7 @@ public class SchoolController {
         return roleUserDTOList;
     }
 
-    public List<UserDTO> createUser(){
+    public List<UserDTO> createUser() {
         List<UserDTO> userDTOList = new ArrayList<>();
         SchoolDTO schoolDTO = schoolService.findAll().get(0);
 
@@ -107,22 +145,24 @@ public class SchoolController {
         List<RoleUserDTO> roleUserUSER = new ArrayList<>();
         roleUserUSER.add(roleUserDTOList.get(1));
 
-        UserDTO userAdmin = new UserDTO();
-        userAdmin.setPseudo("admin");
-
-        userAdmin.setPassword(passwordEncoder.encode("admin"));
-        userAdmin.setCreatedDate(Instant.now());
-        userAdmin.setSchool(schoolDTO);
-        userAdmin.setRoleUser(roleUserADMIN);
-        userDTOList.add(userAdmin);
-
         UserDTO userUser = new UserDTO();
         userUser.setPseudo("user");
         userUser.setPassword(passwordEncoder.encode("user"));
         userUser.setCreatedDate(Instant.now());
         userUser.setSchool(schoolDTO);
         userUser.setRoleUser(roleUserUSER);
+        userUser.setDisable(false);
         userDTOList.add(userUser);
+
+        UserDTO userAdmin = new UserDTO();
+        userAdmin.setPseudo("admin");
+        userAdmin.setPassword(passwordEncoder.encode("admin"));
+        userAdmin.setCreatedDate(Instant.now());
+        userAdmin.setSchool(schoolDTO);
+        userAdmin.setRoleUser(roleUserADMIN);
+        userAdmin.setDisable(true);
+        userDTOList.add(userAdmin);
+
 
         return userDTOList;
 

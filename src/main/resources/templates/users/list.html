@@ -20,7 +20,7 @@
             <div class="card shadow mb-4">
                 <div class="border card-header py-3 d-flex align-items-center justify-content-between">
                     <div>
-                        <h6 class="m-0 font-weight-bold text-primary" th:text="'Utilisateur:('+${users.size()}+')'"></h6>
+                        <h6 class="m-0 font-weight-bold text-primary" th:text="'Utilisateur:('+${users.size()-1}+')'"></h6>
                         <form class="d-flex" role="search" th:action="@{/users/search}">
                             <input name="date" th:value="${date}" class="form-control me-2 w-100" type="date" placeholder="RECHERCHE : (DATE DE CREATION)" aria-label="Search">
                             <select name="role"  class="form-control">
@@ -48,6 +48,7 @@
                                 <th>ROLES</th>
                                 <th>DATE DE CREATION</th>
                                 <th >ACTIONS</th>
+                                <th >Desactivé</th>
                             </tr>
                             </thead>
                             <tfoot>
@@ -59,24 +60,46 @@
                                 <th>ROLES</th>
                                 <th>DATE DE CREATION</th>
                                 <th >ACTIONS</th>
+                                <th >Desactivé</th>
                             </tr>
                             </tfoot>
                             <tbody>
-                                <tr th:each="user , status : ${users}">
+                                <tr th:each="user , status : ${users}" th:if="${user.pseudo != name}">
                                     <td th:text="${status.count}"></td>
                                     <td th:text="${user.getPseudo()}"></td>
                                     <td th:text="${user.school?.nameSchool}"></td>
                                     <td th:text="${user.getSchool()?.urlLogo}"></td>
                                     <td th:each="userRole : ${user.getRoleUser()}" th:text="${userRole.nameRole}"></td>
                                     <td th:text="${#dates.format(user?.getCreatedDate() , 'd MMMM yyyy')}"></td>
-                                    <td>
+                                    <td class="d-flex">
                                         <a th:href="@{/users/update/{id}(id=${user.getId_user()})}" class="btn btn-primary">MODIFIER</a>
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" th:data-bs-target="'#exampleModal'+${status.count}">
                                             Supprimer
                                         </button>
                                     </td>
+                                    <td>
+                                        <span th:classappend="${user.disable} ? 'active':'desactive'" type="button" class="btn btn-info user" data-bs-toggle="modal" th:data-bs-target="'#exampleModaldisable'+${status.count}" style="width: 30px;height: 30px;border-radius: 100%"></span>
+                                    </td>
                                     <!-- Modal -->
+                                    <div class="modal fade" th:id="'exampleModaldisable'+${status.count}" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-body">
+                                                    <form th:action="@{/users/disable/{id}(id=${user?.getId_user()})}" method="post">
+                                                        <div class="form-check form-switch">
+                                                            <input class="form-check-input" th:checked="${user.getDisable()}" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                                                            <label class="form-check-label" for="flexSwitchCheckDefault">Désactivé l'utilisateur</label>
+                                                        </div>
+                                                        <button type="submit" class="btn btn-primary">Valider</button>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div >
                                     <div class="modal fade" th:id="'exampleModal'+${status.count}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">

@@ -11,6 +11,8 @@ import com.digitalacademy.monetab.services.dto.UserDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -29,28 +31,29 @@ public class UsersController {
 
     private final UserService userService;
 
-
     private final RoleUserService roleUserService;
 
 
     @GetMapping
     public String showUserPage(Model model) {
         log.debug("show user page ");
-//        System.out.println(userService.findAll());
+
+        String userName = SecurityContextHolder.getContext().getAuthentication().getName();
 
         model.addAttribute("users", userService.findAll());
         model.addAttribute("roles", roleUserService.findAll());
+        model.addAttribute("name", userName);
         return "users/list";
     }
 
     @GetMapping("/add")
-    public String showAddUserPage(Model model){
+    public String showAddUserPage(Model model) {
         log.debug("show add user page");
 
         UserDTO userDTO = new UserDTO();
         List<RoleUserDTO> roleUsers = new ArrayList<>();
         userDTO.setSchool(new SchoolDTO());
-        userDTO.setRoleUser(roleUsers );
+        userDTO.setRoleUser(roleUsers);
 
         // Log pour vérifier l'initialisation
         log.debug("UserDTO initialized: {}", userDTO);
@@ -63,25 +66,24 @@ public class UsersController {
     }
 
     @GetMapping("/update/{id}")
-    public String showUpdateUserPage(@PathVariable Long id, Model model)
-    {
-        log.debug("show update user page {}" , id);
+    public String showUpdateUserPage(@PathVariable Long id, Model model) {
+        log.debug("show update user page {}", id);
 
         Optional<UserDTO> userDTO = userService.findById(id);
 
-        if(userDTO.isPresent()){
+        if (userDTO.isPresent()) {
             model.addAttribute("user", userDTO);
             model.addAttribute("roles", roleUserService.findAll());
             model.addAttribute("action", "update");
             return "users/forms";
-        }else{
+        } else {
             return "redirect:/users";
         }
 
     }
 
     @PostMapping("/save")
-    public String saveUser(UserDTO userDTO){
+    public String saveUser(UserDTO userDTO) {
         log.debug("save user {}", userDTO);
         userDTO.setCreatedDate(Instant.now());
 
@@ -91,10 +93,10 @@ public class UsersController {
     }
 
     @PostMapping("/delete/{id}")
-    public String deleteUser(@PathVariable Long id){
+    public String deleteUser(@PathVariable Long id) {
         log.debug("delete user {}", id);
 
-        if(userService.findById(id).isPresent()){
+        if (userService.findById(id).isPresent()) {
             userService.deleteById(id);
         }
 
@@ -103,8 +105,7 @@ public class UsersController {
     }
 
     @GetMapping("/search")
-    public String searchTeachers(@RequestParam LocalDate date  , @RequestParam String role, Model model)
-    {
+    public String searchTeachers(@RequestParam LocalDate date, @RequestParam String role, Model model) {
         List<UserDTO> users = userService.findByCreatedDateLessThanAndRoleUserNameRole(Instant.from(date.atStartOfDay(ZoneOffset.systemDefault())), role);
         model.addAttribute("users", users);
         model.addAttribute("date", date);
@@ -112,5 +113,17 @@ public class UsersController {
         model.addAttribute("roles", roleUserService.findAll());
 
         return "users/list";
+    }
+
+    @PostMapping("/disable/{id}")
+    public String desableCount(@PathVariable Long id) {
+        Optional<UserDTO> userDTO = userService.findById(id);
+
+        if (userDTO.isPresent()) {
+            userDTO.get().setDisable(!userDTO.get().getDisable());
+        }
+
+        userService.save(userDTO.get());
+        return "redirect:/users";
     }
 }

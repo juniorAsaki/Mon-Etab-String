@@ -1,8 +1,6 @@
 package com.digitalacademy.monetab.models;
 
 
-
-
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,14 +21,17 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_user;
 
-    @Column(name = "pseudo" , unique = true , nullable = false)
+    @Column(name = "pseudo", unique = true, nullable = false)
     private String pseudo;
 
-    @Column(name = "password" , nullable = false)
+    @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "creation_date" , nullable = false)
+    @Column(name = "creation_date", nullable = false)
     private Instant createdDate;
+
+    @Column(name = "desable")
+    private Boolean disable;
 
     @OneToMany(fetch = FetchType.EAGER)
     private List<RoleUser> roleUser;

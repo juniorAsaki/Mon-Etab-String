@@ -29,14 +29,14 @@
                     <div class="form-group row w-50">
                         <div class="col-sm-12 mb-3">
                             <input type="text" class="form-control form-control-user" id="exampleCountry"
-                                   placeholder="Nom de l'école" th:field="${user.school.nameSchool}">
+                                   placeholder="Nom de l'école" th:field="${user.school.nameSchool}" required>
                         </div>
                         <div class="col-sm-12 mb-3">
                             <input type="text" class="form-control form-control-user" id="exampleCity"
-                                   placeholder="Url du logo" th:field="${user.school.urlLogo}">
+                                   placeholder="Url du logo" th:field="${user.school.urlLogo}" required>
                         </div>
                         <div class="form-group">
-                            <select name="roleUser" id="roleUser" class="form-control" th:field="*{roleUser}">
+                            <select multiple="multiple" name="roleUser" id="roleUser" class="form-control" th:field="*{roleUser}">
                                 <option value="">Sélectionner un role</option>
                                 <option th:each="role : ${roles}"
                                         th:value="${role.idRoleUser}"

@@ -26,16 +26,29 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public StudentDTO update(StudentDTO studentDTO) {
-        return findById((studentDTO.getId_person())).map(existingStudent ->{
+        return findById((studentDTO.getId_person())).map(existingStudent -> {
             existingStudent.setAdress(studentDTO.getAdress());
             existingStudent.setFirstName(studentDTO.getFirstName());
             return save(existingStudent);
-        }).orElseThrow(()-> new RuntimeException("Student not found"));
+        }).orElseThrow(() -> new RuntimeException("Student not found"));
+    }
+
+    @Override
+    public StudentDTO update(StudentDTO studentDTO, Long id) {
+        StudentDTO student = findById(id).orElseThrow(() -> new RuntimeException("Student not found"));
+
+        if (student != null) {
+
+            student.setMatricule(studentDTO.getMatricule());
+            student.setFirstName(studentDTO.getFirstName());
+            student.setLastName(studentDTO.getLastName());
+        }
+        return save(student);
     }
 
     @Override
     public Optional<StudentDTO> findById(Long id) {
-        return studentRepository.findById(id).map(student -> studentMapper.ToDto(student));
+        return studentRepository.findById(id).map(studentMapper::ToDto);
     }
 
 
@@ -52,8 +65,8 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<StudentDTO> findByLastNameOrGenderOrMatricule(String query , String gender) {
-        List<Student> students = studentRepository.findByLastNameIgnoreCaseOrMatriculeIgnoreCaseAndGender(query  , query , Gender.valueOf(gender));
+    public List<StudentDTO> findByLastNameOrGenderOrMatricule(String query, String gender) {
+        List<Student> students = studentRepository.findByLastNameIgnoreCaseOrMatriculeIgnoreCaseAndGender(query, query, Gender.valueOf(gender));
         return students.stream().map(student -> studentMapper.ToDto(student)).toList();
     }
 

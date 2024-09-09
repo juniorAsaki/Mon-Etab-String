@@ -24,16 +24,16 @@ public abstract class Person implements Serializable {
     @Column(name = "id_personne")
     private Long id_person;
 
-    @Column(name = "firstName", nullable = false)
+    @Column(name = "firstName")
     private String firstName;
 
-    @Column(name = "lastName" , nullable = false)
+    @Column(name = "lastName")
     private String lastName;
 
-    @Column(name = "numbers" , nullable = false)
+    @Column(name = "numbers")
     private String numbers;
 
-    @Column(name = "dateOfBirth" , nullable = false)
+    @Column(name = "dateOfBirth")
     private Date dateOfBirth;
 
     @Column(name = "url_picture")

@@ -30,12 +30,12 @@ public class IndexController {
         List<SchoolDTO> schools = schoolService.findAll();
         List<AppSettingDTO> appSetting = appSettingService.findAll();
 
-        if(appSetting.isEmpty()) {
+        if (appSetting.isEmpty()) {
             return "redirect:/settings";
-        }else if(schools.isEmpty()) {
+        } else if (schools.isEmpty()) {
             return "redirect:/schools";
-        }else{
-            return "redirect:/login";
+        } else {
+            return "redirect:/connexion";
         }
 
     }

@@ -1,6 +1,5 @@
 package com.digitalacademy.monetab.services.dto;
 
-import com.digitalacademy.monetab.models.AppSetting;
 import lombok.Getter;
 import lombok.Setter;
 

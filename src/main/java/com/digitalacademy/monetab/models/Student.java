@@ -15,16 +15,16 @@ import java.util.List;
 @NoArgsConstructor
 @DiscriminatorValue(value = "student")
 @ToString
-public class Student extends Person{
+public class Student extends Person {
 
-    @Column(unique=true , nullable=false , name = "matricule")
+    @Column(unique = true, name = "matricule")
     private String matricule;
 
-    @OneToMany(  mappedBy = "student" , fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
     @Column(nullable = true)
     private List<Absence> absence;
 
-    @Column(name = "phone_number_parent" , nullable = false)
+    @Column(name = "phone_number_parent")
     private String phoneNumberParent;
 
 

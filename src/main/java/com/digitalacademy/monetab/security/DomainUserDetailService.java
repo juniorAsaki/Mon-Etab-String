@@ -28,7 +28,7 @@ public class DomainUserDetailService implements UserDetailsService {
 
         final Optional<User> user = userRepository.findByPseudo(username);
 
-        if(user.isEmpty()){
+        if (user.isEmpty()) {
             throw new IllegalArgumentException("User not found");
         }
 
@@ -43,6 +43,7 @@ public class DomainUserDetailService implements UserDetailsService {
                 .username(userRecover.getPseudo())
                 .password(userRecover.getPassword())
                 .authorities(grantedAuthorities)
-                .build()).orElseThrow(()-> new IllegalArgumentException("User not found"));
+                .disabled(!userRecover.getDisable())
+                .build()).orElseThrow(() -> new IllegalArgumentException("User not found"));
     }
 }
