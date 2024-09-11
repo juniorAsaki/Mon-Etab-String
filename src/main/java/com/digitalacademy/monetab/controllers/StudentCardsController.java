@@ -43,8 +43,8 @@ public class StudentCardsController {
         StudentCardsDTO studentCardsDTO = new StudentCardsDTO();
         studentCardsDTO.setStudent(new StudentDTO());
 
-        model.addAttribute("card" , studentCardsDTO);
-        model.addAttribute("students" , studentService.findAll());
+        model.addAttribute("card", studentCardsDTO);
+        model.addAttribute("students", studentService.findAll());
         model.addAttribute("action", "add");
 
         return "cards/forms";
@@ -52,14 +52,14 @@ public class StudentCardsController {
 
     @GetMapping("update/{id}")
     public String showUpdateStudentCardPage(
-            @PathVariable Long id ,
+            @PathVariable Long id,
             Model model
     ) {
 
         log.info("Show update student card");
 
-        model.addAttribute("card" , studentCardsService.findById(id));
-        model.addAttribute("students" , studentService.findAll());
+        model.addAttribute("card", studentCardsService.findById(id));
+        model.addAttribute("students", studentService.findAll());
         model.addAttribute("action", "add");
 
         return "cards/forms";
@@ -67,7 +67,7 @@ public class StudentCardsController {
 
     @PostMapping("save")
     public String saveStudentCard(StudentCardsDTO studentCardsDTO) {
-        log.info("Save student card {}" , studentCardsDTO.getStudent().getId_person());
+        log.info("Save student card {}", studentCardsDTO.getStudent().getId_person());
         studentCardsService.save(studentCardsDTO);
         return "redirect:/cards";
     }

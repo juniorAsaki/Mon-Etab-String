@@ -30,18 +30,18 @@ public class UserServiceImpl implements UserService {
     public UserDTO save(UserDTO userDTO) {
         log.debug("Saving user {}", userDTO);
 
-        User user  = userMapper.DtoToEntity(userDTO);
+        User user = userMapper.DtoToEntity(userDTO);
         return userMapper.ToDto(userRepository.save(user));
     }
 
     @Override
     public UserDTO update(UserDTO userDTO) {
 
-        return findById(userDTO.getId_user()).map(existingUser ->{
+        return findById(userDTO.getId_user()).map(existingUser -> {
             existingUser.setPseudo(userDTO.getPseudo());
             existingUser.setPassword(userDTO.getPassword());
             return save(existingUser);
-        }).orElseThrow(()->new RuntimeException(""));
+        }).orElseThrow(() -> new RuntimeException(""));
     }
 
     @Override
@@ -72,7 +72,7 @@ public class UserServiceImpl implements UserService {
     public List<UserDTO> initUsers(List<UserDTO> users) {
 
         List<UserDTO> userDTOS = findAll();
-        if (userDTOS.isEmpty()){
+        if (userDTOS.isEmpty()) {
             users.forEach(user -> save(user));
         }
 

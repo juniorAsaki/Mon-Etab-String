@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
@@ -33,12 +34,19 @@ public class AuthController {
     public String showLoginPage(Model model) {
         log.debug("Request to show login page:");
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication.isAuthenticated() && !authentication.getPrincipal().equals("anonymousUser")) {
-            return "redirect:/home";
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        if (authentication.getPrincipal() instanceof UserDetails) {
+//            return "redirect:/home";
+//        }
+
+        SchoolDTO school = schoolService.findAll().stream().findFirst().orElse(null);
+
+        if (school != null) {
+            model.addAttribute("school", school);
+        } else {
+            return "redirect:/settings";
         }
 
-        model.addAttribute("school", schoolService.findAll().stream().findFirst().get());
         return "auth/login";
     }
 

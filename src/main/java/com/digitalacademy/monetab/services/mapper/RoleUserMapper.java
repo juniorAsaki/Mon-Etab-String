@@ -6,5 +6,5 @@ import org.mapstruct.Mapper;
 
 
 @Mapper(componentModel = "spring")
-public interface RoleUserMapper extends EntityMapper<RoleUserDTO  , RoleUser> {
+public interface RoleUserMapper extends EntityMapper<RoleUserDTO, RoleUser> {
 }

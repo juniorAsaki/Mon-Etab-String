@@ -9,5 +9,6 @@ import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByPseudo(String pseudo);
+
     List<User> findByCreatedDateLessThanAndRoleUserNameRole(Instant createdDate, String role);
 }

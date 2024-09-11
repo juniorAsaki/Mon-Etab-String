@@ -7,7 +7,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class TeacherDTO extends PersonDTO{
+public class TeacherDTO extends PersonDTO {
 
     private Boolean available;
 

@@ -3,6 +3,7 @@ package com.digitalacademy.monetab.controllers;
 import com.digitalacademy.monetab.models.RoleUser;
 import com.digitalacademy.monetab.models.School;
 import com.digitalacademy.monetab.services.RoleUserService;
+import com.digitalacademy.monetab.services.SchoolService;
 import com.digitalacademy.monetab.services.UserService;
 import com.digitalacademy.monetab.services.dto.RoleUserDTO;
 import com.digitalacademy.monetab.services.dto.SchoolDTO;
@@ -32,6 +33,8 @@ public class UsersController {
     private final UserService userService;
 
     private final RoleUserService roleUserService;
+
+    private final SchoolService schoolService;
 
 
     @GetMapping
@@ -85,7 +88,11 @@ public class UsersController {
     @PostMapping("/save")
     public String saveUser(UserDTO userDTO) {
         log.debug("save user {}", userDTO);
+
+        SchoolDTO school = schoolService.findAll().stream().findFirst().get();
+
         userDTO.setCreatedDate(Instant.now());
+        userDTO.setSchool(school);
 
         userService.save(userDTO);
         return "redirect:/users";

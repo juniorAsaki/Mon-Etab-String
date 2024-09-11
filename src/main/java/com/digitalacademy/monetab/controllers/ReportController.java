@@ -29,7 +29,7 @@ public class ReportController {
     }
 
     @GetMapping("/excel")
-    public void generateRapport(@RequestParam String query , HttpServletResponse response) throws IOException {
+    public void generateRapport(@RequestParam String query, HttpServletResponse response) throws IOException {
         log.debug("show Rapport Page");
 
         response.setContentType("application/octet-stream"); //octet-stream
@@ -38,11 +38,11 @@ public class ReportController {
 
         response.setHeader(headerKey, headerValue);
 
-        if(query.equals("student")){
+        if (query.equals("student")) {
             reportService.generateReportExcelStudent(response);
-        }else if(query.equals("teacher")){
+        } else if (query.equals("teacher")) {
             reportService.generateReportExcelTeacher(response);
-        }else if(query.equals("user")){
+        } else if (query.equals("user")) {
             reportService.generateReportExcelUser(response);
         }
 

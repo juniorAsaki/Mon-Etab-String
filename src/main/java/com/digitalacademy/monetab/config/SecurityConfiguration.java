@@ -20,6 +20,7 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(CsrfConfigurer::disable)
+                .addFilterBefore(loginPageFilter(), UsernamePasswordAuthenticationFilter.class) // Ajoute le filtre avant le filtre d'authentification
                 .authorizeHttpRequests((authorize) -> authorize
                         .dispatcherTypeMatchers(DispatcherType.FORWARD, DispatcherType.ERROR).permitAll()
                         .requestMatchers("/css/**").permitAll()
@@ -27,7 +28,7 @@ public class SecurityConfiguration {
                         .requestMatchers("/js/**").permitAll()
                         .requestMatchers("/fontawesome").permitAll()
                         .requestMatchers("/img/**").permitAll()
-                        .requestMatchers("/schools", "/", "settings", "/api/students/**", "/api/teachers/**").permitAll()
+                        .requestMatchers("/schools", "/", "settings", "/api/students/**", "/api/teachers/**", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin((login) -> login
@@ -42,7 +43,6 @@ public class SecurityConfiguration {
                         .deleteCookies("JSESSIONID")
                         .permitAll()
                 );
-        http.addFilterBefore(loginPageFilter(), UsernamePasswordAuthenticationFilter.class); // Ajoute le filtre avant le filtre d'authentification
 
         return http.build();
     }

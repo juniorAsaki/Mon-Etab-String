@@ -10,7 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-public class StudentDTO extends PersonDTO{
+public class StudentDTO extends PersonDTO {
 
     private String matricule;
 

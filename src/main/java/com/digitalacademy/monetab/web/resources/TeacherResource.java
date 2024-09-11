@@ -9,6 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Optional;
+
 @RestController
 @RequiredArgsConstructor
 @Slf4j
@@ -24,9 +27,26 @@ public class TeacherResource {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateTeacher(@RequestBody TeacherDTO teacherDTO, @PathVariable Long id) {
+    public TeacherDTO updateTeacher(@RequestBody TeacherDTO teacherDTO, @PathVariable Long id) {
         log.debug("REST request to update Teacher : {}", teacherDTO);
+        return teacherService.update(teacherDTO, id);
+    }
 
-        return null;
+    @DeleteMapping("/{id}")
+    public void deleteTeacher(@PathVariable Long id) {
+        log.debug("REST request to delete Teacher : {}", id);
+        teacherService.deleteById(id);
+    }
+
+    @GetMapping
+    public List<TeacherDTO> getAllTeachers() {
+        log.debug("REST request to get all Teachers");
+        return teacherService.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public Optional<TeacherDTO> getTeacher(@PathVariable Long id) {
+        log.debug("REST request to get Teacher : {}", id);
+        return teacherService.findById(id);
     }
 }

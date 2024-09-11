@@ -18,10 +18,10 @@ public class School {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id_school;
 
-    @Column(nullable = false , name = "name_school")
+    @Column(nullable = false, name = "name_school")
     private String nameSchool;
 
-    @Column(nullable = false , name = "url_logo")
+    @Column(nullable = false, name = "url_logo")
     private String urlLogo;
 
     @OneToOne

@@ -16,6 +16,9 @@ public class RoleUser {
     @Column(name = "id_role_user")
     private Long idRoleUser;
 
-    @Column(unique = true , name = "name_role")
+    @Column(unique = true, name = "name_role")
     private String nameRole;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
 }

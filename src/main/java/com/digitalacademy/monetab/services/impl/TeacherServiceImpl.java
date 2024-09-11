@@ -17,6 +17,7 @@ public class TeacherServiceImpl implements TeacherService {
 
     private final TeacherRepository teacherRepository;
     private final TeacherMapper teacherMapper;
+
     @Override
     public TeacherDTO save(TeacherDTO teacherDTO) {
         Teacher teacher = teacherMapper.DtoToEntity(teacherDTO);
@@ -26,11 +27,23 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public TeacherDTO update(TeacherDTO teacherDTO) {
 
-        return findById(teacherDTO.getId_person()).map(existingTeacher ->{
+        return findById(teacherDTO.getId_person()).map(existingTeacher -> {
             Teacher teacher = teacherMapper.DtoToEntity(teacherDTO);
             teacher.setLastName(existingTeacher.getLastName());
             return save(existingTeacher);
-        }).orElseThrow(()-> new RuntimeException("Teacher not found"));
+        }).orElseThrow(() -> new RuntimeException("Teacher not found"));
+    }
+
+    @Override
+    public TeacherDTO update(TeacherDTO teacherDTO, Long id) {
+        TeacherDTO teacher = findById(id).orElseThrow(() -> new RuntimeException("Teacher not found"));
+
+        if (teacher != null) {
+            teacher.setLastName(teacherDTO.getLastName());
+            teacher.setFirstName(teacherDTO.getFirstName());
+            teacher.setAvailable(teacherDTO.getAvailable());
+        }
+        return save(teacher);
     }
 
     @Override
@@ -52,7 +65,7 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public List<TeacherDTO> findByLastNameOrSpecialtyAndGender(String query, String gender) {
-        List<Teacher> teachers = teacherRepository.findByLastNameOrSpecialtyAndGender(query , query ,  Gender.valueOf(gender));
+        List<Teacher> teachers = teacherRepository.findByLastNameOrSpecialtyAndGender(query, query, Gender.valueOf(gender));
         return teachers.stream().map(teacher -> teacherMapper.ToDto(teacher)).toList();
     }
 }

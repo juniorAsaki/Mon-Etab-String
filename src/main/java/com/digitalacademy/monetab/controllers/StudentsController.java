@@ -1,7 +1,6 @@
 package com.digitalacademy.monetab.controllers;
 
 
-
 import com.digitalacademy.monetab.models.Adress;
 import com.digitalacademy.monetab.services.StudentService;
 import com.digitalacademy.monetab.services.dto.AdressDTO;
@@ -49,18 +48,18 @@ public class StudentsController {
 
     @GetMapping("/update/{id}")
     public String showUpdateStudentPage(
-            @PathVariable Long id ,
+            @PathVariable Long id,
             Model model
     ) {
-        log.debug("show update student page {}" , id);
+        log.debug("show update student page {}", id);
 
         Optional<StudentDTO> studentDTO = studentService.findById(id);
-        if( studentDTO.isPresent()){
+        if (studentDTO.isPresent()) {
             model.addAttribute("student", studentDTO.get());
             model.addAttribute("action", "update");
             model.addAttribute("genres", Gender.values());
             return "students/forms";
-        }else{
+        } else {
             return "redirect:/students";
         }
 
@@ -78,16 +77,15 @@ public class StudentsController {
     public String deleteStudent(@PathVariable Long id) {
         log.debug("delete student {}", id);
 
-        if(studentService.findById(id).isPresent()){
+        if (studentService.findById(id).isPresent()) {
             studentService.deleteById(id);
         }
         return "redirect:/students";
     }
 
     @GetMapping("/search")
-    public String searchStudents(@RequestParam String query  ,@RequestParam String gender, Model model)
-    {
-        List<StudentDTO> students = studentService.findByLastNameOrGenderOrMatricule(query , gender);
+    public String searchStudents(@RequestParam String query, @RequestParam String gender, Model model) {
+        List<StudentDTO> students = studentService.findByLastNameOrGenderOrMatricule(query, gender);
         model.addAttribute("students", students);
         model.addAttribute("query", query);
         model.addAttribute("gender", gender);

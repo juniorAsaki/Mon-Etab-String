@@ -36,13 +36,13 @@ public class TeachersController {
     @GetMapping("/add")
     public String showAddTeacherPage(
             Model model
-    ){
+    ) {
         log.debug("show add teacher page");
 
         TeacherDTO teacherDTO = new TeacherDTO();
         teacherDTO.setAdress(new AdressDTO());
 
-        log.info("student {}" , teacherDTO);
+        log.info("student {}", teacherDTO);
 
         model.addAttribute("teacher", teacherDTO);
         model.addAttribute("matieres", Matieres.values());
@@ -57,8 +57,8 @@ public class TeachersController {
     public String showUpdateTeacherPage(
             @PathVariable Long id,
             Model model
-    ){
-        log.debug("show update teacher page {}" , id);
+    ) {
+        log.debug("show update teacher page {}", id);
 
         model.addAttribute("teacher", teacherService.findById(id));
         model.addAttribute("matieres", Matieres.values());
@@ -69,7 +69,7 @@ public class TeachersController {
 
     @PostMapping("/save")
     public String saveTeacher(TeacherDTO teacherDTO) {
-        log.debug("teacher {}" , teacherDTO);
+        log.debug("teacher {}", teacherDTO);
         teacherService.save(teacherDTO);
         return "redirect:/teachers";
     }
@@ -78,7 +78,7 @@ public class TeachersController {
     public String deleteTeacher(@PathVariable Long id) {
         log.debug("delete teacher : {}", id);
 
-        if(teacherService.findById(id).isPresent()) {
+        if (teacherService.findById(id).isPresent()) {
             teacherService.deleteById(id);
         }
 
@@ -86,9 +86,8 @@ public class TeachersController {
     }
 
     @GetMapping("/search")
-    public String searchTeachers(@RequestParam String query  ,@RequestParam String gender, Model model)
-    {
-        List<TeacherDTO> teachers = teacherService.findByLastNameOrSpecialtyAndGender(query  , gender);
+    public String searchTeachers(@RequestParam String query, @RequestParam String gender, Model model) {
+        List<TeacherDTO> teachers = teacherService.findByLastNameOrSpecialtyAndGender(query, gender);
         model.addAttribute("teachers", teachers);
         model.addAttribute("query", query);
         model.addAttribute("gender", gender);

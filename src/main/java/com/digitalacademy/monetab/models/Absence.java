@@ -21,10 +21,10 @@ public class Absence {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id_absence;
 
-    @Column(name = "date_absence" , nullable = false)
+    @Column(name = "date_absence", nullable = false)
     private Date dateAbsence;
 
-    @Column(name = "number_absence" , nullable = false)
+    @Column(name = "number_absence", nullable = false)
     private int numberAbsence;
 
     @ManyToOne(fetch = FetchType.EAGER)

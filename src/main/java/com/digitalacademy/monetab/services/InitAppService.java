@@ -7,10 +7,11 @@ import com.digitalacademy.monetab.services.dto.SchoolDTO;
 import java.util.List;
 
 
-
 public interface InitAppService {
 
     AppSettingDTO initAppSetting(AppSettingDTO appSettingDTO);
-    SchoolDTO initSchool(SchoolDTO schoolDTO , AppSettingDTO appSettingDTO);
+
+    SchoolDTO initSchool(SchoolDTO schoolDTO, AppSettingDTO appSettingDTO);
+
     List<RoleUserDTO> initRoleUsers(List<RoleUserDTO> roleUserDTOList);
 }

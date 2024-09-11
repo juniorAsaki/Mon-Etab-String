@@ -5,5 +5,5 @@ import com.digitalacademy.monetab.services.dto.AppSettingDTO;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
-public interface AppSettingMapper extends EntityMapper<AppSettingDTO , AppSetting> {
+public interface AppSettingMapper extends EntityMapper<AppSettingDTO, AppSetting> {
 }

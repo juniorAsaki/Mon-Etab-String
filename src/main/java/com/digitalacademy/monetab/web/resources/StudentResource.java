@@ -3,6 +3,12 @@ package com.digitalacademy.monetab.web.resources;
 
 import com.digitalacademy.monetab.services.StudentService;
 import com.digitalacademy.monetab.services.dto.StudentDTO;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -22,25 +28,33 @@ public class StudentResource {
 
 
     @PostMapping
+    @ApiResponse(responseCode = "200", description = "Request to save Student")
+    @Operation(summary = "save new student", description = "this endpoint allow to save student")
     public ResponseEntity<StudentDTO> saveStudent(@RequestBody StudentDTO student) {
         log.debug("REST request to save student {}", student);
         return new ResponseEntity<>(studentService.save(student), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public StudentDTO updateStudent(@RequestBody StudentDTO student, @RequestParam Long id) {
+    @ApiResponse(responseCode = "201", description = "Request to update Student")
+    public StudentDTO updateStudent(@RequestBody StudentDTO student, @PathVariable Long id) {
         log.debug("REST request to update student {}", student);
         return studentService.update(student, id);
     }
 
     @DeleteMapping("/{id}")
+    @ApiResponse(responseCode = "200", description = "Request to delete Student")
     public void deleteStudent(@PathVariable Long id) {
         log.debug("REST request to delete student {}", id);
         studentService.deleteById(id);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getStudent(@PathVariable Long id) {
+    @ApiResponse(responseCode = "200", description = "Request to get Student")
+    public ResponseEntity<?> getStudent(
+            @Parameter(required = true, description = "ID of student to be retrieved")
+            @PathVariable Long id
+    ) {
         log.debug("REST request to get student {}", id);
 
         Optional<StudentDTO> student = studentService.findById(id);
@@ -54,6 +68,12 @@ public class StudentResource {
 
 
     @GetMapping
+    @ApiResponses(
+            {
+                    @ApiResponse(responseCode = "200", description = "Request to get Students"),
+                    @ApiResponse(responseCode = "404", description = "Students not found", content = @Content(schema = @Schema(implementation = String.class)))
+            }
+    )
     public List<StudentDTO> getStudents() {
         log.debug("REST request to get students");
         return studentService.findAll();

@@ -18,13 +18,13 @@ public class StudentCards {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idStudentCard;
 
-    @Column(nullable = false , name = "reference")
+    @Column(nullable = false, name = "reference")
     private String reference;
 
-    @Column(nullable = false , name = "issue_date")
+    @Column(nullable = false, name = "issue_date")
     private Date issueDate;
 
-    @Column(nullable = false , name = "expiry_date")
+    @Column(nullable = false, name = "expiry_date")
     private Date expiryDate;
 
     @ManyToOne

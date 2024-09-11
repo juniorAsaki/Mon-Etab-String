@@ -76,7 +76,7 @@ public class ReportServiceImpl implements ReportService {
             dataRowIndex++;
         }
 
-       ServletOutputStream outputStream = response.getOutputStream();
+        ServletOutputStream outputStream = response.getOutputStream();
         workbook.write(outputStream);
         workbook.close();
         outputStream.close();

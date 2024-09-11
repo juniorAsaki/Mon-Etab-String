@@ -26,7 +26,7 @@ public class SchoolServiceImpl implements SchoolService {
 
     @Override
     public List<SchoolDTO> findAll() {
-        return  schoolRepository.findAll().stream().map(school -> schoolMapper.ToDto(school)).toList();
+        return schoolRepository.findAll().stream().map(school -> schoolMapper.ToDto(school)).toList();
     }
 
     @Override
@@ -48,14 +48,14 @@ public class SchoolServiceImpl implements SchoolService {
     public SchoolDTO existingSchool() {
         log.debug("Request to check existing School");
         List<SchoolDTO> schoolDTOS = findAll();
-        return  schoolDTOS.stream().findFirst().orElse(null);
+        return schoolDTOS.stream().findFirst().orElse(null);
     }
 
     @Override
     public SchoolDTO initSchool(SchoolDTO schoolDTO) {
         log.debug("Request to initSchool {}", schoolDTO);
         SchoolDTO schoolDTO1 = existingSchool();
-        if (schoolDTO1 == null){
+        if (schoolDTO1 == null) {
             return save(schoolDTO);
         }
         return schoolDTO1;

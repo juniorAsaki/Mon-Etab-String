@@ -9,9 +9,14 @@ import java.util.Set;
 public interface RoleUserService {
 
     Optional<RoleUserDTO> FindById(Long id);
+
     RoleUserDTO save(RoleUserDTO roleUser);
+
     RoleUserDTO update(RoleUserDTO roleUser);
+
     void delete(Long id);
+
     List<RoleUserDTO> findAll();
+
     List<RoleUserDTO> initRoles(List<RoleUserDTO> roles);
 }

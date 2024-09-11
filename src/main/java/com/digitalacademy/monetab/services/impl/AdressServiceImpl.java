@@ -27,11 +27,11 @@ public class AdressServiceImpl implements AdressService {
     @Override
     public AdressDTO update(AdressDTO adressDTO) {
 
-        return findById(adressDTO.getId_adress()).map(existingAdress ->{
+        return findById(adressDTO.getId_adress()).map(existingAdress -> {
             existingAdress.setCountry(adressDTO.getCountry());
             existingAdress.setCity(adressDTO.getCity());
             return save(existingAdress);
-        }).orElseThrow(()->new RuntimeException("Adress not found"));
+        }).orElseThrow(() -> new RuntimeException("Adress not found"));
     }
 
     @Override

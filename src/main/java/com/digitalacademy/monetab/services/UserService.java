@@ -12,12 +12,19 @@ public interface UserService {
 
 
     UserDTO save(UserDTO userDTO);
+
     UserDTO update(UserDTO userDTO);
+
     Optional<UserDTO> findById(Long id);
+
     List<UserDTO> findAll();
+
     void deleteById(Long id);
+
     Optional<UserDTO> findByPseudo(String username);
+
     List<UserDTO> initUsers(List<UserDTO> users);
+
     List<UserDTO> findByCreatedDateLessThanAndRoleUserNameRole(Instant createdDate, String role);
 
 }

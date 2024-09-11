@@ -16,7 +16,7 @@ public class GobalControllerConfig {
 
     @ModelAttribute
     public void addAttributes(Model model) {
-            model.addAttribute("school",  schoolService.findAll().stream().findFirst().orElse(null));
-        }
+        model.addAttribute("school", schoolService.findAll().stream().findFirst().orElse(null));
+    }
 
 }

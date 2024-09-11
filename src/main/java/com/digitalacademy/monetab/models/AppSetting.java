@@ -19,16 +19,16 @@ public class AppSetting implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id_appsetting;
 
-    @Column(unique = true, nullable = false , name = "smtp_server")
+    @Column(unique = true, nullable = false, name = "smtp_server")
     private String smtpServer;
 
-    @Column(unique = true, nullable = false , name = "smtp_port")
+    @Column(unique = true, nullable = false, name = "smtp_port")
     private Integer smtpPort;
 
-    @Column(unique = true, nullable = false , name = "smtp_username")
+    @Column(unique = true, nullable = false, name = "smtp_username")
     private String smtpUsername;
 
-    @Column(unique = true, nullable = false , name = "smtp_password")
+    @Column(unique = true, nullable = false, name = "smtp_password")
     private String smtpPassword;
 
     @OneToOne(mappedBy = "appSetting")

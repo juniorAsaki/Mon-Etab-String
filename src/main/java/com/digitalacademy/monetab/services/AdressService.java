@@ -8,8 +8,12 @@ import java.util.Optional;
 public interface AdressService {
 
     AdressDTO save(AdressDTO adressDTO);
+
     AdressDTO update(AdressDTO adressDTO);
+
     Optional<AdressDTO> findById(Long id);
+
     List<AdressDTO> findAll();
+
     void deleteById(Long id);
 }

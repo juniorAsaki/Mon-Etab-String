@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 public class CloudinaryConfig {
 
     @Bean
-    public Cloudinary cloudinary()  {
+    public Cloudinary cloudinary() {
         Dotenv dotenv = Dotenv.load();
         Cloudinary cloudinary = new Cloudinary(dotenv.get("CLOUDINARY_URL"));
         cloudinary.config.secure = true;
