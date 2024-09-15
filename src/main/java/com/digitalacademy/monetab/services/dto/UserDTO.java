@@ -22,6 +22,8 @@ public class UserDTO {
 
     private Boolean disable;
 
+    private String slug;
+
     private List<RoleUserDTO> roleUser;
 
     private SchoolDTO school;

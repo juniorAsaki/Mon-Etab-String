@@ -5,6 +5,7 @@ import com.digitalacademy.monetab.repositories.AdressRepository;
 import com.digitalacademy.monetab.services.AdressService;
 import com.digitalacademy.monetab.services.dto.AdressDTO;
 import com.digitalacademy.monetab.services.mapper.AdressMapper;
+import com.digitalacademy.monetab.utils.SlugGifyUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,13 @@ public class AdressServiceImpl implements AdressService {
     }
 
     @Override
+    public AdressDTO saveAdress(AdressDTO adressDTO) {
+        final String SLUG = SlugGifyUtils.generateSlug(adressDTO.getCountry());
+        adressDTO.setSlug(SLUG);
+        return save(adressDTO);
+    }
+
+    @Override
     public AdressDTO update(AdressDTO adressDTO) {
 
         return findById(adressDTO.getId_adress()).map(existingAdress -> {
@@ -35,10 +43,21 @@ public class AdressServiceImpl implements AdressService {
     }
 
     @Override
+    public AdressDTO update(AdressDTO adressDTO, Long id) {
+        adressDTO.setId_adress(id);
+        return update(adressDTO);
+    }
+
+    @Override
     public Optional<AdressDTO> findById(Long id) {
         return adressRepository.findById(id).map(adress -> {
             return adressMapper.ToDto(adress);
         });
+    }
+
+    @Override
+    public Optional<AdressDTO> findBySlug(String slug) {
+        return adressRepository.findBySlug(slug).map(adressMapper::ToDto);
     }
 
     @Override

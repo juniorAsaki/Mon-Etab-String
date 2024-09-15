@@ -67,7 +67,7 @@ public class StudentCardsController {
 
     @PostMapping("save")
     public String saveStudentCard(StudentCardsDTO studentCardsDTO) {
-        log.info("Save student card {}", studentCardsDTO.getStudent().getId_person());
+        log.info("Save student card {}", studentCardsDTO.getStudent().getIdPerson());
         studentCardsService.save(studentCardsDTO);
         return "redirect:/cards";
     }

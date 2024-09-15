@@ -2,6 +2,8 @@ package com.digitalacademy.monetab.web.resources;
 
 
 import com.digitalacademy.monetab.services.StudentService;
+import com.digitalacademy.monetab.services.dto.RegistrationStudentDTO;
+import com.digitalacademy.monetab.services.dto.ResponseRegisterStudentDTO;
 import com.digitalacademy.monetab.services.dto.StudentDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -25,6 +27,13 @@ import java.util.Optional;
 public class StudentResource {
 
     private final StudentService studentService;
+
+    @PostMapping("/register-student")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseRegisterStudentDTO registerStudent(@RequestBody RegistrationStudentDTO registrationStudentDTO) {
+        log.debug("Registering student: {}", registrationStudentDTO);
+        return studentService.registerStudent(registrationStudentDTO);
+    }
 
 
     @PostMapping
@@ -51,18 +60,16 @@ public class StudentResource {
 
     @GetMapping("/{id}")
     @ApiResponse(responseCode = "200", description = "Request to get Student")
-    public ResponseEntity<?> getStudent(
+    public ResponseEntity<?> getOneStudent(
             @Parameter(required = true, description = "ID of student to be retrieved")
             @PathVariable Long id
     ) {
         log.debug("REST request to get student {}", id);
-
         Optional<StudentDTO> student = studentService.findById(id);
 
         if (student.isPresent()) {
             return new ResponseEntity<>(student.get(), HttpStatus.OK);
         }
-
         return new ResponseEntity<>("Student not found", HttpStatus.NOT_FOUND);
     }
 
@@ -74,7 +81,7 @@ public class StudentResource {
                     @ApiResponse(responseCode = "404", description = "Students not found", content = @Content(schema = @Schema(implementation = String.class)))
             }
     )
-    public List<StudentDTO> getStudents() {
+    public List<StudentDTO> getAlStudents() {
         log.debug("REST request to get students");
         return studentService.findAll();
     }

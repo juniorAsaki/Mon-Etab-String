@@ -34,4 +34,7 @@ public class AppSetting implements Serializable {
     @OneToOne(mappedBy = "appSetting")
     private School school;
 
+    @Column(unique = true)
+    private String slug;
+
 }

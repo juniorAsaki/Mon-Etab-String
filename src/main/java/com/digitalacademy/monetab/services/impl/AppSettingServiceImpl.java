@@ -4,8 +4,10 @@ import com.digitalacademy.monetab.repositories.AppSettingRepository;
 import com.digitalacademy.monetab.services.AppSettingService;
 import com.digitalacademy.monetab.services.dto.AppSettingDTO;
 import com.digitalacademy.monetab.services.mapper.AppSettingMapper;
+import com.digitalacademy.monetab.utils.SlugGifyUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +21,7 @@ public class AppSettingServiceImpl implements AppSettingService {
 
     private final AppSettingRepository appSettingRepository;
     private final AppSettingMapper appSettingMapper;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public Optional<AppSettingDTO> findById(Long id) {
@@ -26,8 +29,20 @@ public class AppSettingServiceImpl implements AppSettingService {
     }
 
     @Override
+    public Optional<AppSettingDTO> findBySlug(String slug) {
+        return appSettingRepository.findAppSettingBySlug(slug).map(appSettingMapper::ToDto);
+    }
+
+    @Override
     public AppSettingDTO save(AppSettingDTO appSettingDTO) {
         return appSettingMapper.ToDto(appSettingRepository.save(appSettingMapper.DtoToEntity(appSettingDTO)));
+    }
+
+    @Override
+    public AppSettingDTO saveAppSettingDTO(AppSettingDTO appSettingDTO) {
+        final String SLUG = SlugGifyUtils.generateSlug(appSettingDTO.getSmtpUsername());
+        appSettingDTO.setSlug(SLUG);
+        return save(appSettingDTO);
     }
 
     @Override
@@ -37,7 +52,17 @@ public class AppSettingServiceImpl implements AppSettingService {
 
     @Override
     public AppSettingDTO update(AppSettingDTO appSettingDTO) {
-        return appSettingMapper.ToDto(appSettingRepository.save(appSettingMapper.DtoToEntity(appSettingDTO)));
+        return findById(appSettingDTO.getId_appsetting()).map(appSetting -> {
+            appSetting.setSmtpUsername(appSettingDTO.getSmtpUsername());
+            appSetting.setSmtpPassword(passwordEncoder.encode(appSettingDTO.getSmtpPassword()));
+            return save(appSetting);
+        }).orElseThrow(() -> new RuntimeException("AppSettings not found !"));
+    }
+
+    @Override
+    public AppSettingDTO update(AppSettingDTO appSettingDTO, Long id) {
+        appSettingDTO.setId_appsetting(id);
+        return update(appSettingDTO);
     }
 
     @Override

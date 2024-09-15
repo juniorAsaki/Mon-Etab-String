@@ -2,21 +2,39 @@ package com.digitalacademy.monetab.services.impl;
 
 import com.digitalacademy.monetab.models.Student;
 import com.digitalacademy.monetab.repositories.StudentRepository;
+import com.digitalacademy.monetab.security.AuthorityConstant;
+import com.digitalacademy.monetab.services.AdressService;
+import com.digitalacademy.monetab.services.RoleUserService;
 import com.digitalacademy.monetab.services.StudentService;
-import com.digitalacademy.monetab.services.dto.StudentDTO;
+import com.digitalacademy.monetab.services.UserService;
+import com.digitalacademy.monetab.services.dto.*;
+import com.digitalacademy.monetab.services.mapper.AdressMapper;
 import com.digitalacademy.monetab.services.mapper.StudentMapper;
+import com.digitalacademy.monetab.utils.SlugGifyUtils;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RequiredArgsConstructor
 @Service
+@Slf4j
 public class StudentServiceImpl implements StudentService {
 
     private final StudentRepository studentRepository;
     private final StudentMapper studentMapper;
+    private final ModelMapper modelMapper;
+    private final AdressService adressService;
+    private final UserService userService;
+    private final PasswordEncoder passwordEncoder;
+    private final RoleUserService roleUserService;
 
     @Override
     public StudentDTO save(StudentDTO studentDTO) {
@@ -25,8 +43,15 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public StudentDTO saveStudent(StudentDTO studentDTO) {
+        final String SLUG = SlugGifyUtils.generateSlug(studentDTO.getFirstName());
+        studentDTO.setSlug(SLUG);
+        return save(studentDTO);
+    }
+
+    @Override
     public StudentDTO update(StudentDTO studentDTO) {
-        return findById((studentDTO.getId_person())).map(existingStudent -> {
+        return findById((studentDTO.getIdPerson())).map(existingStudent -> {
             existingStudent.setAdress(studentDTO.getAdress());
             existingStudent.setFirstName(studentDTO.getFirstName());
             return save(existingStudent);
@@ -38,8 +63,6 @@ public class StudentServiceImpl implements StudentService {
         StudentDTO student = findById(id).orElseThrow(() -> new RuntimeException("Student not found"));
 
         if (student != null) {
-
-            student.setMatricule(studentDTO.getMatricule());
             student.setFirstName(studentDTO.getFirstName());
             student.setLastName(studentDTO.getLastName());
         }
@@ -49,6 +72,11 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Optional<StudentDTO> findById(Long id) {
         return studentRepository.findById(id).map(studentMapper::ToDto);
+    }
+
+    @Override
+    public Optional<StudentDTO> findBySlug(String slug) {
+        return studentRepository.findBySlug(slug).map(studentMapper::ToDto);
     }
 
 
@@ -67,7 +95,34 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<StudentDTO> findByLastNameOrGenderOrMatricule(String query, String gender) {
         List<Student> students = studentRepository.findByLastNameIgnoreCaseOrMatriculeIgnoreCaseAndGender(query, query, Gender.valueOf(gender));
-        return students.stream().map(student -> studentMapper.ToDto(student)).toList();
+        return students.stream().map(studentMapper::ToDto).toList();
+    }
+
+    @Override
+    @Transactional
+    public ResponseRegisterStudentDTO registerStudent(RegistrationStudentDTO registrationStudentDTO) {
+        log.debug("request to register student {}", registrationStudentDTO);
+
+        AdressDTO adress = modelMapper.map(registrationStudentDTO, AdressDTO.class);
+        adress = adressService.save(adress);
+
+        List<RoleUserDTO> roleUsers = roleUserService.findByRole(AuthorityConstant.ROLE_USER);
+
+        UserDTO user = modelMapper.map(registrationStudentDTO, UserDTO.class);
+        String password = UUID.randomUUID().toString();
+        user.setPassword(passwordEncoder.encode(password));
+        user.setRoleUser(roleUsers);
+        user = userService.save(user);
+
+        StudentDTO student = modelMapper.map(registrationStudentDTO, StudentDTO.class);
+        student.setUser(user);
+        student.setAdress(adress);
+
+        ResponseRegisterStudentDTO response = new ResponseRegisterStudentDTO();
+        response.setStudent(student);
+        response.setAdress(adress);
+
+        return response;
     }
 
 

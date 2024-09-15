@@ -2,7 +2,6 @@ package com.digitalacademy.monetab.models;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,9 +24,12 @@ public class Absence {
     private Date dateAbsence;
 
     @Column(name = "number_absence", nullable = false)
-    private int numberAbsence;
+    private Integer numberAbsence;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "id_student")
     private Student student;
+
+    @Column(unique = true)
+    private String slug;
 }

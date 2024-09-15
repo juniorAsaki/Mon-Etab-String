@@ -14,4 +14,5 @@ public interface InitAppService {
     SchoolDTO initSchool(SchoolDTO schoolDTO, AppSettingDTO appSettingDTO);
 
     List<RoleUserDTO> initRoleUsers(List<RoleUserDTO> roleUserDTOList);
+
 }

@@ -11,11 +11,15 @@ public interface TeacherService {
 
     TeacherDTO save(TeacherDTO teacherDTO);
 
+    TeacherDTO saveTeacher(TeacherDTO teacherDTO);
+
     TeacherDTO update(TeacherDTO teacherDTO);
 
     TeacherDTO update(TeacherDTO teacherDTO, Long id);
 
     Optional<TeacherDTO> findById(Long id);
+
+    Optional<TeacherDTO> findBySlug(String slug);
 
     List<TeacherDTO> findAll();
 

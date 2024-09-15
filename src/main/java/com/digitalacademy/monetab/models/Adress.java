@@ -24,4 +24,7 @@ public class Adress {
 
     @Column(name = "street")
     private String street;
+
+    @Column(unique = true)
+    private String slug;
 }

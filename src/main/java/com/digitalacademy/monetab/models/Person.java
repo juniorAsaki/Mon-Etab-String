@@ -22,7 +22,7 @@ public abstract class Person implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_personne")
-    private Long id_person;
+    private Long idPerson;
 
     @Column(name = "firstName")
     private String firstName;
@@ -41,6 +41,9 @@ public abstract class Person implements Serializable {
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
+
+    @Column(unique = true)
+    private String slug;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_adress")

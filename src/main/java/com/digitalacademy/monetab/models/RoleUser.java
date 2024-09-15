@@ -19,6 +19,6 @@ public class RoleUser {
     @Column(unique = true, name = "name_role")
     private String nameRole;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private User user;
+    @Column(unique = true)
+    private String slug;
 }

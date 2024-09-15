@@ -14,7 +14,9 @@ public class AbsenceDTO {
 
     private Date dateAbsence;
 
-    private int numberAbsence;
+    private Integer numberAbsence;
 
     private StudentDTO student;
+
+    private String slug;
 }

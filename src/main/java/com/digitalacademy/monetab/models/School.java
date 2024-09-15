@@ -26,4 +26,7 @@ public class School {
 
     @OneToOne
     private AppSetting appSetting;
+
+    @Column(unique = true)
+    private String slug;
 }

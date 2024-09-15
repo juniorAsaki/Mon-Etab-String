@@ -1,22 +1,20 @@
 package com.digitalacademy.monetab.services.dto;
 
-
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
-public class AdressDTO {
+public class RegistrationStudentDTO {
 
-    private Long id_adress;
+    private String firstName;
+    private String lastName;
+    private String matricule;
 
     private String country;
-
     private String city;
-
     private String street;
 
-    private String slug;
+    private String pseudo;
+    private String email;
 }
