@@ -5,6 +5,7 @@ import com.digitalacademy.monetab.repositories.TeacherRepository;
 import com.digitalacademy.monetab.services.TeacherService;
 import com.digitalacademy.monetab.services.dto.TeacherDTO;
 import com.digitalacademy.monetab.services.mapper.TeacherMapper;
+import com.digitalacademy.monetab.utils.SlugGifyUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -25,9 +26,16 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
+    public TeacherDTO saveTeacher(TeacherDTO teacherDTO) {
+        final String SLUG = SlugGifyUtils.generateSlug(teacherDTO.getFirstName());
+        teacherDTO.setSlug(SLUG);
+        return save(teacherDTO);
+    }
+
+    @Override
     public TeacherDTO update(TeacherDTO teacherDTO) {
 
-        return findById(teacherDTO.getId_person()).map(existingTeacher -> {
+        return findById(teacherDTO.getIdPerson()).map(existingTeacher -> {
             Teacher teacher = teacherMapper.DtoToEntity(teacherDTO);
             teacher.setLastName(existingTeacher.getLastName());
             return save(existingTeacher);
@@ -49,6 +57,11 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public Optional<TeacherDTO> findById(Long id) {
         return teacherRepository.findById(id).map(teacher -> teacherMapper.ToDto(teacher));
+    }
+
+    @Override
+    public Optional<TeacherDTO> findBySlug(String slug) {
+        return teacherRepository.findBySlug(slug).map(teacherMapper::ToDto);
     }
 
     @Override

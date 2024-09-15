@@ -4,11 +4,13 @@ import com.digitalacademy.monetab.repositories.StudentCardsRepository;
 import com.digitalacademy.monetab.services.StudentCardsService;
 import com.digitalacademy.monetab.services.dto.StudentCardsDTO;
 import com.digitalacademy.monetab.services.mapper.StudentCardsMapper;
+import com.digitalacademy.monetab.utils.SlugGifyUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @RequiredArgsConstructor
@@ -25,6 +27,11 @@ public class StudentCardsServiceImpl implements StudentCardsService {
     }
 
     @Override
+    public Optional<StudentCardsDTO> findBySlug(String slug) {
+        return studentCardsRepository.findBySlug(slug).map(studentCardsMapper::ToDto);
+    }
+
+    @Override
     public List<StudentCardsDTO> findAll() {
         return studentCardsRepository.findAll().stream().map(studentCards -> studentCardsMapper.ToDto(studentCards)).toList();
     }
@@ -35,8 +42,24 @@ public class StudentCardsServiceImpl implements StudentCardsService {
     }
 
     @Override
-    public StudentCardsDTO update(StudentCardsDTO studentCardsDTO) {
+    public StudentCardsDTO saveStudentCards(StudentCardsDTO studentCardsDTO) {
+        final String SLUG = SlugGifyUtils.generateSlug(studentCardsDTO.getReference());
+        studentCardsDTO.setSlug(SLUG);
         return save(studentCardsDTO);
+    }
+
+    @Override
+    public StudentCardsDTO update(StudentCardsDTO studentCardsDTO) {
+        return studentCardsRepository.findById(studentCardsDTO.getIdStudentCard()).map(studentCards -> {
+            studentCards.setReference(studentCardsDTO.getReference());
+            return save(studentCardsDTO);
+        }).orElseThrow(() -> new RuntimeException("Student Cards Not Found"));
+    }
+
+    @Override
+    public StudentCardsDTO update(StudentCardsDTO studentCardsDTO, Long id) {
+        studentCardsDTO.setIdStudentCard(id);
+        return update(studentCardsDTO);
     }
 
     @Override

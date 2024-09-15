@@ -19,4 +19,6 @@ public class AppSettingDTO {
 
     private String smtpPassword;
 
+    private String slug;
+
 }

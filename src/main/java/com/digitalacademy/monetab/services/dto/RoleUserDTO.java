@@ -13,5 +13,7 @@ public class RoleUserDTO {
 
     private String nameRole;
 
-    private User user;
+//    private User user;
+
+    private String slug;
 }

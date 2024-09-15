@@ -15,4 +15,6 @@ public class SchoolDTO {
     private String urlLogo;
 
     private AppSettingDTO appSetting;
+
+    private String slug;
 }

@@ -5,6 +5,7 @@ import com.digitalacademy.monetab.repositories.UserRepository;
 import com.digitalacademy.monetab.services.UserService;
 import com.digitalacademy.monetab.services.dto.UserDTO;
 import com.digitalacademy.monetab.services.mapper.UserMapper;
+import com.digitalacademy.monetab.utils.SlugGifyUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -35,19 +36,38 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserDTO saveUser(UserDTO userDTO) {
+        final String SLUG = SlugGifyUtils.generateSlug(userDTO.getPseudo());
+        userDTO.setSlug(SLUG);
+        userDTO.setCreatedDate(Instant.now());
+        return save(userDTO);
+    }
+
+    @Override
     public UserDTO update(UserDTO userDTO) {
 
         return findById(userDTO.getId_user()).map(existingUser -> {
             existingUser.setPseudo(userDTO.getPseudo());
             existingUser.setPassword(userDTO.getPassword());
             return save(existingUser);
-        }).orElseThrow(() -> new RuntimeException(""));
+        }).orElseThrow(() -> new RuntimeException("User not found"));
+    }
+
+    @Override
+    public UserDTO update(UserDTO userDTO, Long id) {
+        userDTO.setId_user(id);
+        return update(userDTO);
     }
 
     @Override
     public Optional<UserDTO> findById(Long id) {
         log.debug("Finding user by id {}", id);
         return userRepository.findById(id).map(userMapper::ToDto);
+    }
+
+    @Override
+    public Optional<UserDTO> findBySlug(String slug) {
+        return Optional.empty();
     }
 
     @Override

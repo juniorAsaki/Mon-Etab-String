@@ -27,13 +27,21 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "creation_date", nullable = false)
+    @Column(name = "creation_date")
     private Instant createdDate;
 
     @Column(name = "desable")
     private Boolean disable;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @Column(unique = true)
+    private String slug;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
     private List<RoleUser> roleUser;
 
     @ManyToOne

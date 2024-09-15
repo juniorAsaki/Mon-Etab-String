@@ -14,7 +14,7 @@ public class StudentDTO extends PersonDTO {
 
     private String matricule;
 
-    private List<AbsenceDTO> absence;
+//    private List<AbsenceDTO> absence;
 
     private String phoneNumberParent;
 

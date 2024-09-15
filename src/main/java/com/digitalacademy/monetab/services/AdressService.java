@@ -9,9 +9,15 @@ public interface AdressService {
 
     AdressDTO save(AdressDTO adressDTO);
 
+    AdressDTO saveAdress(AdressDTO adressDTO);
+
     AdressDTO update(AdressDTO adressDTO);
 
+    AdressDTO update(AdressDTO adressDTO, Long id);
+
     Optional<AdressDTO> findById(Long id);
+
+    Optional<AdressDTO> findBySlug(String slug);
 
     List<AdressDTO> findAll();
 

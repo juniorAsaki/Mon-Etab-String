@@ -28,7 +28,7 @@ public class SecurityConfiguration {
                         .requestMatchers("/js/**").permitAll()
                         .requestMatchers("/fontawesome").permitAll()
                         .requestMatchers("/img/**").permitAll()
-                        .requestMatchers("/schools", "/", "settings", "/api/students/**", "/api/teachers/**", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                        .requestMatchers("/schools", "/", "settings", "/api/**", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin((login) -> login

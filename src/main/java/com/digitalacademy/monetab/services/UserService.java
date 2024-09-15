@@ -13,9 +13,15 @@ public interface UserService {
 
     UserDTO save(UserDTO userDTO);
 
+    UserDTO saveUser(UserDTO userDTO);
+
     UserDTO update(UserDTO userDTO);
 
+    UserDTO update(UserDTO userDTO, Long id);
+
     Optional<UserDTO> findById(Long id);
+
+    Optional<UserDTO> findBySlug(String slug);
 
     List<UserDTO> findAll();
 

@@ -16,7 +16,7 @@ import java.sql.Date;
 public class PersonDTO {
 
 
-    private Long id_person;
+    private Long idPerson;
 
     private String firstName;
 
@@ -32,6 +32,8 @@ public class PersonDTO {
 
     private AdressDTO adress;
 
-    private User user;
+    private UserDTO user;
+
+    private String slug;
 
 }

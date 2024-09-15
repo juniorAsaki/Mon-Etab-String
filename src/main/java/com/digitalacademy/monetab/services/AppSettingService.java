@@ -9,11 +9,17 @@ public interface AppSettingService {
 
     Optional<AppSettingDTO> findById(Long id);
 
+    Optional<AppSettingDTO> findBySlug(String slug);
+
     AppSettingDTO save(AppSettingDTO appSettingDTO);
+
+    AppSettingDTO saveAppSettingDTO(AppSettingDTO appSettingDTO);
 
     List<AppSettingDTO> findAll();
 
     AppSettingDTO update(AppSettingDTO appSettingDTO);
+
+    AppSettingDTO update(AppSettingDTO appSettingDTO, Long id);
 
     void deleteById(Long id);
 

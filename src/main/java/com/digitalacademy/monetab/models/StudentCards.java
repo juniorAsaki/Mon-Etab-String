@@ -27,6 +27,9 @@ public class StudentCards {
     @Column(nullable = false, name = "expiry_date")
     private Date expiryDate;
 
+    @Column(unique = true)
+    private String slug;
+
     @ManyToOne
     private Student student;
 }

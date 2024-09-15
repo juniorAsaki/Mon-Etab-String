@@ -20,4 +20,6 @@ public class StudentCardsDTO {
     private Date expiryDate;
 
     private StudentDTO student;
+
+    private String slug;
 }
