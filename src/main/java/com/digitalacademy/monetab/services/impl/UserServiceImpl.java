@@ -2,6 +2,7 @@ package com.digitalacademy.monetab.services.impl;
 
 import com.digitalacademy.monetab.models.User;
 import com.digitalacademy.monetab.repositories.UserRepository;
+import com.digitalacademy.monetab.services.Mapping.UserMapping;
 import com.digitalacademy.monetab.services.UserService;
 import com.digitalacademy.monetab.services.dto.UserDTO;
 import com.digitalacademy.monetab.services.mapper.UserMapper;
@@ -57,6 +58,14 @@ public class UserServiceImpl implements UserService {
     public UserDTO update(UserDTO userDTO, Long id) {
         userDTO.setId_user(id);
         return update(userDTO);
+    }
+
+    @Override
+    public UserDTO partialUpdate(UserDTO userDTO, Long id) {
+        return userRepository.findById(id).map(user -> {
+            UserMapping.partialUpdate(user, userDTO);
+            return user;
+        }).map(userRepository::save).map(userMapper::ToDto).orElse(null);
     }
 
     @Override

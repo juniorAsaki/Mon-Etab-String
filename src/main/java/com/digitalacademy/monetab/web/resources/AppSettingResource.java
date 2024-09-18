@@ -75,4 +75,15 @@ public class AppSettingResource {
 
         return appSettingService.update(appSettingDTO, id);
     }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<?> partialUpdate(@PathVariable Long id, @RequestBody AppSettingDTO appSettingDTO) {
+        log.debug("REST Request to patch AppSetting : {}", id);
+
+        Optional<AppSettingDTO> settingDTO = appSettingService.findById(id);
+        if (settingDTO.isPresent()) {
+            return new ResponseEntity<>(appSettingService.partialUpdate(appSettingDTO, id), HttpStatus.OK);
+        }
+        return new ResponseEntity<>("Setting not found", HttpStatus.NO_CONTENT);
+    }
 }

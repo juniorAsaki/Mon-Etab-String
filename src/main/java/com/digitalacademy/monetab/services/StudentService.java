@@ -3,7 +3,9 @@ package com.digitalacademy.monetab.services;
 import com.digitalacademy.monetab.services.dto.RegistrationStudentDTO;
 import com.digitalacademy.monetab.services.dto.ResponseRegisterStudentDTO;
 import com.digitalacademy.monetab.services.dto.StudentDTO;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +20,8 @@ public interface StudentService {
 
     StudentDTO update(StudentDTO studentDTO, Long id);
 
+    StudentDTO partialUpdate(StudentDTO studentDTO, Long id);
+
     Optional<StudentDTO> findById(Long id);
 
     Optional<StudentDTO> findBySlug(String slug);
@@ -29,5 +33,7 @@ public interface StudentService {
     List<StudentDTO> findByLastNameOrGenderOrMatricule(String query, String gender);
 
     ResponseRegisterStudentDTO registerStudent(RegistrationStudentDTO registrationStudentDTO);
+
+    StudentDTO uploadStudentPicture(MultipartFile file, Long id) throws IOException;
 
 }

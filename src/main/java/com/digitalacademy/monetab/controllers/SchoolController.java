@@ -42,6 +42,8 @@ public class SchoolController {
 
     private final PasswordEncoder passwordEncoder;
 
+    private final FileStorageService fileStorageService;
+
 
     @GetMapping
     public String showSchoolPage(Model model) {
@@ -70,12 +72,7 @@ public class SchoolController {
 
         log.debug("{}", schoolDTO);
 
-        // Upload the image
-        Map params1 = ObjectUtils.asMap(
-                "use_filename", true,
-                "unique_filename", true,
-                "overwrite", false
-        );
+
         SchoolDTO schoolDTO1 = new SchoolDTO();
         schoolDTO1.setNameSchool(schoolDTO.getNameSchool());
 
@@ -86,7 +83,7 @@ public class SchoolController {
 
 
             if (!schoolDTO.getFile().isEmpty()) {
-                String fileUrl = cloudinary.uploader().upload(schoolDTO.getFile().getBytes(), params1).get("url").toString();
+                String fileUrl = fileStorageService.upload(schoolDTO.getFile());
                 schoolDTO1.setUrlLogo(fileUrl);
             } else {
                 schoolDTO1.setUrlLogo(school.getUrlLogo());
@@ -98,7 +95,7 @@ public class SchoolController {
             schoolService.save(schoolDTO1);
 
         } else {
-            String fileUrl = cloudinary.uploader().upload(schoolDTO.getFile().getBytes(), params1).get("url").toString();
+            String fileUrl = fileStorageService.upload(schoolDTO.getFile());
             schoolDTO1.setUrlLogo(fileUrl);
             AppSettingDTO appSettingDTO = appSettingService.findAll().stream().findFirst().orElse(null);
             initAppService.initSchool(schoolDTO1, appSettingDTO);

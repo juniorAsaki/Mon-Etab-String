@@ -1,10 +1,9 @@
 package com.digitalacademy.monetab.web.resources;
 
 
+import com.digitalacademy.monetab.services.RoleUserService;
 import com.digitalacademy.monetab.services.StudentService;
-import com.digitalacademy.monetab.services.dto.RegistrationStudentDTO;
-import com.digitalacademy.monetab.services.dto.ResponseRegisterStudentDTO;
-import com.digitalacademy.monetab.services.dto.StudentDTO;
+import com.digitalacademy.monetab.services.dto.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -17,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,6 +27,7 @@ import java.util.Optional;
 public class StudentResource {
 
     private final StudentService studentService;
+    private final RoleUserService roleUserService;
 
     @PostMapping("/register-student")
     @ResponseStatus(HttpStatus.CREATED)
@@ -41,7 +42,13 @@ public class StudentResource {
     @Operation(summary = "save new student", description = "this endpoint allow to save student")
     public ResponseEntity<StudentDTO> saveStudent(@RequestBody StudentDTO student) {
         log.debug("REST request to save student {}", student);
-        return new ResponseEntity<>(studentService.save(student), HttpStatus.CREATED);
+
+        // Récupérer les rôles associés à l'étudiant
+        List<RoleUserDTO> roles = student.getUser().getRoleUser().stream().map(roleDTO -> roleUserService.findById(roleDTO.getIdRoleUser()).orElseThrow(() ->
+                new RuntimeException("Role not found with id: " + roleDTO.getIdRoleUser()))).toList();
+
+        student.getUser().setRoleUser(roles);
+        return new ResponseEntity<>(studentService.saveStudent(student), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
@@ -84,5 +91,29 @@ public class StudentResource {
     public List<StudentDTO> getAlStudents() {
         log.debug("REST request to get students");
         return studentService.findAll();
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<?> partialUpdate(@RequestBody StudentDTO studentDTO, @PathVariable Long id) {
+        log.debug("REST to request partial update {}", studentDTO);
+        Optional<StudentDTO> student = studentService.findById(id);
+        if (student.isPresent()) {
+            return new ResponseEntity<>(studentService.partialUpdate(studentDTO, id), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>("Student not found", HttpStatus.NOT_FOUND);
+
+    }
+
+    @PostMapping("update")
+    public ResponseEntity<?> uploadPictureStudent(@ModelAttribute FileStudentDTO fileStudentDTO) throws IOException {
+        log.debug("REST request to upload picture student");
+
+        StudentDTO studentDTO = studentService.uploadStudentPicture(fileStudentDTO.getFile(), fileStudentDTO.getIdPerson());
+
+        if (studentDTO != null) {
+            return new ResponseEntity<>(studentDTO, HttpStatus.OK);
+        }
+        return new ResponseEntity<>("Student not found", HttpStatus.NOT_FOUND);
     }
 }

@@ -49,4 +49,15 @@ public class TeacherResource {
         log.debug("REST request to get Teacher : {}", id);
         return teacherService.findById(id);
     }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<?> partialUpdate(@PathVariable Long id, @RequestBody TeacherDTO teacherDTO) {
+        log.debug("REST request to partial update Teacher : {}", teacherDTO);
+
+        Optional<TeacherDTO> optionalTeacher = teacherService.findById(id);
+        if (optionalTeacher.isPresent()) {
+            return new ResponseEntity<>(teacherService.partialUpdate(teacherDTO, id), HttpStatus.OK);
+        }
+        return new ResponseEntity<>("teacher not found", HttpStatus.NOT_FOUND);
+    }
 }

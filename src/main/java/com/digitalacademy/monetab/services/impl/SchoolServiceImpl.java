@@ -1,6 +1,8 @@
 package com.digitalacademy.monetab.services.impl;
 
 import com.digitalacademy.monetab.repositories.SchoolRepository;
+import com.digitalacademy.monetab.services.FileStorageService;
+import com.digitalacademy.monetab.services.Mapping.SchoolMapping;
 import com.digitalacademy.monetab.services.SchoolService;
 import com.digitalacademy.monetab.services.dto.AppSettingDTO;
 import com.digitalacademy.monetab.services.dto.SchoolDTO;
@@ -9,7 +11,9 @@ import com.digitalacademy.monetab.utils.SlugGifyUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,10 +24,18 @@ public class SchoolServiceImpl implements SchoolService {
 
     private final SchoolRepository schoolRepository;
     private final SchoolMapper schoolMapper;
+    private final FileStorageService fileStorageService;
 
     @Override
     public SchoolDTO save(SchoolDTO schoolDTO) {
         return schoolMapper.ToDto(schoolRepository.save(schoolMapper.DtoToEntity(schoolDTO)));
+    }
+
+    @Override
+    public SchoolDTO save(SchoolDTO schoolDTO, MultipartFile file) throws IOException {
+        String upload = fileStorageService.upload(file);
+        schoolDTO.setUrlLogo(upload);
+        return save(schoolDTO);
     }
 
     @Override
@@ -65,6 +77,14 @@ public class SchoolServiceImpl implements SchoolService {
     public SchoolDTO update(SchoolDTO schoolDTO, Long id) {
         schoolDTO.setId_school(id);
         return update(schoolDTO);
+    }
+
+    @Override
+    public SchoolDTO partialUpdate(SchoolDTO schoolDTO, Long id) {
+        return schoolRepository.findById(id).map(school -> {
+            SchoolMapping.partialUpdate(school, schoolDTO);
+            return school;
+        }).map(schoolRepository::save).map(schoolMapper::ToDto).orElse(null);
     }
 
     @Override

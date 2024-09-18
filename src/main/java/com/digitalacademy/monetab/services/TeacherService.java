@@ -17,6 +17,8 @@ public interface TeacherService {
 
     TeacherDTO update(TeacherDTO teacherDTO, Long id);
 
+    TeacherDTO partialUpdate(TeacherDTO teacherDTO, Long id);
+
     Optional<TeacherDTO> findById(Long id);
 
     Optional<TeacherDTO> findBySlug(String slug);

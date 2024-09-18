@@ -2,6 +2,7 @@ package com.digitalacademy.monetab.services.impl;
 
 import com.digitalacademy.monetab.models.Teacher;
 import com.digitalacademy.monetab.repositories.TeacherRepository;
+import com.digitalacademy.monetab.services.Mapping.TeacherMapping;
 import com.digitalacademy.monetab.services.TeacherService;
 import com.digitalacademy.monetab.services.dto.TeacherDTO;
 import com.digitalacademy.monetab.services.mapper.TeacherMapper;
@@ -52,6 +53,14 @@ public class TeacherServiceImpl implements TeacherService {
             teacher.setAvailable(teacherDTO.getAvailable());
         }
         return save(teacher);
+    }
+
+    @Override
+    public TeacherDTO partialUpdate(TeacherDTO teacherDTO, Long id) {
+        return teacherRepository.findById(id).map(teacher -> {
+            TeacherMapping.partialUpdate(teacher, teacherDTO);
+            return teacher;
+        }).map(teacherRepository::save).map(teacherMapper::ToDto).orElse(null);
     }
 
     @Override

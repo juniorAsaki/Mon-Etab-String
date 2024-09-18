@@ -2,6 +2,7 @@ package com.digitalacademy.monetab.services.impl;
 
 import com.digitalacademy.monetab.repositories.AppSettingRepository;
 import com.digitalacademy.monetab.services.AppSettingService;
+import com.digitalacademy.monetab.services.Mapping.AppSettingMapping;
 import com.digitalacademy.monetab.services.dto.AppSettingDTO;
 import com.digitalacademy.monetab.services.mapper.AppSettingMapper;
 import com.digitalacademy.monetab.utils.SlugGifyUtils;
@@ -63,6 +64,14 @@ public class AppSettingServiceImpl implements AppSettingService {
     public AppSettingDTO update(AppSettingDTO appSettingDTO, Long id) {
         appSettingDTO.setId_appsetting(id);
         return update(appSettingDTO);
+    }
+
+    @Override
+    public AppSettingDTO partialUpdate(AppSettingDTO appSettingDTO, Long id) {
+        return appSettingRepository.findById(id).map(appSetting -> {
+            AppSettingMapping.partialUpdate(appSetting, appSettingDTO);
+            return appSetting;
+        }).map(appSettingRepository::save).map(appSettingMapper::ToDto).orElse(null);
     }
 
     @Override

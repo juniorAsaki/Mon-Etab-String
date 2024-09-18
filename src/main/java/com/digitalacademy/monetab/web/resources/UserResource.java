@@ -8,6 +8,7 @@ import com.digitalacademy.monetab.services.dto.SchoolDTO;
 import com.digitalacademy.monetab.services.dto.UserDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,18 +33,14 @@ public class UserResource {
         AtomicInteger temp = new AtomicInteger();
         Optional<SchoolDTO> school = schoolService.findOne(userDTO.getSchool().getId_school());
 
-//        List<RoleUserDTO> roles = roleUserService.findAll().stream().map(role -> {
-//
-//                return role.getIdRoleUser().equals(userDTO.getRoleUser().get(temp.get()).getIdRoleUser()) ?: role;
-//
-//            temp.getAndIncrement();
-//            return null;
-//        });
+        // Récupérer les rôles associés à l'utilisateur
+        List<RoleUserDTO> roles = userDTO.getRoleUser().stream().map(roleDTO -> roleUserService.findById(roleDTO.getIdRoleUser()).orElseThrow(() ->
+                new RuntimeException("Role not found with id: " + roleDTO.getIdRoleUser()))).toList();
 
         if (school.isPresent()) {
             userDTO.setSchool(school.get());
         }
-//        userDTO.setRoleUser(roles);
+        userDTO.setRoleUser(roles);
         return ResponseEntity.ok(userService.saveUser(userDTO));
     }
 
@@ -77,5 +74,17 @@ public class UserResource {
         log.debug("REST request to update User : {} = {}", id, userDTO);
 
         return userService.update(userDTO, id);
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<?> partialUpdate(@RequestBody UserDTO userDTO, @PathVariable Long id) {
+        log.debug("REST request to partial update User : {} = {}", id, userDTO);
+
+        Optional<UserDTO> user = userService.findById(id);
+        if (user.isPresent()) {
+            return new ResponseEntity<>(userService.partialUpdate(userDTO, id), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>("user not found", HttpStatus.NOT_FOUND);
     }
 }

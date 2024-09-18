@@ -3,22 +3,20 @@ package com.digitalacademy.monetab.services.impl;
 import com.digitalacademy.monetab.models.Student;
 import com.digitalacademy.monetab.repositories.StudentRepository;
 import com.digitalacademy.monetab.security.AuthorityConstant;
-import com.digitalacademy.monetab.services.AdressService;
-import com.digitalacademy.monetab.services.RoleUserService;
-import com.digitalacademy.monetab.services.StudentService;
-import com.digitalacademy.monetab.services.UserService;
+import com.digitalacademy.monetab.services.*;
+import com.digitalacademy.monetab.services.Mapping.StudentMapping;
 import com.digitalacademy.monetab.services.dto.*;
-import com.digitalacademy.monetab.services.mapper.AdressMapper;
 import com.digitalacademy.monetab.services.mapper.StudentMapper;
 import com.digitalacademy.monetab.utils.SlugGifyUtils;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -35,6 +33,7 @@ public class StudentServiceImpl implements StudentService {
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
     private final RoleUserService roleUserService;
+    private final FileStorageService fileStorageService;
 
     @Override
     public StudentDTO save(StudentDTO studentDTO) {
@@ -67,6 +66,14 @@ public class StudentServiceImpl implements StudentService {
             student.setLastName(studentDTO.getLastName());
         }
         return save(student);
+    }
+
+    @Override
+    public StudentDTO partialUpdate(StudentDTO studentDTO, Long id) {
+        return studentRepository.findById(id).map(student -> {
+            StudentMapping.partialUpdate(student, studentDTO);
+            return student;
+        }).map(studentRepository::save).map(studentMapper::ToDto).orElse(null);
     }
 
     @Override
@@ -123,6 +130,18 @@ public class StudentServiceImpl implements StudentService {
         response.setAdress(adress);
 
         return response;
+    }
+
+    @Override
+    public StudentDTO uploadStudentPicture(MultipartFile file, Long id) throws IOException {
+        StudentDTO student = findById(id).orElse(null);
+
+        if (student != null) {
+            String upload = fileStorageService.upload(file);
+            student.setUrlPicture(upload);
+            save(student);
+        }
+        return student;
     }
 
 

@@ -21,6 +21,8 @@ public interface AppSettingService {
 
     AppSettingDTO update(AppSettingDTO appSettingDTO, Long id);
 
+    AppSettingDTO partialUpdate(AppSettingDTO appSettingDTO, Long id);
+
     void deleteById(Long id);
 
     AppSettingDTO initAppSetting(AppSettingDTO appSettingDTO);

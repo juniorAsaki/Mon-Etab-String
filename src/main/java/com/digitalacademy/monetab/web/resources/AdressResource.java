@@ -22,13 +22,13 @@ public class AdressResource {
     private final AdressService adressService;
 
     @PostMapping
-    public ResponseEntity<AdressDTO> saveAdress(AdressDTO adressDTO) {
+    public ResponseEntity<AdressDTO> saveAdress(@RequestBody AdressDTO adressDTO) {
         log.debug("REST request to save Adress: {}", adressDTO);
         return new ResponseEntity<>(adressService.saveAdress(adressDTO), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public AdressDTO update(AdressDTO adressDTO, @PathVariable Long id) {
+    public AdressDTO update(@RequestBody AdressDTO adressDTO, @PathVariable Long id) {
         log.debug("REST request to update Adress : {}", adressDTO);
         return adressService.update(adressDTO, id);
     }

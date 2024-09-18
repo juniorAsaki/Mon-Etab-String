@@ -9,7 +9,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.swing.text.html.Option;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,14 +25,16 @@ public class SchoolResource {
     private final AppSettingService appSettingService;
 
     @PostMapping
-    public ResponseEntity<?> saveSchool(@RequestBody SchoolDTO schoolDTO) {
+    public ResponseEntity<?> saveSchool(@RequestPart(name = "school") SchoolDTO schoolDTO, @RequestPart(name = "file") MultipartFile file) throws IOException {
         log.debug("REST request to save School: {}", schoolDTO);
 
-        Optional<AppSettingDTO> setting = appSettingService.findById(schoolDTO.getAppSetting().getId_appsetting());
+        AppSettingDTO setting = appSettingService.findAll().stream().findFirst().get();
+        schoolDTO.setAppSetting(setting);
 
-        if (setting.isPresent()) {
-            schoolDTO.setAppSetting(setting.get());
-            return ResponseEntity.ok(schoolService.saveSchool(schoolDTO));
+        SchoolDTO school = schoolService.save(schoolDTO, file);
+
+        if (school != null) {
+            return ResponseEntity.ok(school);
         }
         return new ResponseEntity<>("Setting not found !", HttpStatus.NOT_FOUND);
 
@@ -63,5 +68,18 @@ public class SchoolResource {
     public SchoolDTO updateSchool(@PathVariable Long id, @RequestBody SchoolDTO schoolDTO) {
         log.debug("REST request to update School : {}", id);
         return schoolService.update(schoolDTO, id);
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<?> partialUpdate(@PathVariable Long id, @RequestBody SchoolDTO schoolDTO) {
+        log.debug("REST request to partial update School : {}", id);
+
+        Optional<SchoolDTO> school = schoolService.findOne(id);
+
+        if (school.isPresent()) {
+            return new ResponseEntity<>(schoolService.partialUpdate(schoolDTO, id), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>("School not found !", HttpStatus.NOT_FOUND);
     }
 }

@@ -19,6 +19,8 @@ public interface UserService {
 
     UserDTO update(UserDTO userDTO, Long id);
 
+    UserDTO partialUpdate(UserDTO userDTO, Long id);
+
     Optional<UserDTO> findById(Long id);
 
     Optional<UserDTO> findBySlug(String slug);
